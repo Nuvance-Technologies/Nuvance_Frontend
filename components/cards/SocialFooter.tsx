@@ -35,20 +35,19 @@ const StyledWrapper = styled.div`
   .card {
     width: fit-content;
     height: fit-content;
-    background-color: #0e0e0e;
+    background-color: #1E2128FF;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 25px 25px;
     gap: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
   }
 
   /* for all social containers*/
   .socialContainer {
     width: 52px;
     height: 52px;
-    background-color: rgb(44, 44, 44);
+    background-color: #1E2128FF;
     display: flex;
     align-items: center;
     justify-content: center;

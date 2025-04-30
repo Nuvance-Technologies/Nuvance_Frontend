@@ -8,7 +8,7 @@ export default function Footer() {
         <footer className="bg-footerBg text-white pt-16 pb-8">
             <div className="container mx-auto px-4">
                 {/* Top Section - Logo and Newsletter */}
-                <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div className="flex flex-col justify-between items-center mb-12">
                     {/* Logo */}
                     <div className="flex items-center mb-6 md:mb-0">
                         <div className="cursor-pointer">
@@ -27,16 +27,16 @@ export default function Footer() {
                     </div>
 
                     {/* Newsletter */}
-                    <div className="w-full md:w-auto">
-                        <h3 className="text-lg font-semibold mb-3">Subscribe to our newsletter</h3>
+                    <div className="w-full md:w-auto mt-5">
+                        <h3 className="text-lg font-semibold mb-3 text-center">Subscribe to our newsletter</h3>
                         <div className="flex flex-col sm:flex-row gap-2">
                             <Input
                                 type="email"
-                                placeholder="Your email address"
+                                placeholder="Your email"
                             // className="bg-white/10 border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-primary rounded-lg px-4 py-3 w-full sm:w-64"
                             />
                             <Button
-                                variant="general_1"
+                                variant="blue_variant"
                                 text="Subscribe"
                             // className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 py-3 transition-colors"
                             >
