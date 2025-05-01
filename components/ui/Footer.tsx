@@ -104,9 +104,7 @@ export default function Footer() {
 
                 {/* Bottom Section - Social and Copyright */}
                 <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8">
-                    {/* Social Links */}
-
-
+    
                     {/* Copyright */}
                     <div className="text-sm text-white/60">
                         © {new Date().getFullYear()} Nuvance Technologies. All rights reserved.

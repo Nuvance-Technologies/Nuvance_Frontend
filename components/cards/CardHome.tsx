@@ -47,7 +47,7 @@ const StyledWrapper = styled.div`
     width: 5px;
     aspect-ratio: 1;
     position: absolute;
-    background-color: #fff;
+    background-color: yellow;
     box-shadow: 0 0 10px #ffffff;
     border-radius: 100px;
     z-index: 2;
@@ -83,7 +83,8 @@ const StyledWrapper = styled.div`
     border-radius: 9px;
     border: solid 1px #202222;
     background-size: 20px 20px;
-    background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
+    background-color: #3F82EDFF;
+    // background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +103,7 @@ const StyledWrapper = styled.div`
     height: 45px;
     border-radius: 100px;
     position: absolute;
-    background-color: #c7c7c7;
+    background-color: white;
     opacity: 0.4;
     box-shadow: 0 0 50px #fff;
     filter: blur(10px);
@@ -123,7 +124,8 @@ const StyledWrapper = styled.div`
   .card .text {
     font-weight: bolder;
     font-size: 2rem;
-    background: linear-gradient(45deg, #000000 4%, #fff, #000);
+    background: black;
+    // background: linear-gradient(45deg, #000000 4%, #fff, #000);
     background-clip: text;
     color: transparent;
     position: relative;
