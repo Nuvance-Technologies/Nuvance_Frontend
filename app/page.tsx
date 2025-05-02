@@ -109,7 +109,7 @@ export default function Home() {
                 <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
                     Discover How We Elevate Your Brand
                 </div>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-15 max-w-6xl mx-auto">
                     <CardHome
                         title="SEO Optimization"
                         description="Achieve top rankings and increased visibility in search results."

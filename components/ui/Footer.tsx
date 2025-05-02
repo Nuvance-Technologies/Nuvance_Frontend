@@ -94,7 +94,11 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center">
                                 <span className="mr-2">✉️</span>
-                                <div onClick={() => { window.location.href = "mailto:info.techstudio@gmail.com"; }} style={{ cursor: 'pointer' }}>
+                                <div
+                                    onClick={() => { window.location.href = "mailto:info.techstudio@gmail.com"; }}
+                                    className="cursor-pointer break-words overflow-hidden text-ellipsis"
+                                    style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+                                >
                                     info.techstudio@gmail.com
                                 </div>
                             </li>
@@ -104,7 +108,7 @@ export default function Footer() {
 
                 {/* Bottom Section - Social and Copyright */}
                 <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8">
-    
+
                     {/* Copyright */}
                     <div className="text-sm text-white/60">
                         © {new Date().getFullYear()} Nuvance Technologies. All rights reserved.

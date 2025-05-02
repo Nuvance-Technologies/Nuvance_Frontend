@@ -29,8 +29,8 @@ const CardHome = ({ title, description }: CardHomeProps) => {
 
 const StyledWrapper = styled.div`
   .outer {
-    width: 380px;
-    height: 320px;
+    width: 300px;
+    height: 280px;
     border-radius: 10px;
     padding: 1px;
     background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
