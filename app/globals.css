@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+    --color-mainBgColor: #D8EAFFFF;
+    --color-footerBg: #1E2128FF;
+}
