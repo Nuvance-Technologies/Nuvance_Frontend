@@ -82,9 +82,9 @@ export default function Home() {
                     />
                 ))}
 
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <div className="absolute inset-0 cursor-pointer bg-black/60 flex items-center justify-center">
                     <div className="relative z-10 text-center px-4 max-w-4xl mx-auto text-white">
-                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        <h1 className="text-3xl sm:text-4xl hover:scale-105 transition-all duration-500 md:text-6xl font-bold mb-6 leading-tight">
                             Nuvance Technologies: Building Digital Dreams, One Click at a Time
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
@@ -106,7 +106,7 @@ export default function Home() {
 
             {/* Services Section */}
             <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
+                <div className="text-center animate-bounce text-3xl sm:text-4xl font-bold mb-10">
                     Discover How We Elevate Your Brand
                 </div>
                 <div className="flex flex-col md:flex-row justify-center items-center gap-15 max-w-6xl mx-auto">
@@ -127,7 +127,7 @@ export default function Home() {
 
             {/* Industries Section */}
             <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
+                <div className="text-center animate-bounce text-3xl sm:text-4xl font-bold mb-10">
                     OUR EXPERTISE COVERS EVERY INDUSTRY
                 </div>
                 <div className="relative h-20 overflow-hidden mb-8">
