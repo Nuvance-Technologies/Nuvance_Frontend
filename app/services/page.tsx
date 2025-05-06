@@ -56,11 +56,11 @@ export default function Services() {
                 </div>
             </div>
             <div className="flex items-center justify-center my-10 relative">
-             <div className="w-84 h-[2px] bg-gray-400"></div>
-             <div className="px-4">
-              <div className="loader"></div>
-             </div>
-             <div className="w-84 h-[2px] bg-gray-400"></div>
+                <div className="w-84 h-[2px] bg-gray-400"></div>
+                <div className="px-4">
+                    <div className="loader"></div>
+                </div>
+                <div className="w-84 h-[2px] bg-gray-400"></div>
             </div>
 
             {/* CTA Section */}
@@ -80,7 +80,7 @@ export default function Services() {
                                 Start growing your business with our digital solutions today.
                             </p>
                             <div className="mt-4">
-                             <ServiceButton label="Get In Touch" onClick={() => console.log("Button clicked")} />
+                                <ServiceButton label="Get In Touch" onClick={() => console.log("Button clicked")} />
                             </div>
                         </div>
                     </div>
