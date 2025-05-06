@@ -8,7 +8,7 @@ export default function Services() {
                 services page
             </div>
             <div className="text-center font-bold">
-                Under Construction
+                Started building
             </div>
         </div>
     )
