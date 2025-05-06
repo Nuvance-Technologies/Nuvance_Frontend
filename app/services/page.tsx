@@ -56,7 +56,9 @@ export default function Services() {
                     <CardServices title="E-commerce Solutions" description="Seamless online shopping experiences." />
                 </div>
             </div>
+
             <div className="flex cursor-pointer items-center justify-center my-10 relative">
+
                 <div className="w-84 h-[2px] bg-gray-400"></div>
                 <div className="px-4">
                     <div className="loader"></div>
