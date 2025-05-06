@@ -6,6 +6,7 @@ import Navbar from "@/components/ui/Navbar";
 import ServiceButton from "@/components/ui/ServiceButton";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 
 export default function Services() {
@@ -55,32 +56,34 @@ export default function Services() {
                     <CardServices title="E-commerce Solutions" description="Seamless online shopping experiences." />
                 </div>
             </div>
-            <div className="flex items-center justify-center my-10 relative">
-             <div className="w-84 h-[2px] bg-gray-400"></div>
-             <div className="px-4">
-              <div className="loader"></div>
-             </div>
-             <div className="w-84 h-[2px] bg-gray-400"></div>
+            <div className="flex cursor-pointer items-center justify-center my-10 relative">
+                <div className="w-84 h-[2px] bg-gray-400"></div>
+                <div className="px-4">
+                    <div className="loader"></div>
+                </div>
+                <div className="w-84 h-[2px] bg-gray-400"></div>
             </div>
 
             {/* CTA Section */}
-            <div className="w-full bg-[#d5eaff] py-10 px-4 md:px-0 flex justify-center items-center mt-20">
+            <div className="w-full cursor-pointer bg-[#d5eaff] py-10 px-4 md:px-0 flex justify-center items-center mt-20">
                 <div className="max-w-4xl text-center">
                     <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                        <img
-                            src="/services1.png"
+                        <Image
+                            src="/services2.png"
                             alt="Man at computer"
                             className="w-52 md:w-64"
+                            width={64}
+                            height={60}
                         />
                         <div>
-                            <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
+                            <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
                                 Ready to Bring Your Business Online?
                             </h2>
-                            <p className="text-sm md:text-base text-gray-700 mt-2">
+                            <p className="text-sm md:text-base font-bold text-gray-700 mt-2">
                                 Start growing your business with our digital solutions today.
                             </p>
                             <div className="mt-4">
-                             <ServiceButton label="Get In Touch" onClick={() => console.log("Button clicked")} />
+                                <ServiceButton label="Get In Touch" onClick={() => console.log("Button clicked")} />
                             </div>
                         </div>
                     </div>
