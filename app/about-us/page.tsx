@@ -47,7 +47,7 @@ export default function AboutUs() {
                     </div>
 
                     <div className="flex items-center justify-center p-8">
-                        <div className="md:text-lg hover:scale-105 cursor-pointer transition-all duration-500 font-bold text-center w-full max-w-3xl p-8 bg-black/50 backdrop-blur-sm rounded-xl text-white">
+                        <div className="md:text-xl hover:scale-105 cursor-pointer transition-all duration-500 font-extrabold text-center w-full max-w-3xl p-8 backdrop-blur-sm rounded-xl text-black">
                             At Nuvance Technologies, we are committed to driving innovation and delivering cutting-edge solutions that empower businesses to thrive in a digital era. Our mission is to create transformative technology that simplifies operations and enhances efficiency for our clients. Guided by a vision to build a sustainable and interconnected future, we aim to redefine possibilities through collaboration, creativity, and integrity.
                         </div>
                     </div>
@@ -75,10 +75,10 @@ export default function AboutUs() {
                 </div>
 
                 <div className="flex justify-center space-x-15 flex-wrap items-center">
-                    <ProfileCard name="Nihal Yadav" about="Founder" image="/facesBehind/nihal.png" />
-                    <ProfileCard name="Aditya" about="Project Manager" image="/facesBehind/aditya.png" />
-                    <ProfileCard name="Aayush" about="Graphic Designer" image="/facesBehind/aayush.png" />
-                    <ProfileCard name="Aakansha" about="Social Media Manager" image="/facesBehind/aakansha.png" />
+                    <ProfileCard name="Nihal Yadav" mailid="yadavnihal544@gmail.com" github="https://github.com/nihal29055" instagram="https://www.instagram.com/nihaaalll_29" linkedin="https://www.linkedin.com/in/nihal-yadav2" about="Founder" image="/facesBehind/nihal.png" />
+                    <ProfileCard name="Aditya Pratap Singh" about="Project Manager" mailid="adityapsingh565@gmail.com" instagram="https://www.instagram.com/aelius.16" github="https://github.com/AdiSinghCodes" linkedin="https://www.linkedin.com/in/aditya-singh-2b319b299/" image="/facesBehind/aditya.png" />
+                    <ProfileCard name="Ayush Kushwaha" instagram="https://www.instagram.com/aayu_sh.7" linkedin="https://www.linkedin.com/in/ayush-kushwaha08" about="Graphic Designer" image="/facesBehind/aayush.png" />
+                    <ProfileCard name="Akansha Sahoo" linkedin="https://www.linkedin.com/in/akansha-sahoo-3927372aa/" github="https://github.com/Akansha02code" about="Social Media Manager" image="/facesBehind/aakansha.png" />
                 </div>
 
             </div>
