@@ -109,9 +109,7 @@ export default function GetInTouchModal({ isOpen, onClose }: GetInTouchModalProp
                 },
             });
 
-
             
-    
             setSubmitStatus({ 
                 success: true, 
                 message: `Thank you ${response.data.fullName}! We will contact you soon.` 
