@@ -1,17 +1,21 @@
 "use client";
 
 import CardServices from "@/components/cards/CardServices";
+import GetInTouchModal from "@/components/modals/GetInTouch";
 import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import ServiceButton from "@/components/ui/ServiceButton";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+import { useState } from "react";
 
 export default function Services() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <div className="relative min-h-screen bg-mainBgColor overflow-hidden">
+            {/* Background effects */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -38,12 +42,14 @@ export default function Services() {
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
                 <Navbar />
 
+                {/* Services Header */}
                 <div className="mt-30 text-center animate-bounce">
                     <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-blue-600 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
                         Our Services
                     </span>
                 </div>
 
+                {/* Services Cards */}
                 <div className="flex flex-wrap justify-center mt-10 space-x-8 cursor-pointer">
                     <CardServices title="IT Support" description="24/7 tech support for businesses." />
                     <CardServices title="Graphic Design" description="Creative designs for digital and print media." />
@@ -55,41 +61,50 @@ export default function Services() {
                     <CardServices title="Cybersecurity" description="Protect your data with advanced security." />
                     <CardServices title="E-commerce Solutions" description="Seamless online shopping experiences." />
                 </div>
-            </div>
 
-            <div className="flex cursor-pointer items-center justify-center my-10 relative">
-
-                <div className="w-84 h-[2px] bg-gray-400"></div>
-                <div className="px-4">
-                    <div className="loader"></div>
+                {/* Divider */}
+                <div className="flex cursor-pointer items-center justify-center my-10 relative">
+                    <div className="w-84 h-[2px] bg-gray-400"></div>
+                    <div className="px-4">
+                        <div className="loader"></div>
+                    </div>
+                    <div className="w-84 h-[2px] bg-gray-400"></div>
                 </div>
-                <div className="w-84 h-[2px] bg-gray-400"></div>
-            </div>
 
-            {/* CTA Section */}
-            <div className="w-full cursor-pointer bg-[#d5eaff] py-10 px-4 md:px-0 flex justify-center items-center mt-20">
-                <div className="max-w-4xl text-center">
-                    <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                        <Image
-                            src="/services2.png"
-                            alt="Man at computer"
-                            className="w-52 md:w-64"
-                            width={64}
-                            height={60}
-                        />
-                        <div>
-                            <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
-                                Ready to Bring Your Business Online?
-                            </h2>
-                            <p className="text-sm md:text-base font-bold text-gray-700 mt-2">
-                                Start growing your business with our digital solutions today.
-                            </p>
-                            <div className="mt-4">
-                                <ServiceButton label="Get In Touch" onClick={() => console.log("Button clicked")} />
+                {/* CTA Section */}
+                <div className="w-full cursor-pointer py-10 px-4 md:px-0 flex justify-center items-center mt-20">
+                    <div className="max-w-4xl text-center">
+                        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+                            <Image
+                                src="/services2.png"
+                                alt="Man at computer"
+                                className="w-52 md:w-64"
+                                width={64}
+                                height={60}
+                            />
+                            <div>
+                                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
+                                    Ready to Bring Your Business Online?
+                                </h2>
+                                <p className="text-sm md:text-base font-bold text-gray-700 mt-2">
+                                    Start growing your business with our digital solutions today.
+                                </p>
+                                <div className="mt-4">
+                                    <ServiceButton
+                                        label="Get In Touch"
+                                        onClick={() => setIsModalOpen(true)}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Modal */}
+                <GetInTouchModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                />
             </div>
 
             <div className="mt-20">

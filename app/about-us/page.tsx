@@ -41,7 +41,7 @@ export default function AboutUs() {
                 {/* Content Section - Comes First */}
                 <div className="relative">
                     <div className="mt-30 text-center animate-bounce">
-                        <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-red-600 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
+                        <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-blue-600 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
                             About Us
                         </span>
                     </div>
