@@ -103,7 +103,7 @@ export default function GetInTouchModal({ isOpen, onClose }: GetInTouchModalProp
         setSubmitStatus(null);
     
         try {
-            const response = await axios.post(`http://localhost:3001/api/v1/getintouch/add`, formData, {
+            const response = await axios.post(`http://ec2-13-60-23-35.eu-north-1.compute.amazonaws.com:3001/api/v1/getintouch/add`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
