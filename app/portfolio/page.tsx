@@ -25,7 +25,7 @@ export default function Portfolio() {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axios.get(`http://ec2-13-60-23-35.eu-north-1.compute.amazonaws.com:3001/api/v1/portfolio`);
+                const response = await axios.get(`https://ntpbe.vercel.app/api/v1/portfolio`);
                 setProjects(response.data);
             } catch (err) {
                 setError('Something is Up with the Server!. Please try again later.');
@@ -88,7 +88,7 @@ export default function Portfolio() {
                 )}
 
                 {/* Projects List */}
-                <div className="py-10 space-y-20">
+                <div className="py-10 space-y-25">
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
@@ -107,12 +107,12 @@ export default function Portfolio() {
                             </div>
 
                             {/* Project Details - Right/Left Alternating */}
-                            <div className="w-full md:w-1/2 space-y-4">
-                                <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+                            <div className="w-full md:w-1/2 cursor-pointer space-y-4">
+                                <h2 className="text-2xl text-center md:text-left md:text-3xl font-bold text-gray-800">
                                     {project.title}
                                 </h2>
 
-                                <p className="text-gray-600 font-bold">
+                                <p className="text-gray-600 md:text-left text-center font-bold">
                                     {project.description}
                                 </p>
 
@@ -120,7 +120,7 @@ export default function Portfolio() {
                                     <p className="italic text-gray-700">&quot;{project.testimonial}&quot;</p>
                                 </blockquote>
 
-                                <div className="pt-4">
+                                <div className="pt-4 flex justify-center md:justify-start">
                                     <Link
                                         href={project.websiteUrl}
                                         target="_blank"
