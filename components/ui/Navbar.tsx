@@ -76,7 +76,7 @@ export default function Navbar() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex items-center">
-                    <Button endIcon={<EnterDoor />} variant="blue_variant" text="Login" />
+                    <Button endIcon={<EnterDoor />} variant="blue_variant" text="Free Consultation" />
                 </div>
 
                 {/* Mobile Menu */}
@@ -95,8 +95,8 @@ export default function Navbar() {
                             ))}
                             <Button
                                 endIcon={<EnterDoor />}
-                                variant="purple_variant"
-                                text="Login"
+                                variant="blue_variant"
+                                text="Free Consultation"
                                 className="mt-4"
                             />
                         </div>

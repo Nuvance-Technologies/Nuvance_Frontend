@@ -25,7 +25,7 @@ export default function Portfolio() {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axios.get(`https://ntpbe.vercel.app/api/v1/portfolio`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_PORTFOLIO_BACKEND_URL}/api/v1/portfolio`);
                 setProjects(response.data);
             } catch (err) {
                 setError('Something is Up with the Server!. Please try again later.');
