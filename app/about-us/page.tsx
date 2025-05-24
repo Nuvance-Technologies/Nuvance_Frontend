@@ -62,7 +62,7 @@ export default function AboutUs() {
                         playsInline
                         className="w-full h-full object-cover"
                     >
-                        <source src="/aboutVideo2.mp4" type="video/mp4" />
+                        <source src={`${process.env.NEXT_PUBLIC_ASSET_URL}/video/aboutVideo2.mp4`} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                     <div className="absolute inset-0 bg-black/30"></div>
