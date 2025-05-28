@@ -1,8 +1,8 @@
 "use client";
 
-import { Close } from '@/icons/others/Close';
 import { useState } from 'react';
 import axios from 'axios';
+import { CloseCircle } from '@/icons/others/CloseCircle';
 
 enum ProjectType {
     WebsiteDevelopment = 'WebsiteDevelopment',
@@ -151,15 +151,15 @@ export default function GetInTouchModal({ isOpen, onClose }: GetInTouchModalProp
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 bg-opacity-50 backdrop-blur-sm">
             <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-bold text-gray-800">Get In Touch</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">Fill the Details and Schedule your call</h2>
                     <button
                         onClick={onClose}
-                        className="text-gray-500 hover:text-red-500 cursor-pointer"
+                        className="text-gray-500 transition-all duration-300 hover:text-red-500 cursor-pointer"
                     >
-                        <Close/>
+                        <CloseCircle className='size-6 md:size-10'/>
                     </button>
                 </div>
 
