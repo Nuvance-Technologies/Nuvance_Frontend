@@ -55,7 +55,8 @@ export default function ContactUs() {
                 });
             }
         } catch (error) {
-            toast.error("Failed to submit form. Please try again.");
+            // toast.error("Failed to submit form. Please try again.");
+            toast.error("It will work when we will deploy our website properly"); 
             console.error("Submission error:", error);
         } finally {
             setIsSubmitting(false);
