@@ -1,148 +1,165 @@
 @import "tailwindcss";
 
 @theme {
-    --color-mainBgColor: #D8EAFFFF;
-    --color-footerBg: #1E2128FF;
+  --color-mainBgColor: #d8eaffff;
+  --color-footerBg: #1e2128ff;
 }
 
 .loader {
-    width: 36px;
-    height: 36px;
-    background: #353535;
-    display: block;
-    margin: 0 auto;
-    position: relative;
-    box-sizing: border-box;
-    animation: rotationBack 1s ease-in-out infinite reverse;
+  width: 36px;
+  height: 36px;
+  background: #353535;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotationBack 1s ease-in-out infinite reverse;
+}
+
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  transform: rotate(45deg);
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #2e2e2e;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgb(0, 0, 0);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .loader::before {
-    content: '';
-    box-sizing: border-box;
-    left: 0;
-    top: 0;
-    transform: rotate(45deg);
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background: #2e2e2e;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+
+  100% {
+    transform: rotate(-360deg);
   }
-  
-  .loader::after {
-    content: '';
-    box-sizing: border-box;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    background: rgb(0, 0, 0);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+/*About us heading*/
+
+.box {
+  width: 220px;
+  height: auto;
+  float: left;
+  transition: 0.5s linear;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+  margin: -10px 50px 27px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+  border-radius: 5px;
+}
+
+.box:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.box:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+.box:hover {
+  box-shadow: 20px 20px 25px rgba(96, 156, 212, 0.5);
+}
+
+.box:hover:before {
+  border-image: linear-gradient(90deg, #1e3a8a, #3b82f6) 1;
+  height: 100%;
+  transform: translateX(0);
+  transition: 0.3s transform linear, 0.3s height linear 0.3s;
+}
+
+.box:hover:after {
+  border-color: #262626;
+  height: 100%;
+  transform: translateX(0);
+  transition: 0.3s transform linear, 0.3s height linear 0.5s;
+}
+
+.box {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+/*glow text effect for about us page */
+
+.paragraph-glow {
+  cursor: default;
+}
+
+.word-glow {
+  transition: text-shadow 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.word-glow:hover {
+  text-shadow: 0 0 6px rgba(59, 130, 246, 0.8);
+}
+
+.word-glow:hover + .word-glow,
+.word-glow:has(+ .word-glow:hover) {
+  text-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @keyframes rotationBack {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(-360deg);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /*About us heading*/
-  
-  .box {
-    width: 220px;
-    height: auto;
-    float: left;
-    transition: 0.5s linear;
-    position: relative;
-    display: block;
-    overflow: hidden;
-    padding: 15px;
-    text-align: center;
-    margin: -10px 50px 27px;
-    background: transparent;
-    text-transform: uppercase;
-    font-weight: 900;
-    border-radius: 5px;
-  }
-  
-  .box:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 100%;
-    border-bottom: 4px solid transparent;
-    border-left: 4px solid transparent;
-    box-sizing: border-box;
-    transform: translateX(100%);
-  }
-  
-  .box:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    border-top: 4px solid transparent;
-    border-right: 4px solid transparent;
-    box-sizing: border-box;
-    transform: translateX(-100%);
-  }
-  
-  .box:hover {
-    box-shadow: 20px 20px 25px rgba(96, 156, 212, 0.5);
-  }
-  
-  .box:hover:before {
-    border-image: linear-gradient(90deg, #1e3a8a, #3b82f6) 1;
-    height: 100%;
-    transform: translateX(0);
-    transition: 0.3s transform linear, 0.3s height linear 0.3s;
-  }
-  
-  .box:hover:after {
-    border-color: #262626;
-    height: 100%;
-    transform: translateX(0);
-    transition: 0.3s transform linear, 0.3s height linear 0.5s;
-  }
-  
-  .box {
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: transparent;
-  }
-  
-  /*glow text effect for about us page */
-  
-  .paragraph-glow {
-    cursor: default;
-  }
-  
-  .word-glow {
-    transition: text-shadow 0.3s ease;
-    display: inline-block;
-    position: relative;
-  }
-  
-  .word-glow:hover {
-    text-shadow: 0 0 6px rgba(59, 130, 246, 0.8);
-  }
-  
-  .word-glow:hover + .word-glow,
-  .word-glow:has(+ .word-glow:hover) {
-    text-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
-  }
-  
-  
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.delay-150 {
+  animation-delay: 0.15s;
+}

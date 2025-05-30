@@ -6,6 +6,8 @@ import Navbar from '@/components/ui/Navbar';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Footer from '@/components/ui/Footer';
+import TextBox from '@/components/ui/ConnectBtn';
+import Button from '@/components/ui/ServiceButton';
 
 interface Project {
     id: number;
@@ -69,10 +71,27 @@ export default function Portfolio() {
 
                 <div className="mt-30 text-center animate-bounce">
                     <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-blue-600 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
-                        Turning Ideas into Impact: Explore Our Innovative Creations
+                        From Vision to Reality: Our Project Showcase
                     </span>
                 </div>
 
+
+                <div className="flex flex-col cursor-pointer items-center justify-center px-4 py-12 transition-all duration-300">
+                    <div className="text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
+                        Innovating the Future with <span className="text-blue-600">Technology</span>
+                    </div>
+
+                    <div className="mt-3 text-center font-semibold text-black text-lg md:text-2xl lg:text-3xl max-w-4xl animate-fade-in-up delay-150">
+                        Crafting world-class digital solutions with
+                        <span className="text-blue-600 animate-pulse"> passion</span>,
+                        <span className="text-blue-600 animate-pulse"> precision</span>, and
+                        <span className="text-blue-600 animate-pulse"> purpose</span>.
+                    </div>
+                </div>
+
+                <div>
+                    <TextBox text='View More Work' />
+                </div>
                 {/* Loading State - Replace this with your Loader component */}
                 {loading && (
                     <div className="flex justify-center items-center h-64">
@@ -99,7 +118,7 @@ export default function Portfolio() {
                                 <video
                                     controls
                                     className="w-full rounded-lg shadow-xl"
-                                    // poster={`${project.videoUrl}?thumbnail=1`}
+                                // poster={`${project.videoUrl}?thumbnail=1`}
                                 >
                                     <source src={project.videoUrl} type="video/mp4" />
                                     Your browser does not support the video tag.
@@ -136,8 +155,51 @@ export default function Portfolio() {
                 </div>
             </div>
 
+            {/* Testiminoial Section */}
+            <div className="bg-gray-100 dark:bg-[#0e0e0e] py-16 px-4 md:px-8">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-12">
+                    💬 Testimonials
+                </h2>
+
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Testimonial 1 */}
+                    <div className="bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 md:p-8 transition duration-300 hover:shadow-xl">
+                        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                            “Nuvance transformed our vision into a stunning digital product. Highly recommended.”
+                        </p>
+                        <div className="mt-4 text-right">
+                            <span className="text-base font-semibold text-gray-900 dark:text-white">— CEO, HealthTech Co.</span>
+                        </div>
+                    </div>
+
+                    {/* Testimonial 2 */}
+                    <div className="bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 md:p-8 transition duration-300 hover:shadow-xl">
+                        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                            “Their attention to detail and design elevated our school’s online presence.”
+                        </p>
+                        <div className="mt-4 text-right">
+                            <span className="text-base font-semibold text-gray-900 dark:text-white">— Principal, St. Joseph School</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Call of action */}
+
+            <div className="mt-20 text-center">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-800 mb-4">
+                    📞 Let’s Work Together
+                </h3>
+                <p className="text-lg md:text-xl font-bold text-black mb-6">
+                    Have a project in mind? Let’s build it together.
+                </p>
+                
+                <Button label="Get In Touch"/>
+
+            </div>
+
             <div className='mt-20'>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     );

@@ -1,14 +1,71 @@
 "use client";
 
+import { useState } from "react";
+import BookDemoCall from "@/components/ui/BookCall";
 import Footer from "@/components/ui/Footer";
+import { Input } from "@/components/ui/Input-1";
 import InstaBtn from "@/components/ui/InstagramBtn";
 import LinkedinBtn from "@/components/ui/LinkedinBtn";
 import Navbar from "@/components/ui/Navbar";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
+import ConnectWithUs from "@/components/ui/ConnectBtn";
+import { Button } from "@/components/ui/Button";
+import { FAQSection } from "@/components/ui/Faq";
 
 export default function ContactUs() {
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        contactNumber: "",
+        companyName: "",
+        companySize: "",
+        howWeCanHelp: ""
+    });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await axios.post(`http://localhost:3001/api/v1/contact/`, formData);
+            if (response.status === 200) {
+                toast.success("Thank you for contacting us! We'll get back to you soon.");
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    contactNumber: "",
+                    companyName: "",
+                    companySize: "",
+                    howWeCanHelp: ""
+                });
+            }
+        } catch (error) {
+            toast.error("Failed to submit form. Please try again.");
+            console.error("Submission error:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="relative min-h-screen bg-mainBgColor overflow-hidden">
+            <Toaster position="top-center" />
+
             {/* Animated Blur Effects */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none z-1">
                 <motion.div
@@ -33,58 +90,233 @@ export default function ContactUs() {
                 />
             </div>
 
-            {/* Main Content Starts Here */}
-
+            {/* Main Content */}
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
                 <Navbar />
 
-
-                <div className="relative mt-30 w-full h-[500px] rounded-xl overflow-hidden">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                    >
-                        <source src={`${process.env.NEXT_PUBLIC_ASSET_URL}/video/contactUsBg1.mp4`} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <div className="absolute inset-0 bg-black/30">
-                        <div className="flex justify-center text-white text-2xl hover:scale-110 transition-all duration-500 cursor-pointer md:text-4xl font-extrabold">
-                            Contact Us
+                {/* Contact Header Section */}
+                <div className="mt-30 md:mt-20 flex flex-col md:flex-row md:justify-around items-center">
+                    <div className="relative overflow-hidden rounded-2xl py-16 md:py-24 w-full">
+                        <div className="absolute inset-0 bg-gradient-to-br dark:to-indigo-950/30">
+                            <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] opacity-5"></div>
+                            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
+                            <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
                         </div>
 
-                        <div className="flex justify-center p-2 text-center text-amber-100 md:text-3xl font-bold mt-10 cursor-pointer">
-                            Feel free to reach out to us for any inquiries or collaborations!
-                        </div>
-
-                        <div className="flex justify-center text-center bg-slate-800/50 flex-col items-center mt-10 p-10 text-white font-extrabold text-lg md:text-2xl space-y-5">
-                            <div className="cursor-pointer">
-                                Address: House no 2701 Vishwakarma Moholla Ranjhi, Jabalpur
+                        <div className="relative mt-30 md:mt-5 flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
+                            <div className="text-center space-y-6 cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
+                                <div className="text-xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
+                                    TAKE A CALL WITH OUR EXPERTS
+                                </div>
+                                <div className="text-2xl font-bold text-gray-800 dark:text-white ">Let&apos;s Start Your Journey Now!!</div>
+                                <div className="justify-center flex pt-4">
+                                    <BookDemoCall />
+                                </div>
                             </div>
-                            <div className="cursor-pointer">
-                                +91 7219638172
-                            </div>
 
-                            <div className="cursor-pointer" onClick={() => { window.location.href = "mailto:info.techstudio@gmail.com"; }}>
-                                info.techstudiio@gmail.com
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-white to-white group-hover:opacity-80 rounded-full blur opacity-30 transition duration-300"></div>
+                                <div className="relative">
+                                    <Image
+                                        src="/contactPageIcons/askOurExperts.png"
+                                        className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
+                                        alt="Ask Our Experts"
+                                        width={300}
+                                        height={300}
+                                    />
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="flex justify-center space-x-7 mt-5">
-                            <InstaBtn />
-                            <LinkedinBtn />
                         </div>
                     </div>
                 </div>
 
+                {/* Contact Form Section */}
+                <div className="flex flex-col lg:flex-row justify-around items-center mt-20 gap-12">
+                    <div className="flex flex-col items-center gap-8">
+                        <div className="text-center">
+                            <button className="group relative cursor-pointer bg-slate-900 h-16 w-64 border-2 border-teal-600 text-white text-base font-bold rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:border-emerald-400 hover:text-emerald-300 p-3 text-left before:absolute before:w-10 before:h-10 before:content[''] before:right-2 before:top-2 before:z-10 before:bg-indigo-500 before:rounded-full before:blur-lg before:transition-all before:duration-500 after:absolute after:z-10 after:w-16 after:h-16 after:content[''] after:bg-teal-400 after:right-6 after:top-4 after:rounded-full after:blur-lg after:transition-all after:duration-500 hover:before:right-10 hover:before:-bottom-4 hover:before:blur hover:after:-right-6 hover:after:scale-110">
+                                Contact Us
+                            </button>
+                            <div className="font-bold text-2xl mt-4 text-gray-800">Fill in the form to get in touch.</div>
+                        </div>
+                        <div>
+                            <Image
+                                src="/contactPageIcons/contactUs.png"
+                                alt="Contact Us"
+                                className="cursor-pointer hover:-translate-y-1 transition-all duration-500 rounded-2xl"
+                                width={350}
+                                height={350}
+                            />
+                        </div>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6 bg-white/30 dark:bg-cyan-200/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label htmlFor="firstName" className="block text-sm text-gray-700 dark:text-black font-bold mb-1">
+                                    First Name *
+                                </label>
+                                <Input
+                                    id="firstName"
+                                    name="firstName"
+                                    type="text"
+                                    placeholder="First Name"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="lastName" className="block text-sm text-gray-700 dark:text-black font-bold mb-1">
+                                    Last Name *
+                                </label>
+                                <Input
+                                    id="lastName"
+                                    name="lastName"
+                                    type="text"
+                                    placeholder="Last Name"
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-bold text-gray-700 dark:text-black mb-1">
+                                Email *
+                            </label>
+                            <Input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="contactNumber" className="block text-sm font-bold text-gray-700 dark:text-black mb-1">
+                                Contact Number *
+                            </label>
+                            <Input
+                                id="contactNumber"
+                                name="contactNumber"
+                                type="tel"
+                                placeholder="Contact Number"
+                                value={formData.contactNumber}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label htmlFor="companyName" className="block text-sm font-bold text-gray-700 dark:text-black mb-1">
+                                    Company Name
+                                </label>
+                                <Input
+                                    id="companyName"
+                                    name="companyName"
+                                    type="text"
+                                    placeholder="Company Name"
+                                    value={formData.companyName}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="companySize" className="block text-sm font-bold text-gray-700 dark:text-black mb-1">
+                                    Company Size
+                                </label>
+                                <Input
+                                    id="companySize"
+                                    name="companySize"
+                                    type="text"
+                                    placeholder="Company Size"
+                                    value={formData.companySize}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="howWeCanHelp" className="block text-sm font-bold text-gray-700 dark:text-black mb-1">
+                                How Can We Help *
+                            </label>
+                            <textarea
+                                id="howWeCanHelp"
+                                name="howWeCanHelp"
+                                placeholder="Tell us about your project or inquiry"
+                                value={formData.howWeCanHelp}
+                                onChange={handleChange}
+                                required
+                                rows={4} // You can adjust the number of visible rows
+                                className="w-full p-2 border bg-white rounded"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg shadow-md transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+                        >
+                            {isSubmitting ? 'Submitting...' : 'Submit'}
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <div>
+                        <div className="mt-20">
+                            <ConnectWithUs text="Connect With Us"/>
+                        </div>
+                        <div className="font-bold text-blue-600 text-2xl text-center">
+                            Follow us on social media for updates, insights, and tech trends
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center space-x-8 mt-4 mb-5">
+                        <InstaBtn />
+                        <LinkedinBtn />
+                    </div>
+                </div>
+
+                <div className="mt-10 text-center animate-bounce">
+                    <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-blue-700 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
+                        Our Trusted Partners
+                    </span>
+                </div>
+
+                <div className="flex justify-center items-center">
+                    <Image src="/contactPageIcons/redHat.png" className="cursor-pointer hover:scale-105 transition-all duration-500" alt="Our Trusted Partners" width={500} height={500} />
+                </div>
+
+                <div className="w-full flex justify-center flex-col md:w-auto">
+                    <h3 className="text-2xl font-bold mb-3 text-center">Subscribe to our newsletter</h3>
+                    <div className="flex flex-col justify-center space-x-5 sm:flex-row gap-2">
+                        <Input
+                            type="email"
+                            placeholder="Your email"
+                        // className="bg-white/10 border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-primary rounded-lg px-4 py-3 w-full sm:w-64"
+                        />
+                        <Button
+                            variant="blue_variant"
+                            text="Subscribe"
+                        // className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 py-3 transition-colors"
+                        >
+                        </Button>
+                    </div>
+                </div>
+
+                <FAQSection/>
 
             </div>
 
-            <div className="mt-20">
-                <Footer />
+            <div className="mt-10">
+                <Footer/>
             </div>
+
         </div>
-    )
+    );
 }
