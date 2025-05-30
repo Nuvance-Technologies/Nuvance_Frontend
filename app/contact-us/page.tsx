@@ -104,7 +104,7 @@ export default function ContactUs() {
                             <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
                         </div>
 
-                        <div className="relative mt-30 md:mt-5 flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
+                        <div className="relative flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
                             <div className="text-center space-y-6 cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
                                 <div className="text-xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
                                     TAKE A CALL WITH OUR EXPERTS
@@ -295,7 +295,7 @@ export default function ContactUs() {
 
                 <div className="w-full flex justify-center flex-col md:w-auto">
                     <h3 className="text-2xl font-bold mb-3 text-center">Subscribe to our newsletter</h3>
-                    <div className="flex flex-col justify-center space-x-5 sm:flex-row gap-2">
+                    <div className="flex flex-col justify-center items-center space-y-1 space-x-5 sm:flex-row gap-2">
                         <Input
                             type="email"
                             placeholder="Your email"

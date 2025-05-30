@@ -30,27 +30,33 @@ const StyledWrapper = styled.div`
     cursor: pointer;
     transition: all 0.3s;
   }
+
   .text {
     font-size: 1.7em;
     font-weight: 700;
     letter-spacing: 1px;
   }
+
   .svg {
     padding-top: 5px;
     height: 100%;
     width: fit-content;
   }
+
   .svg svg {
     width: 50px;
     height: 30px;
   }
+
   .button:hover {
     border: 8px solid #b1d8ff;
     background-color: #1b7aff;
   }
+
   .button:active {
     border: 5px solid #c0dfff;
   }
+
   .button:hover .svg svg {
     animation: jello-vertical 0.9s both;
     transform-origin: left;
@@ -78,6 +84,42 @@ const StyledWrapper = styled.div`
     100% {
       transform: scale3d(1, 1, 1);
     }
-  }`;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .button {
+      padding: 12px 24px;
+      border-width: 6px;
+      gap: 6px;
+    }
+
+    .text {
+      font-size: 1.1em;
+    }
+
+    .svg svg {
+      width: 30px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .button {
+      padding: 10px 20px;
+      border-width: 5px;
+      gap: 5px;
+    }
+
+    .text {
+      font-size: 1em;
+    }
+
+    .svg svg {
+      width: 25px;
+      height: 18px;
+    }
+  }
+`;
 
 export default BookDemoCall;

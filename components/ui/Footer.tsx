@@ -80,7 +80,7 @@ export default function Footer() {
                             <span> Mail us at: </span>
                             <span
                                 onClick={() => { window.location.href = "mailto:contact@nuvancetechnologies.com"; }}
-                                className="cursor-pointer hover:text-blue-300 break-all"
+                                className="cursor-pointer hover:text-blue-300 text-blue-200 break-all"
                             >
                                 contact@nuvancetechnologies.com
                             </span>
@@ -106,7 +106,7 @@ export default function Footer() {
                         >
                             Get Connected
                         </span>
-                        <div className="flex  md:flex-row flex-col items-center gap-2">
+                        <div className="flex md:flex-row flex-col items-center gap-2">
                             <SocialFooter />
                             <div className="ml-1">
                                 <Image
@@ -114,7 +114,7 @@ export default function Footer() {
                                     alt="DMCA"
                                     width={80}
                                     height={30}
-                                    className="w-25 md:w-30"
+                                    className="w-25 transition-all duration-300 cursor-pointer hover:scale-105 md:w-30"
                                 />
                             </div>
                         </div>

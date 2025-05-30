@@ -67,7 +67,7 @@ export function FAQSection() {
         <section className="w-full py-16 cursor-pointer bg-gradient-to-br">
             <div className="container px-4 md:px-6 mx-auto max-w-4xl">
                 <div className="flex justify-center">
-                    <span className="bg-gradient-to-r text-2xl md:text-4xl font-extrabold from-black via-pink-500 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
+                    <span className="bg-gradient-to-r text-2xl md:text-4xl text-center font-extrabold from-black via-pink-500 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
                         Frequently Asked Questions (FAQ)
                     </span>
                 </div>
