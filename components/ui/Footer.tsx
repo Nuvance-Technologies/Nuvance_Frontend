@@ -1,16 +1,15 @@
 import Image from "next/image";
-import { Input } from "./Input-1";
-import { Button } from "./Button";
 import SocialFooter from "../cards/SocialFooter";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+    const router = useRouter();
     return (
-        <footer className="bg-footerBg text-white pt-16 pb-8">
+        <footer className="bg-footerBg text-white pt-12 pb-6 sm:pt-16 sm:pb-8">
             <div className="container mx-auto px-4">
-                {/* Top Section - Logo and Newsletter */}
-                <div className="flex flex-col justify-between items-center mb-12">
-                    {/* Logo */}
-                    <div className="flex items-center mb-6 md:mb-0">
+                {/* Top Section - Logo and Name */}
+                <div className="flex flex-col items-center mb-8 sm:mb-12">
+                    <div className="flex items-center mb-3 sm:mb-4">
                         <div className="cursor-pointer">
                             <Image
                                 src="/NuvanceLogo-white.png"
@@ -20,102 +19,105 @@ export default function Footer() {
                                 className="hover:opacity-80 transition-opacity"
                             />
                         </div>
-                        <div className="text-2xl cursor-pointer font-bold ml-3 text-white relative group">
+                        <div className="text-xl sm:text-2xl cursor-pointer font-bold ml-3 text-white relative group">
                             Nuvance Technologies
                             <span className="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300"></span>
                         </div>
                     </div>
-
-                    {/* Newsletter */}
-                    <div className="w-full md:w-auto mt-5">
-                        <h3 className="text-lg font-semibold mb-3 text-center">Subscribe to our newsletter</h3>
-                        <div className="flex flex-col sm:flex-row gap-2">
-                            <Input
-                                type="email"
-                                placeholder="Your email"
-                            // className="bg-white/10 border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-primary rounded-lg px-4 py-3 w-full sm:w-64"
-                            />
-                            <Button
-                                variant="blue_variant"
-                                text="Subscribe"
-                            // className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 py-3 transition-colors"
-                            >
-                            </Button>
-                        </div>
-                    </div>
+                    <p className="text-xs sm:text-sm text-white/60 text-center">Let&apos;s Grow Your Brand</p>
                 </div>
 
-                {/* Middle Section - Links */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                {/* Grid Content */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 text-xs sm:text-sm mb-8 sm:mb-12">
+                    {/* Core Services */}
+                    <div className="text-center sm:text-left">
+                        <h3 className="text-sm sm:text-base text-emerald-300 font-semibold mb-2 sm:mb-3">Core Services</h3>
+                        <ul className="space-y-1 sm:space-y-2">
+                            <li className="transition-all duration-500 hover:-translate-y-1 cursor-pointer">• Custom Software Development</li>
+                            <li className="transition-all duration-500 hover:-translate-y-1 cursor-pointer">• Website Development</li>
+                            <li className="transition-all duration-500 hover:-translate-y-1 cursor-pointer">• Mobile App Development</li>
+                            <li className="transition-all duration-500 hover:-translate-y-1 cursor-pointer">• Ecommerce Development</li>
+                            <li className="transition-all duration-500 hover:-translate-y-1 cursor-pointer">• AIML Solutions</li>
+                        </ul>
+                    </div>
+
+                    {/* Insights */}
+                    <div className="text-center sm:text-left">
+                        <h3 className="text-sm sm:text-base font-semibold text-emerald-300 mb-2 sm:mb-3">Insights</h3>
+                        <ul className="space-y-1">
+                            <li><span className="font-medium transition-all duration-300 hover:text-blue-400 cursor-pointer">Blog</span></li>
+                            <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Events</li>
+                            <li><span className="font-medium transition-all duration-300 hover:text-blue-400 cursor-pointer">Careers</span></li>
+                        </ul>
+                        <ul className="space-y-1 mt-2 sm:mt-3 text-xs sm:text-sm">
+                            <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Job opportunities</li>
+                            <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Talent referral program</li>
+                        </ul>
+                    </div>
+
                     {/* Company */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4">Company</h3>
-                        <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                    <div className="text-center sm:text-left">
+                        <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 text-emerald-300">Company</h3>
+                        <ul className="space-y-1 sm:space-y-2 cursor-pointer">
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/about-us") }}>• About</li>
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/case-study") }}>• Case Studies</li>
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/") }}>• Blogs</li>
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/contact-us") }}>• Careers</li>
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/contact-us") }}>• Contact</li>
+                            <li className="transition-all duration-300 hover:text-cyan-400" onClick={() => { router.push("/") }}>• Sitemap</li>
                         </ul>
                     </div>
 
-                    {/* Services */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4">Services</h3>
-                        <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-primary transition-colors">Web Development</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Mobile Apps</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Cloud Solutions</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">AI Services</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Resources */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4">Resources</h3>
-                        <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Case Studies</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Whitepapers</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">API Reference</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                        <ul className="space-y-2">
-                            <li className="flex items-start">
-                                <span className="mr-2">📍</span>
-                                House no 2701 Vishwakarma Moholla Ranjhi, Jabalpur
-                            </li>
-                            <li className="flex items-center">
-                                <span className="mr-2">📞</span>
-                                +91 7219638172
-                            </li>
-                            <li className="flex items-center">
-                                <span className="mr-2">✉️</span>
-                                <div
-                                    onClick={() => { window.location.href = "mailto:info.techstudio@gmail.com"; }}
-                                    className="cursor-pointer break-words overflow-hidden text-ellipsis"
-                                    style={{ wordBreak: 'break-word', maxWidth: '100%' }}
-                                >
-                                    info.techstudio@gmail.com
-                                </div>
-                            </li>
-                        </ul>
+                    {/* Contact Info */}
+                    <div className="text-center sm:text-left">
+                        <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 text-emerald-300">Contact</h3>
+                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm">
+                            <strong>IND</strong><br />
+                            Ranjhi, Jabalpur, Madhya Pradesh
+                        </p>
+                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm">📞 +91 7219638172</p>
+                        <p className="text-xs sm:text-sm">✉️{" "}
+                            <span> Mail us at: </span>
+                            <span
+                                onClick={() => { window.location.href = "mailto:contact@nuvancetechnologies.com"; }}
+                                className="cursor-pointer hover:text-blue-300 break-all"
+                            >
+                                contact@nuvancetechnologies.com
+                            </span>
+                        </p>
                     </div>
                 </div>
 
-                {/* Bottom Section - Social and Copyright */}
-                <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8">
-
-                    {/* Copyright */}
-                    <div className="text-sm text-white/60">
-                        © {new Date().getFullYear()} Nuvance Technologies. All rights reserved.
+                {/* Bottom Row */}
+                <div className="flex flex-col items-center md:flex-row justify-between border-t border-white/10 pt-4 sm:pt-6 gap-3 sm:gap-4 text-xs sm:text-sm">
+                    <div className="text-center hover:scale-105 transition-all duration-500 cursor-pointer md:text-left order-1 md:order-none">
+                        © {new Date().getFullYear()} Nuvance Technologies Inc. All rights reserved.
                     </div>
 
-                    <div>
-                        <SocialFooter />
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-center order-3 md:order-none">
+                        <span className="hover:text-primary cursor-pointer transition-all duration-300 hover:text-blue-400">Terms and conditions</span>
+                        <span className="hover:text-primary cursor-pointer transition-all duration-300 hover:text-blue-400">Privacy Policy</span>
+                    </div>
+
+                    <div className="flex flex-col items-center sm:flex-row gap-2 sm:gap-4 order-2 md:order-none mb-3 sm:mb-0">
+                        <span
+                            onClick={() => { router.push("/contact-us") }}
+                            className="font-semibold cursor-pointer transition-all duration-300 hover:text-green-400 text-sm"
+                        >
+                            Get Connected
+                        </span>
+                        <div className="flex  md:flex-row flex-col items-center gap-2">
+                            <SocialFooter />
+                            <div className="ml-1">
+                                <Image
+                                    src="/dmca.png"
+                                    alt="DMCA"
+                                    width={80}
+                                    height={30}
+                                    className="w-25 md:w-30"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

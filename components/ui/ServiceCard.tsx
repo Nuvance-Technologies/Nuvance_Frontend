@@ -91,7 +91,7 @@ const StyledWrapper = styled.div`
     top: 50%;
     left: 50%;
     width: 350px;
-    height: 220px;
+    height: 250px;
     border-radius: 50%;
     background: red;
     opacity: 0.7;

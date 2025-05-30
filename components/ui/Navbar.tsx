@@ -19,8 +19,8 @@ export default function Navbar() {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const isActive = (href: string) => pathname === href;
@@ -31,25 +31,41 @@ export default function Navbar() {
         { href: "/services", text: "Services" },
         { href: "/portfolio", text: "Portfolio" },
         { href: "/case-study", text: "Case Studies" },
-        { href: "/contact-us", text: "Contact Us" }
+        { href: "/contact-us", text: "Contact Us" },
     ];
 
     return (
-        <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-mainBgColor/70 backdrop-blur-md shadow-md' : 'bg-mainBgColor'}`}>
-            <div className="flex justify-between items-center py-5 px-4 md:px-8 max-w-7xl mx-auto">
+        <div
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                ? "bg-mainBgColor/70 backdrop-blur-md shadow-md"
+                : "bg-mainBgColor"
+                }`}
+        >
+            <div className="flex justify-between items-center py-4 px-4 max-w-7xl mx-auto">
                 {/* Logo and company name */}
                 <div className="flex items-center">
-                    <div onClick={() => router.push("/")} className="cursor-pointer">
-                        <Image src="/NuvanceLogo.png" alt="CompanyLogo" width={42} height={52} />
+                    <div
+                        onClick={() => router.push("/")}
+                        className="cursor-pointer"
+                    >
+                        <Image
+                            src="/NuvanceLogo.png"
+                            alt="CompanyLogo"
+                            width={42}
+                            height={52}
+                        />
                     </div>
                     <div
-                        className="text-xl md:text-2xl cursor-pointer font-bold ml-3 text-black relative"
+                        className="text-lg cursor-pointer font-bold ml-3 text-black relative"
                         onMouseEnter={() => setIsHovering(true)}
                         onMouseLeave={() => setIsHovering(false)}
                         onClick={() => router.push("/")}
                     >
                         Nuvance Technologies
-                        <span className={`absolute bottom-0 left-0 h-0.5 bg-black transition-all duration-300 ease-in-out ${isHovering ? 'w-full' : 'w-0'}`}></span>
+                        <span
+                            className={`absolute bottom-0 left-0 h-0.5 bg-black transition-all duration-300 ease-in-out ${isHovering ? "w-full" : "w-0"
+                                }`}
+                        ></span>
                     </div>
                 </div>
 
@@ -68,41 +84,66 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                {/* Mobile Menu Button */}
-                <div className="md:hidden flex items-center space-x-4">
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-black">
-                        {isMenuOpen ? <Close /> : <MenuBars />}
-                    </button>
-                </div>
-
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex items-center">
                     <Button endIcon={<EnterDoor />} variant="blue_variant" text="Free Consultation" />
                 </div>
 
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className="md:hidden absolute top-20 left-0 right-0 bg-mainBgColor/95 backdrop-blur-md z-50 p-4 shadow-lg">
-                        <div className="flex flex-col space-y-4">
-                            {navLinks.map((item) => (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    className={`py-2 px-4 ${isActive(item.href) ? 'font-bold text-blue-600' : 'text-black'}`}
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {item.text}
-                                </Link>
-                            ))}
-                            <Button
-                                endIcon={<EnterDoor />}
-                                variant="blue_variant"
-                                text="Free Consultation"
-                                className="mt-4"
-                            />
-                        </div>
-                    </div>
-                )}
+
+                {/* Mobile Menu Button */}
+                <div className="md:hidden flex items-center space-x-4">
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="text-black relative w-8 h-8"
+                    >
+                        <span
+                            className={`mt-1 absolute inset-0 transition-all duration-300 transform ${isMenuOpen
+                                ? "opacity-0 scale-95"
+                                : "opacity-100 scale-100"
+                                }`}
+                        >
+                            <MenuBars />
+                        </span>
+                        <span
+                            className={`mt-1 absolute inset-0 transition-all duration-300 transform ${isMenuOpen
+                                ? "opacity-100 scale-100"
+                                : "opacity-0 scale-95"
+                                }`}
+                        >
+                            <Close />
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Dropdown Menu */}
+            <div
+                className={`md:hidden transition-all duration-500 transform ${isMenuOpen
+                    ? "opacity-100 translate-y-0 visible"
+                    : "opacity-0 -translate-y-2 invisible"
+                    } absolute top-[68px] left-0 right-0 bg-mainBgColor/95 backdrop-blur-md z-40 p-4 rounded-b-xl shadow-lg`}
+            >
+                <div className="flex flex-col space-y-3">
+                    {navLinks.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className={`py-2 px-3 rounded-md transition-colors duration-300 ${isActive(item.href)
+                                ? "font-bold text-blue-600"
+                                : "text-black hover:text-blue-600"
+                                }`}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {item.text}
+                        </Link>
+                    ))}
+                    <Button
+                        endIcon={<EnterDoor />}
+                        variant="blue_variant"
+                        text="Free Consultation"
+                        className="mt-3"
+                    />
+                </div>
             </div>
         </div>
     );

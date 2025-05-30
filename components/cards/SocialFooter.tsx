@@ -22,7 +22,7 @@ const SocialFooter = () => {
                   <Linkedin/>
                 </a>
 
-                <a href="#" target='_blank' className="socialContainer containerFour">
+                <a href="#" className="socialContainer containerFour">
                   <Whatsapp/>
                 </a>
 

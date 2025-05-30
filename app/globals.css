@@ -163,3 +163,44 @@
 .delay-150 {
   animation-delay: 0.15s;
 }
+
+/* Custom Animations */
+
+@layer utilities {
+  /* Fade-in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide-down for mobile menu */
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out forwards;
+  }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth opacity swap for icons */
+  .transition-fade {
+    transition: opacity 0.3s ease;
+  }
+}

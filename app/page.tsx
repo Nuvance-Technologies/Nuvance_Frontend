@@ -82,33 +82,44 @@ export default function Home() {
                     />
                 ))}
 
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                    <div className="relative z-10 text-center px-4 max-w-4xl mx-auto text-white">
-                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                            Nuvance Technologies: Building Digital Dreams, One Click at a Time
+                <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+                    <div className="relative z-10 px-4 text-center text-white max-w-4xl mx-auto animate-fade-in">
+
+                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight tracking-tight drop-shadow-md transition-all duration-500">
+                            Nuvance Technologies: <br className="hidden sm:block" /> Building Digital Dreams, One Click at a Time
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
+
+                        <p className="text-base sm:text-lg md:text-xl mb-4 leading-relaxed text-gray-200 animate-fade-in delay-200 transition-opacity duration-500">
                             Welcome to Nuvance Technologies, where digital innovation meets purpose.
                         </p>
-                        <p className="text-lg md:text-2xl font-semibold mb-10">
+
+                        <p className="text-lg md:text-2xl font-semibold mb-8 text-blue-100 animate-fade-in delay-400 transition-opacity duration-500">
                             Unlock your business&apos;s potential with Nuvance Technologies.
                         </p>
-                        <div className="flex justify-center">
+
+                        <div className="flex justify-center animate-fade-in delay-700">
                             <Button
                                 variant="green_variant"
                                 text="Explore Our Services"
-                                onClick={() => { router.push("/services") }}
+                                onClick={() => router.push("/services")}
+                                className="shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
                             />
                         </div>
                     </div>
                 </div>
+
             </div>
 
             {/* Services Section */}
             <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
+                {/* <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
                     Discover How We Elevate Your Brand
+                </div> */}
+
+                <div className="cursor-pointer mb-10 text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
+                    Discover How We <span className="text-blue-600">Elevate</span> Your Brand
                 </div>
+
                 <div className="flex flex-col md:flex-row justify-center items-center gap-15 max-w-6xl mx-auto">
                     <CardHome
                         title="SEO Optimization"
