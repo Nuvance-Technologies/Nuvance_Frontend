@@ -204,3 +204,182 @@
     transition: opacity 0.3s ease;
   }
 }
+
+/* DiscoverHero Component Styles */
+
+/* Main section */
+.discover-hero {
+  @apply py-12 md:py-16 lg:py-20 bg-gradient-to-b;
+  background-color: #d8eaff;
+}
+
+.discover-hero-container {
+  @apply container mx-auto px-4;
+}
+
+/* Header styles */
+.discover-hero-header {
+  @apply text-center mb-12;
+}
+
+.discover-hero-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4;
+}
+
+.discover-hero-description {
+  @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto;
+}
+
+/* Scrolling container */
+.scrolling-rows {
+  @apply space-y-8;
+}
+
+.scrolling-container {
+  @apply overflow-hidden whitespace-nowrap;
+}
+
+.scrolling-row {
+  @apply inline-flex;
+}
+
+/* Service card styles with floating effect */
+.service-card {
+  @apply flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg border border-gray-100 cursor-pointer min-w-[200px] mx-4 transition-all duration-300;
+  animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.service-card:hover {
+  @apply shadow-2xl -translate-y-2 scale-105;
+  animation-play-state: paused;
+}
+
+.service-card:nth-child(odd) {
+  animation-delay: -3s;
+}
+
+.service-card:nth-child(even) {
+  animation-delay: -1.5s;
+}
+
+.service-icon-wrapper {
+  @apply mb-4 p-3 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full transition-all duration-300;
+}
+
+.service-card:hover .service-icon-wrapper {
+  @apply bg-gradient-to-br from-blue-100 to-indigo-200 scale-110;
+}
+
+.service-icon {
+  @apply w-12 h-12 md:w-15 md:h-15 transition-transform duration-300;
+}
+
+.service-title {
+  @apply text-sm md:text-base font-medium text-gray-800 text-center leading-tight;
+}
+
+/* CTA styles */
+.discover-hero-cta {
+  @apply text-center mt-12;
+}
+
+.discover-hero-cta-text {
+  @apply text-gray-600 mb-6;
+}
+
+.discover-hero-cta-button {
+  @apply inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateX(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotateX(-2deg);
+  }
+}
+
+/* Scrolling animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-33.333%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.scroll-left.slow {
+  animation: scroll-left 60s linear infinite;
+}
+
+.scroll-left.medium {
+  animation: scroll-left 40s linear infinite;
+}
+
+.scroll-left.fast {
+  animation: scroll-left 20s linear infinite;
+}
+
+.scroll-right.slow {
+  animation: scroll-right 60s linear infinite;
+}
+
+.scroll-right.medium {
+  animation: scroll-right 40s linear infinite;
+}
+
+.scroll-right.fast {
+  animation: scroll-right 20s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service-card {
+    @apply min-w-[160px] mx-2 p-4;
+  }
+
+  .service-icon-wrapper {
+    @apply p-2;
+  }
+
+  .service-icon {
+    @apply w-10 h-10;
+  }
+
+  .service-title {
+    @apply text-xs;
+  }
+}
+
+/* Additional floating effects for different cards */
+.service-card:nth-child(3n) {
+  animation-delay: -4.5s;
+}
+
+.service-card:nth-child(4n) {
+  animation-delay: -2s;
+}
+
+.service-card:nth-child(5n) {
+  animation-delay: -5s;
+}

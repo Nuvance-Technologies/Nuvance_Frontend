@@ -79,7 +79,7 @@ export default function AboutUs() {
                 </div>
 
                 {/* AboutHeroCard Carousel */}
-                <div className="mt-10 md:flex justify-center items-center flex-wrap space-x-6 hidden">
+                <div className="mt-10 md:flex justify-center items-center flex-wrap space-x-30 hidden">
                     <AboutHeroCard logo={<Compass className="size-12" />} title="Vision" description={[
                         "Empowering businesses with innovative, user-centric solutions that fuel growth and enhance impact.",
                         "Delivering smart digital strategies that spark engagement and drive long-term success.",

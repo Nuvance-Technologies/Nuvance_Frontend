@@ -3,10 +3,13 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
-import CardHome from "@/components/cards/CardHome";
 import PointCard from "@/components/cards/PointCard";
 import { Button } from "@/components/ui/Button";
 import { Globe } from "lucide-react";
+import ExecutionProcess from "@/components/ui/pageComponents/ExecutionProcess";
+import DiscoverHero from "@/components/ui/pageComponents/DiscoverHero";
+import Image from "next/image";
+import BookDemoCall from "@/components/ui/BookCall";
 
 const industries = [
     "Media & Entertainment",
@@ -114,28 +117,21 @@ export default function Home() {
 
             {/* Services Section */}
             <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                {/* <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
-                    Discover How We Elevate Your Brand
-                </div> */}
-
-                <div className="cursor-pointer mb-10 text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
+                <div className="cursor-pointer text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
                     Discover How We <span className="text-blue-600">Elevate</span> Your Brand
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-center items-center gap-15 max-w-6xl mx-auto">
-                    <CardHome
-                        title="SEO Optimization"
-                        description="Achieve top rankings and increased visibility in search results."
-                    />
-                    <CardHome
-                        title="Web Development"
-                        description="Transform your online identity with our stunning websites."
-                    />
-                    <CardHome
-                        title="Social Media Management"
-                        description="Maximize your social media impact with our expert handling."
-                    />
+                <div>
+                    <DiscoverHero />
                 </div>
+
+            </div>
+
+            <div>
+                <div className="text-2xl text-center cursor-pointer bg-mainBgColor md:text-5xl font-extrabold leading-tight tracking-tight transition-all duration-500">
+                    Our Execution Process
+                </div>
+                <ExecutionProcess />
             </div>
 
             {/* Industries Section */}
@@ -158,6 +154,43 @@ export default function Home() {
                         variant="blue_variant"
                         onClick={() => { router.push("/portfolio") }}
                     />
+                </div>
+            </div>
+
+            {/* Ask experts Section */}
+
+            <div className="flex flex-col md:flex-row bg-mainBgColor md:justify-around items-center">
+                <div className="relative overflow-hidden rounded-2xl py-16 md:py-24 w-full">
+                    <div className="absolute inset-0 bg-gradient-to-br">
+                        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] opacity-5"></div>
+                        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
+                        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
+                    </div>
+
+                    <div className="relative flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
+                        <div className="text-center space-y-6 cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
+                            <div className="text-xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
+                                TAKE A CALL WITH OUR EXPERTS
+                            </div>
+                            <div className="text-2xl font-bold text-gray-800 dark:text-white ">Let&apos;s Start Your Journey Now!!</div>
+                            <div className="justify-center flex pt-4">
+                                <BookDemoCall />
+                            </div>
+                        </div>
+
+                        <div className="relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-white to-white group-hover:opacity-80 rounded-full blur opacity-30 transition duration-300"></div>
+                            <div className="relative">
+                                <Image
+                                    src="/contactPageIcons/askOurExperts.png"
+                                    className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
+                                    alt="Ask Our Experts"
+                                    width={300}
+                                    height={300}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
