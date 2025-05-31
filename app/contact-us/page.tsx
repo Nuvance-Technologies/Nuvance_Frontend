@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import BookDemoCall from "@/components/ui/BookCall";
 import Footer from "@/components/ui/Footer";
 import { Input } from "@/components/ui/Input-1";
 import InstaBtn from "@/components/ui/InstagramBtn";
@@ -14,6 +13,8 @@ import { toast, Toaster } from "react-hot-toast";
 import ConnectWithUs from "@/components/ui/ConnectBtn";
 import { Button } from "@/components/ui/Button";
 import { FAQSection } from "@/components/ui/Faq";
+import TextBox from "@/components/ui/ConnectBtn";
+import TypingText from "@/components/ui/TypingText";
 
 export default function ContactUs() {
     const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ export default function ContactUs() {
             }
         } catch (error) {
             // toast.error("Failed to submit form. Please try again.");
-            toast.error("It will work when we will deploy our website properly"); 
+            toast.error("It will work when we will deploy our website properly");
             console.error("Submission error:", error);
         } finally {
             setIsSubmitting(false);
@@ -95,49 +96,21 @@ export default function ContactUs() {
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
                 <Navbar />
 
-                {/* Contact Header Section */}
-                <div className="mt-30 md:mt-20 flex flex-col md:flex-row md:justify-around items-center">
-                    <div className="relative overflow-hidden rounded-2xl py-16 md:py-24 w-full">
-                        <div className="absolute inset-0 bg-gradient-to-br dark:to-indigo-950/30">
-                            <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] opacity-5"></div>
-                            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
-                            <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
-                        </div>
-
-                        <div className="relative flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
-                            <div className="text-center space-y-6 cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
-                                <div className="text-xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
-                                    TAKE A CALL WITH OUR EXPERTS
-                                </div>
-                                <div className="text-2xl font-bold text-gray-800 dark:text-white ">Let&apos;s Start Your Journey Now!!</div>
-                                <div className="justify-center flex pt-4">
-                                    <BookDemoCall />
-                                </div>
-                            </div>
-
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-white to-white group-hover:opacity-80 rounded-full blur opacity-30 transition duration-300"></div>
-                                <div className="relative">
-                                    <Image
-                                        src="/contactPageIcons/askOurExperts.png"
-                                        className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
-                                        alt="Ask Our Experts"
-                                        width={300}
-                                        height={300}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="mt-30">
+                    <TextBox text="Get in touch" />
                 </div>
+
+                <h1 className="text-2xl mt-4 cursor-pointer md:text-4xl text-center font-extrabold mb-5 leading-tight tracking-tight drop-shadow-md transition-all duration-500">
+                    <TypingText text="Share with visitors how they can contact you and encourage them to ask any questions they may have."/>
+                </h1>
 
                 {/* Contact Form Section */}
                 <div className="flex flex-col lg:flex-row justify-around items-center mt-20 gap-12">
                     <div className="flex flex-col items-center gap-8">
                         <div className="text-center">
-                            <button className="group relative cursor-pointer bg-slate-900 h-16 w-64 border-2 border-teal-600 text-white text-base font-bold rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:border-emerald-400 hover:text-emerald-300 p-3 text-left before:absolute before:w-10 before:h-10 before:content[''] before:right-2 before:top-2 before:z-10 before:bg-indigo-500 before:rounded-full before:blur-lg before:transition-all before:duration-500 after:absolute after:z-10 after:w-16 after:h-16 after:content[''] after:bg-teal-400 after:right-6 after:top-4 after:rounded-full after:blur-lg after:transition-all after:duration-500 hover:before:right-10 hover:before:-bottom-4 hover:before:blur hover:after:-right-6 hover:after:scale-110">
-                                Contact Us
-                            </button>
+                            <div className="cursor-pointer text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
+                                <span className="text-blue-600">Contact Us</span>
+                            </div>
                             <div className="font-bold text-2xl mt-4 text-gray-800">Fill in the form to get in touch.</div>
                         </div>
                         <div>
@@ -270,9 +243,9 @@ export default function ContactUs() {
                 <div>
                     <div>
                         <div className="mt-20">
-                            <ConnectWithUs text="Connect With Us"/>
+                            <ConnectWithUs text="Connect With Us" />
                         </div>
-                        <div className="font-bold text-blue-600 text-2xl text-center">
+                        <div className="font-bold mt-5 text-blue-600 text-2xl text-center">
                             Follow us on social media for updates, insights, and tech trends
                         </div>
                     </div>
@@ -310,12 +283,12 @@ export default function ContactUs() {
                     </div>
                 </div>
 
-                <FAQSection/>
+                <FAQSection />
 
             </div>
 
             <div className="mt-10">
-                <Footer/>
+                <Footer />
             </div>
 
         </div>

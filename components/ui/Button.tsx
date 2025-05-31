@@ -7,7 +7,7 @@ const buttonVariants = {
     blue_variant: "bg-blue-600 text-white font-bold hover:bg-blue-800 px-3 py-2 rounded-md transition-all duration-500 hover:scale-105",
     red_variant: "bg-red-700 border-2 border-yellow text-white font-bold hover:bg-red-800 px-3 py-2 rounded-full transition-all duration-500 hover:scale-105",
     purple_variant: "bg-purple-600 text-white font-bold hover:bg-purple-800 px-3 py-2 rounded-xl transition-all duration-500",
-    green_variant: "bg-emerald-500 text-white font-bold hover:bg-green-700 px-3 py-2 rounded-md transition-all duration-500 hover:scale-105"
+    green_variant: "bg-emerald-600 text-white font-bold hover:bg-green-800 px-3 py-2 rounded-md transition-all duration-500 hover:scale-105"
 }
 
 const defaultButtonStyles = "cursor-pointer flex items-center justify-center space-x-2";
@@ -33,7 +33,7 @@ export const Button = ({variant , text , className , onClick , startIcon , endIc
                     {startIcon}
                 </div>
                 {text}
-                <div className="ml-1">
+                <div className="ml-2">
                     {endIcon}
                 </div>
             </button>

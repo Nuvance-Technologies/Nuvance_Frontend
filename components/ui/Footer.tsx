@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SocialFooter from "../cards/SocialFooter";
 import { useRouter } from "next/navigation";
+import { Whatsapp } from "@/icons/SocialIcons/Whatsapp";
 
 export default function Footer() {
     const router = useRouter();
@@ -44,12 +45,12 @@ export default function Footer() {
                     {/* Insights */}
                     <div className="text-center sm:text-left">
                         <h3 className="text-sm sm:text-base font-semibold text-emerald-300 mb-2 sm:mb-3">Insights</h3>
-                        <ul className="space-y-1">
-                            <li><span className="font-medium transition-all duration-300 hover:text-blue-400 cursor-pointer">Blog</span></li>
+                        <ul className="">
+                            <li><span className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Blog</span></li>
                             <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Events</li>
-                            <li><span className="font-medium transition-all duration-300 hover:text-blue-400 cursor-pointer">Careers</span></li>
                         </ul>
-                        <ul className="space-y-1 mt-2 sm:mt-3 text-xs sm:text-sm">
+                        <ul className="space-y-1 mt-5 md:mt-8 text-xs sm:text-sm">
+                            <li><span className="font-medium transition-all duration-300 text-emerald-300 cursor-pointer">Careers</span></li>
                             <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Job opportunities</li>
                             <li className="transition-all duration-300 hover:text-blue-400 cursor-pointer">Talent referral program</li>
                         </ul>
@@ -69,13 +70,14 @@ export default function Footer() {
                     </div>
 
                     {/* Contact Info */}
-                    <div className="text-center sm:text-left">
+                    <div className="text-center cursor-pointer sm:text-left">
                         <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 text-emerald-300">Contact</h3>
                         <p className="mb-1 sm:mb-2 text-xs sm:text-sm">
                             <strong>IND</strong><br />
-                            Ranjhi, Jabalpur, Madhya Pradesh
+                            Jabalpur, Madhya Pradesh
                         </p>
-                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm">📞 +91 7219638172</p>
+                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm cursor-pointer">📞 +91 7219638172</p>
+                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm flex items-center justify-center cursor-pointer"> <Whatsapp className="size-5 text-green-300 mr-1" />  +91 9109461901</p>
                         <p className="text-xs sm:text-sm">✉️{" "}
                             <span> Mail us at: </span>
                             <span
@@ -90,33 +92,35 @@ export default function Footer() {
 
                 {/* Bottom Row */}
                 <div className="flex flex-col items-center md:flex-row justify-between border-t border-white/10 pt-4 sm:pt-6 gap-3 sm:gap-4 text-xs sm:text-sm">
-                    <div className="text-center hover:scale-105 transition-all duration-500 cursor-pointer md:text-left order-1 md:order-none">
-                        © {new Date().getFullYear()} Nuvance Technologies Inc. All rights reserved.
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-center order-3 md:order-none">
-                        <span className="hover:text-primary cursor-pointer transition-all duration-300 hover:text-blue-400">Terms and conditions</span>
-                        <span className="hover:text-primary cursor-pointer transition-all duration-300 hover:text-blue-400">Privacy Policy</span>
+                    <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-10 text-center md:text-left order-1 md:order-none cursor-pointer">
+                        <div className="hover:scale-105 transition-all duration-500">
+                            © {new Date().getFullYear()} Nuvance Technologies Inc. All rights reserved.
+                        </div>
+                        <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-8">
+                            <div className="hover:text-blue-400 transition-all duration-300">• Terms and conditions</div>
+                            <div className="hover:text-blue-400 transition-all duration-300">• Privacy Policy</div>
+                        </div>
                     </div>
 
                     <div className="flex flex-col items-center sm:flex-row gap-2 sm:gap-4 order-2 md:order-none mb-3 sm:mb-0">
-                        <span
-                            onClick={() => { router.push("/contact-us") }}
-                            className="font-semibold cursor-pointer transition-all duration-300 hover:text-green-400 text-sm"
-                        >
-                            Get Connected
-                        </span>
-                        <div className="flex md:flex-row flex-col items-center gap-2">
+
+                        <div className="flex flex-col items-center mt-5 md:mt-0">
+                            <span
+                                onClick={() => { router.push("/contact-us") }}
+                                className="font-semibold cursor-pointer transition-all duration-300 hover:text-green-400 text-sm"
+                            >
+                                Get Connected
+                            </span>
                             <SocialFooter />
-                            <div className="ml-1">
-                                <Image
-                                    src="/dmca.png"
-                                    alt="DMCA"
-                                    width={80}
-                                    height={30}
-                                    className="w-25 transition-all duration-300 cursor-pointer hover:scale-105 md:w-30"
-                                />
-                            </div>
+                        </div>
+                        <div className="ml-1">
+                            <Image
+                                src="/dmca.png"
+                                alt="DMCA"
+                                width={80}
+                                height={30}
+                                className="w-25 transition-all duration-300 cursor-pointer hover:scale-105 md:w-30"
+                            />
                         </div>
                     </div>
                 </div>

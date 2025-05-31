@@ -4,9 +4,9 @@ import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./Button";
-import { EnterDoor } from "@/icons/others/EnterDoor";
 import { MenuBars } from "@/icons/others/MenuBars";
 import { Close } from "@/icons/others/Close";
+import { PhoneCall } from "@/icons/others/Call";
 
 export default function Navbar() {
     const router = useRouter();
@@ -29,8 +29,7 @@ export default function Navbar() {
         { href: "/", text: "Home" },
         { href: "/about-us", text: "About Us" },
         { href: "/services", text: "Services" },
-        { href: "/portfolio", text: "Portfolio" },
-        { href: "/case-study", text: "Case Studies" },
+        { href: "/portfolio", text: "Portfolio" },  
         { href: "/contact-us", text: "Contact Us" },
     ];
 
@@ -86,7 +85,7 @@ export default function Navbar() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex items-center">
-                    <Button endIcon={<EnterDoor />} variant="blue_variant" text="Free Consultation" />
+                    <Button endIcon={<PhoneCall />} variant="blue_variant" text="Schedule a Call" />
                 </div>
 
 
@@ -138,9 +137,9 @@ export default function Navbar() {
                         </Link>
                     ))}
                     <Button
-                        endIcon={<EnterDoor />}
+                        endIcon={<PhoneCall />}
                         variant="blue_variant"
-                        text="Free Consultation"
+                        text="Schedule a Call"
                         className="mt-3"
                     />
                 </div>

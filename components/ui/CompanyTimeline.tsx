@@ -1,8 +1,8 @@
 "use client"
 
-import type React from "react"
-
-import { Building2, Wrench, RotateCcw, Lightbulb, Globe } from "lucide-react";
+import React from "react"
+import { useState, useEffect, useRef } from "react"
+import { Building2, Wrench, RotateCcw, Lightbulb, Globe, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface TimelineItem {
     icon: React.ReactNode
@@ -56,8 +56,65 @@ const timelineData: TimelineItem[] = [
 ]
 
 export default function Timeline() {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+    const touchStartX = useRef(0)
+    const touchEndX = useRef(0)
+    const carouselRef = useRef<HTMLDivElement>(null)
+
+    // Auto-slide functionality
+    useEffect(() => {
+        if (!isAutoPlaying) return
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % timelineData.length)
+        }, 4000)
+
+        return () => clearInterval(interval)
+    }, [isAutoPlaying])
+
+    // Navigation functions
+    const goToPrevious = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + timelineData.length) % timelineData.length)
+    }
+
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % timelineData.length)
+    }
+
+    const goToSlide = (index: number) => {
+        setCurrentIndex(index)
+    }
+
+    // Touch handlers for mobile swipe
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.targetTouches[0].clientX
+    }
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX
+    }
+
+    const handleTouchEnd = () => {
+        if (!touchStartX.current || !touchEndX.current) return
+
+        const distance = touchStartX.current - touchEndX.current
+        const isLeftSwipe = distance > 50
+        const isRightSwipe = distance < -50
+
+        if (isLeftSwipe) {
+            goToNext()
+        } else if (isRightSwipe) {
+            goToPrevious()
+        }
+    }
+
+    // Pause auto-play on hover
+    const handleMouseEnter = () => setIsAutoPlaying(false)
+    const handleMouseLeave = () => setIsAutoPlaying(true)
+
     return (
-        <div className="max-w-4xl mx-auto p-6 md:p-8">
+        <div className="max-w-6xl mx-auto p-6 md:p-8">
             <div className="text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Journey</h1>
                 <p className="text-xl text-black font-bold max-w-2xl mx-auto">
@@ -65,59 +122,94 @@ export default function Timeline() {
                 </p>
             </div>
 
-            <div className="relative">
-                {/* Vertical Line */}
-                <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-0.5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-red-500"></div>
+            {/* Horizontal Timeline Carousel */}
+            <div
+                className="relative"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+            >
+                {/* Navigation Arrows */}
+                <button
+                    onClick={goToPrevious}
+                    className="absolute cursor-pointer left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
+                    aria-label="Previous slide"
+                >
+                    <ChevronLeft className="w-6 h-6 text-gray-600" />
+                </button>
 
-                {/* Timeline Items */}
-                <div className="space-y-12">
-                    {timelineData.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`relative flex items-start ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                                } flex-row`}
-                        >
-                            {/* Icon Circle */}
-                            <div
-                                className={`absolute left-6 md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 ${item.color} rounded-full flex items-center justify-center text-white shadow-lg z-10`}
-                            >
-                                {item.icon}
-                            </div>
+                <button
+                    onClick={goToNext}
+                    className="absolute right-0 top-1/2 cursor-pointer transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
+                    aria-label="Next slide"
+                >
+                    <ChevronRight className="w-6 h-6 text-gray-600" />
+                </button>
 
-                            {/* Content Card */}
-                            <div
-                                className={`ml-20 md:ml-0 ${index % 2 === 0 ? "md:mr-auto md:pr-8 md:w-1/2" : "md:ml-auto md:pl-8 md:w-1/2"
-                                    } w-full`}
-                            >
-                                <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300">
-                                    <div className="flex items-center mb-3">
-                                        <span className="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                                            {item.date}
-                                        </span>
+                {/* Carousel Container */}
+                <div className="overflow-hidden mx-12">
+                    <div
+                        ref={carouselRef}
+                        className="flex transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {timelineData.map((item, index) => (
+                            <div key={index} className="w-full flex-shrink-0 px-4">
+                                <div className="relative">
+                                    {/* Horizontal Line */}
+                                    <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500"></div>
+
+                                    {/* Icon Circle */}
+                                    <div
+                                        className={`relative mx-auto w-16 h-16 ${item.color} rounded-full flex items-center justify-center text-white shadow-lg z-10 mb-6`}
+                                    >
+                                        {React.cloneElement(item.icon as React.ReactElement)}
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+
+                                    {/* Content Card */}
+                                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300 max-w-md mx-auto">
+                                        <div className="flex justify-center mb-3">
+                                            <span className="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                                                {item.date}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">{item.title}</h3>
+                                        <p className="text-gray-600 leading-relaxed text-center">{item.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center mt-8 space-x-2">
+                    {timelineData.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-blue-500 scale-125" : "bg-gray-300 hover:bg-gray-400"
+                                }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
                     ))}
                 </div>
 
-                {/* Bottom Decoration */}
-                <div className="absolute left-6 md:left-1/2 md:transform md:-translate-x-1/2 bottom-0 w-4 h-4 bg-gradient-to-br from-red-500 to-pink-500 rounded-full shadow-lg"></div>
+                {/* Progress Bar */}
+                <div className="mt-6 bg-gray-200 rounded-full h-1 max-w-md mx-auto">
+                    <div
+                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-1 rounded-full transition-all duration-300"
+                        style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
+                    />
+                </div>
             </div>
 
-            {/* Call to Action */}
-            {/* <div className="text-center mt-16 p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Your Digital Journey?</h2>
-                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                    Join the companies that trust Nuvance Technologies to deliver innovative, scalable, and user-focused digital
-                    solutions.
-                </p>
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Get Started Today
-                </button>
-            </div> */}
+            {/* Mobile Swipe Instruction */}
+            <div className="text-center mt-8 md:hidden">
+                <p className="text-sm text-gray-500">Swipe left or right to navigate</p>
+            </div>
         </div>
     )
 }

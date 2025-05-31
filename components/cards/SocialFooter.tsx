@@ -23,7 +23,7 @@ const SocialFooter = () => {
                 </a>
 
                 <a href="#" className="socialContainer containerFour">
-                  <Whatsapp/>
+                  <Whatsapp className='size-5'/>
                 </a>
 
             </div>

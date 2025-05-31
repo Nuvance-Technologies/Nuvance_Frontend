@@ -1,19 +1,17 @@
 "use client";
 
-import GetInTouchModal from "@/components/modals/GetInTouch";
 import { Carousel } from "@/components/ui/Carousel";
 import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import ServiceButton from "@/components/ui/ServiceButton";
 import ServiceHeroCard from "@/components/ui/ServiceCard";
+import TypingText from "@/components/ui/TypingText";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Services() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const router = useRouter();
 
     const serviceCards = [
@@ -94,6 +92,12 @@ export default function Services() {
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
                 <Navbar />
 
+                <div className="flex justify-center mt-30">
+                    <span className="bg-gradient-to-r text-2xl md:text-4xl text-center font-extrabold from-black via-purple-500 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
+                        <TypingText text="Unlock Our Expert Services to Propel Your Business Forward"/>
+                    </span>
+                </div>
+
                 {/* Carousel for Mobile */}
                 <div className="mt-20 md:hidden">
                     <Carousel>
@@ -130,7 +134,7 @@ export default function Services() {
                 <div className="mt-10 flex justify-center">
                     <button
                         onClick={() => { router.push("/portfolio"); }}
-                        className="group hover:border-rose-300 hover:before:[box-shadow:_20px_20px_20px_30px_#a21caf] duration-500 underline underline-offset-2 hover:underline-offset-4 hover:decoration-2 hover:text-rose-300 relative bg-neutral-800 h-16 w-80 cursor-pointer border text-left p-3 text-gray-50 text-base font-bold rounded-lg overflow-hidden before:absolute before:w-12 before:h-12 before:right-1 before:top-1 before:bg-violet-500 before:rounded-full before:blur-lg after:absolute after:w-20 after:h-20 after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg"
+                        className="group text-center w-96 hover:border-rose-300 hover:before:[box-shadow:_20px_20px_20px_30px_#a21caf] duration-500 underline underline-offset-2 hover:underline-offset-4 hover:decoration-2 hover:text-rose-300 relative bg-neutral-800 h-16 cursor-pointer border p-3 text-gray-50 text-base font-bold rounded-lg overflow-hidden before:absolute before:w-12 before:h-12 before:right-1 before:top-1 before:bg-violet-500 before:rounded-full before:blur-lg after:absolute after:w-20 after:h-20 after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg"
                     >
                         Explore More Services
                     </button>
@@ -154,13 +158,8 @@ export default function Services() {
 
                 {/* Schedule Call Button */}
                 <div className="flex justify-center mt-10">
-                    <ServiceButton label="Schedule a Free Call" onClick={() => setIsModalOpen(true)} />
+                    <ServiceButton label="Schedule a Free Call" />
                 </div>
-
-                <GetInTouchModal
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                />
             </div>
 
             <div className="mt-20">

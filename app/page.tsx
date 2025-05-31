@@ -6,6 +6,7 @@ import Footer from "@/components/ui/Footer";
 import CardHome from "@/components/cards/CardHome";
 import PointCard from "@/components/cards/PointCard";
 import { Button } from "@/components/ui/Button";
+import { Globe } from "lucide-react";
 
 const industries = [
     "Media & Entertainment",
@@ -101,6 +102,7 @@ export default function Home() {
                             <Button
                                 variant="green_variant"
                                 text="Explore Our Services"
+                                startIcon={<Globe className="size-6" />}
                                 onClick={() => router.push("/services")}
                                 className="shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
                             />

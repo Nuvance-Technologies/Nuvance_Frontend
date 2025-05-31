@@ -12,6 +12,7 @@ import { ShieldCheck } from "@/icons/others/ShieldCheck";
 import { Handshake } from "@/icons/others/Handshake";
 import CompanyTimeline from "@/components/ui/CompanyTimeline";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function AboutUs() {
     // const aboutHeroRef = useRef(null);
@@ -143,7 +144,46 @@ export default function AboutUs() {
                 <CompanyTimeline />
 
                 <div className="mt-20 mb-16">
-                    {/* Why Nuvance Section */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        {/* Content - Left Side */}
+                        <div className="space-y-6">
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">Why Nuvance Technologies?</h2>
+                            <p className="text-lg text-gray-600 leading-relaxed">
+                                At Nuvance Technologies, we do more than build software—we craft intelligent, user-centric solutions that
+                                help businesses grow, adapt, and lead in their industries. Here&apos;s why our clients choose us:
+                            </p>
+
+                            <div className="space-y-4">
+                                {[
+                                    "Innovation-Driven Approach",
+                                    "Tailored Solutions",
+                                    "Design Meets Functionality",
+                                    "End-to-End Expertise",
+                                    "Collaborative & Transparent",
+                                    "Results That Matter",
+                                ].map((item, index) => (
+                                    <div key={index} className="flex items-start space-x-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                                        <span className="text-gray-700 font-medium text-lg">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Image - Right Side */}
+                        <div className="order-first lg:order-last flex justify-center lg:justify-end">
+                            <div className="relative w-full cursor-pointer flex justify-center transition-all duration-500 hover:scale-105  max-w-md">
+                                <Image
+                                    src="/NuvanceLogo.png"
+                                    alt="Nuvance Technologies team working on innovative solutions"
+                                    className="rounded-2xl"
+                                    width={300}
+                                    height={300}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-tr rounded-2xl shadow-xl"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div>
