@@ -77,7 +77,9 @@ export default function Footer() {
                             Jabalpur, Madhya Pradesh
                         </p>
                         <p className="mb-1 sm:mb-2 text-xs sm:text-sm cursor-pointer">📞 +91 7219638172</p>
-                        <p className="mb-1 sm:mb-2 text-xs sm:text-sm flex items-center justify-center cursor-pointer"> <Whatsapp className="size-5 text-green-300 mr-1" />  +91 9109461901</p>
+                        <p onClick={() => {
+                            window.open("https://wa.me/919109461901")
+                        }} className="mb-1 sm:mb-2 text-xs sm:text-sm flex items-center justify-center md:justify-start cursor-pointer"> <Whatsapp className="size-5 text-green-300 mr-1" />  +91 9109461901</p>
                         <p className="text-xs sm:text-sm">✉️{" "}
                             <span> Mail us at: </span>
                             <span

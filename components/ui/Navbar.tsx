@@ -69,7 +69,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex flex-1 justify-start ml-6 space-x-6">
+                <div className="hidden md:flex flex-1 justify-center ml-6 space-x-8">
                     {navLinks.map((item) => (
                         <div key={item.href} className="relative group">
                             <Link

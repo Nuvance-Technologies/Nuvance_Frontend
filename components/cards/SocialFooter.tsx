@@ -1,4 +1,3 @@
-import { Github } from '@/icons/SocialIcons/Github';
 import { Instagram } from '@/icons/SocialIcons/Intagram';
 import { Linkedin } from '@/icons/SocialIcons/LinkedIn';
 import { Whatsapp } from '@/icons/SocialIcons/Whatsapp';
@@ -14,15 +13,15 @@ const SocialFooter = () => {
                   <Instagram/>
                 </a>
 
-                <a href="https://github.com/Nuvance-Technologies" target='_blank' className="socialContainer containerTwo">
+                {/* <a href="" target='_blank' className="socialContainer containerTwo">
                   <Github/>
-                </a>
+                </a> */}
 
                 <a href="https://www.linkedin.com/company/nuvance-technologies/" target='_blank' className="socialContainer containerThree">
                   <Linkedin/>
                 </a>
 
-                <a href="#" className="socialContainer containerFour">
+                <a href="https://wa.me/919109461901" rel="noopener noreferrer" target='_blank' className="socialContainer containerFour">
                   <Whatsapp className='size-5'/>
                 </a>
 

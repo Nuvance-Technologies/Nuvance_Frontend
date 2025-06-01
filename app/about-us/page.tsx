@@ -80,21 +80,21 @@ export default function AboutUs() {
 
                 {/* AboutHeroCard Carousel */}
                 <div className="mt-10 md:flex justify-center items-center flex-wrap space-x-30 hidden">
-                    <AboutHeroCard logo={<Compass className="size-12" />} title="Vision" description={[
+                    <AboutHeroCard logo={<Compass className="size-12 text-black" />} title="Vision" description={[
                         "Empowering businesses with innovative, user-centric solutions that fuel growth and enhance impact.",
                         "Delivering smart digital strategies that spark engagement and drive long-term success.",
                         "Transforming digital experiences through a blend of creativity, functionality, and measurable results.",
                         "Bridging technology and intuitive design to enable global business transformation.",
                     ]} />
 
-                    <AboutHeroCard logo={<ShieldCheck className="size-10" />} title="Mission" description={[
+                    <AboutHeroCard logo={<ShieldCheck className="size-10 text-black" />} title="Mission" description={[
                         "Transforming ideas into impactful digital experiences that connect, inspire, and engage.",
                         "Delivering tailored solutions that meet the unique needs of every client and industry.",
                         "Ensuring seamless integration of functionality, usability, and design across every project.",
                         "Staying ahead of the curve by adapting to evolving trends and technologies.",
                     ]} />
 
-                    <AboutHeroCard logo={<Handshake className="size-15" />} title="Commitment" description={[
+                    <AboutHeroCard logo={<Handshake className="size-15 text-black" />} title="Commitment" description={[
                         "Quality is prioritized in every project, with careful attention to detail at every step.",
                         "Honesty and transparency build strong, trustworthy relationships with clients.",
                         "Timely delivery and ongoing support ensure clients receive continuous value.",
@@ -195,9 +195,9 @@ export default function AboutUs() {
 
                     <div className="hidden md:flex justify-center space-x-10 flex-wrap items-center">
                         <ProfileCard name="Nihal Yadav" mailid="yadavnihal544@gmail.com" github="https://github.com/nihal29055" instagram="https://www.instagram.com/nihaaalll_29" linkedin="https://www.linkedin.com/in/nihal-yadav2" about="Founder" image="/facesBehind/nihal.png" />
-                        <ProfileCard name="Aditya Pratap Singh" about="Project Manager" mailid="adityapsingh565@gmail.com" instagram="https://www.instagram.com/aelius.16" github="https://github.com/AdiSinghCodes" linkedin="https://www.linkedin.com/in/aditya-singh-2b319b299/" image="/facesBehind/aditya.png" />
+                        <ProfileCard name="Aditya Pradeep Singh" about="Project Manager" mailid="adityapsingh565@gmail.com" instagram="https://www.instagram.com/aelius.16" github="https://github.com/AdiSinghCodes" linkedin="https://www.linkedin.com/in/aditya-singh-2b319b299/" image="/facesBehind/aditya.png" />
                         <ProfileCard name="Ayush Kushwaha" instagram="https://www.instagram.com/aayu_sh.7" linkedin="https://www.linkedin.com/in/ayush-kushwaha08" about="Graphic Designer" image="/facesBehind/aayush.png" />
-                        <ProfileCard name="Akansha Sahoo" linkedin="https://www.linkedin.com/in/akansha-sahoo-3927372aa/" github="https://github.com/Akansha02code" about="Social Media Manager" image="/facesBehind/aakansha.png" />
+                        <ProfileCard name="Akansha Sahoo" linkedin="https://www.linkedin.com/in/akansha-sahoo-3927372aa/" github="https://github.com/Akansha02code" mailid="akansha.sahoo02@gmail.com" about="Social Media Manager" image="/facesBehind/aakansha.png" />
                         <ProfileCard name="Shubhashish Chakraborty" mailid="shubhashish147@gmail.com" linkedin="https://www.linkedin.com/in/Shubhashish-Chakraborty" github="https://github.com/Shubhashish-Chakraborty" about="Full-Stack Web Developer" image="/facesBehind/shubh.png" />
                         <ProfileCard name="Sayman Lal" mailid="buisnesssayman@gmail.com" linkedin="https://www.linkedin.com/in/worksofsayman" github="https://github.com/worksofsayman" about="Full-Stack Web Developer" image="/facesBehind/sayman.png" />
                     </div>
@@ -239,6 +239,7 @@ export default function AboutUs() {
                                 linkedin: "https://www.linkedin.com/in/akansha-sahoo-3927372aa/",
                                 github: "https://github.com/Akansha02code",
                                 about: "Social Media Manager",
+                                mailid: "akansha.sahoo02@gmail.com",
                                 image: "/facesBehind/aakansha.png"
                             },
                             {

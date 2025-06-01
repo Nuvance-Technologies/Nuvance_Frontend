@@ -10,7 +10,7 @@ const TypingText = ( {text , loop}: {
                 words={[text]}
                 loop={loop} // 1 for Type once
                 cursor
-                cursorStyle="|"
+                cursorStyle=""
                 typeSpeed={50}
                 deleteSpeed={0}
                 delaySpeed={1000}

@@ -12,7 +12,7 @@ const topRowServices: ServiceItem[] = [
     { id: "mobile-app", title: "Mobile App Development", icon: "/DiscoverIcons/appdev.png" },
     { id: "website-dev", title: "Website Development", icon: "/DiscoverIcons/webdev.png" },
     { id: "ecommerce", title: "E-commerce Development", icon: "/DiscoverIcons/ecommerce.png" },
-    { id: "odoo-dev", title: "Odoo Development", icon: "/DiscoverIcons/odoo.jpeg" },
+    { id: "odoo-dev", title: "Odoo Development", icon: "/DiscoverIcons/odoo.png" },
     { id: "cloud-services", title: "Cloud Services", icon: "/DiscoverIcons/cloud.png" },
 ]
 

@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/Button";
 import { FAQSection } from "@/components/ui/Faq";
 import TextBox from "@/components/ui/ConnectBtn";
 import TypingText from "@/components/ui/TypingText";
+import WhatsappBtn from "@/components/ui/Buttons/WhatsappBtn";
 
 export default function ContactUs() {
     const [formData, setFormData] = useState({
@@ -253,6 +254,7 @@ export default function ContactUs() {
                     <div className="flex justify-center items-center space-x-8 mt-4 mb-5">
                         <InstaBtn />
                         <LinkedinBtn />
+                        <WhatsappBtn/>
                     </div>
                 </div>
 

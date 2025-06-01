@@ -16,7 +16,7 @@ const AboutHeroCard = ({ logo, title, description }: AboutHeroCardProps) => {
                     <div className="back">
                         <div className="back-content">
                             {logo}
-                            <strong className='text-2xl'>{title}</strong>
+                            <strong className='text-2xl text-black'>{title}</strong>
                         </div>
                     </div>
                     <div className="front">
@@ -60,7 +60,7 @@ const StyledWrapper = styled.div`
   }
 
   .front, .back {
-    background-color: #151515;
+    // background-color: #151515;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -89,7 +89,7 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 99%;
     height: 99%;
-    background-color: #151515;
+    background-color: #ccfffe;
     border-radius: 5px;
     color: white;
     display: flex;

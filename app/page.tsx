@@ -7,9 +7,10 @@ import PointCard from "@/components/cards/PointCard";
 import { Button } from "@/components/ui/Button";
 import { Globe } from "lucide-react";
 import ExecutionProcess from "@/components/ui/pageComponents/ExecutionProcess";
-import DiscoverHero from "@/components/ui/pageComponents/DiscoverHero";
 import Image from "next/image";
 import BookDemoCall from "@/components/ui/BookCall";
+import DiscoverNoFloating from "@/components/ui/pageComponents/DiscoverNoFloating";
+import BestTech from "@/components/ui/pageComponents/BestTech";
 
 const industries = [
     "Media & Entertainment",
@@ -122,9 +123,16 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <DiscoverHero />
+                    <DiscoverNoFloating />
                 </div>
 
+            </div>
+
+            <div className="bg-mainBgColor">
+                <div className="cursor-pointer text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
+                    Best <span className="text-blue-600">Technology</span> for your Project
+                </div>
+                <BestTech />
             </div>
 
             <div>
@@ -167,29 +175,35 @@ export default function Home() {
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
                     </div>
 
-                    <div className="relative flex flex-col md:flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
-                        <div className="text-center space-y-6 cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
-                            <div className="text-xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
-                                TAKE A CALL WITH OUR EXPERTS
-                            </div>
-                            <div className="text-2xl font-bold text-gray-800 dark:text-white ">Let&apos;s Start Your Journey Now!!</div>
-                            <div className="justify-center flex pt-4">
-                                <BookDemoCall />
+                    <div className="relative flex flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
+                        <div className="cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
+                            <div className="flex flex-col md:flex-row items-center md:items-start justify-between space-y-6 md:space-y-0 md:space-x-6">
+                                {/* Left Text Section */}
+                                <div className="text-left space-y-6 w-full md:w-2/3">
+                                    <div className="text-xl text-center md:text-2xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
+                                        TAKE A CALL WITH OUR EXPERTS
+                                    </div>
+                                    <div className="text-3xl text-center font-bold text-gray-800 dark:text-white">
+                                        Let&apos;s Start Your Journey Now!!
+                                    </div>
+                                    <div className="justify-center flex pt-4">
+                                        <BookDemoCall />
+                                    </div>
+                                </div>
+
+                                {/* Right Image Section */}
+                                <div className="w-full md:w-1/3 flex justify-center md:justify-end">
+                                    <Image
+                                        src="/contactPageIcons/askOurExperts.png"
+                                        className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
+                                        alt="Ask Our Experts"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
                             </div>
                         </div>
 
-                        <div className="relative group">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-white to-white group-hover:opacity-80 rounded-full blur opacity-30 transition duration-300"></div>
-                            <div className="relative">
-                                <Image
-                                    src="/contactPageIcons/askOurExperts.png"
-                                    className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
-                                    alt="Ask Our Experts"
-                                    width={300}
-                                    height={300}
-                                />
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
