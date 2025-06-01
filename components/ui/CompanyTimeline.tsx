@@ -114,10 +114,10 @@ export default function Timeline() {
     const handleMouseLeave = () => setIsAutoPlaying(true)
 
     return (
-        <div className="max-w-6xl mx-auto p-6 md:p-8">
+        <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
             <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Journey</h1>
-                <p className="text-xl text-black font-bold max-w-2xl mx-auto">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Journey</h1>
+                <p className="text-lg sm:text-xl text-black font-bold max-w-2xl mx-auto">
                     From TechStudio to Nuvance Technologies - A story of growth, innovation, and digital excellence
                 </p>
             </div>
@@ -134,7 +134,7 @@ export default function Timeline() {
                 {/* Navigation Arrows */}
                 <button
                     onClick={goToPrevious}
-                    className="absolute cursor-pointer left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
+                    className="hidden sm:flex absolute cursor-pointer left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
                     aria-label="Previous slide"
                 >
                     <ChevronLeft className="w-6 h-6 text-gray-600" />
@@ -142,41 +142,41 @@ export default function Timeline() {
 
                 <button
                     onClick={goToNext}
-                    className="absolute right-0 top-1/2 cursor-pointer transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
+                    className="hidden sm:flex absolute right-0 top-1/2 cursor-pointer transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
                     aria-label="Next slide"
                 >
                     <ChevronRight className="w-6 h-6 text-gray-600" />
                 </button>
 
                 {/* Carousel Container */}
-                <div className="overflow-hidden mx-12">
+                <div className="overflow-hidden mx-2 sm:mx-12">
                     <div
                         ref={carouselRef}
                         className="flex transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                     >
                         {timelineData.map((item, index) => (
-                            <div key={index} className="w-full flex-shrink-0 px-4">
+                            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
                                 <div className="relative">
                                     {/* Horizontal Line */}
                                     <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500"></div>
 
                                     {/* Icon Circle */}
                                     <div
-                                        className={`relative mx-auto w-16 h-16 ${item.color} rounded-full flex items-center justify-center text-white shadow-lg z-10 mb-6`}
+                                        className={`relative mx-auto w-14 h-14 sm:w-16 sm:h-16 ${item.color} rounded-full flex items-center justify-center text-white shadow-lg z-10 mb-6`}
                                     >
                                         {React.cloneElement(item.icon as React.ReactElement)}
                                     </div>
 
                                     {/* Content Card */}
-                                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300 max-w-md mx-auto">
+                                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 w-full max-w-sm sm:max-w-md mx-auto">
                                         <div className="flex justify-center mb-3">
-                                            <span className="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                                            <span className="text-xs sm:text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
                                                 {item.date}
                                             </span>
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">{item.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed text-center">{item.description}</p>
+                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">{item.title}</h3>
+                                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base text-center">{item.description}</p>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,7 @@ export default function Timeline() {
                 </div>
 
                 {/* Progress Bar */}
-                <div className="mt-6 bg-gray-200 rounded-full h-1 max-w-md mx-auto">
+                <div className="mt-6 bg-gray-200 rounded-full h-1 max-w-sm sm:max-w-md mx-auto">
                     <div
                         className="bg-gradient-to-r from-blue-500 to-purple-500 h-1 rounded-full transition-all duration-300"
                         style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
@@ -207,9 +207,10 @@ export default function Timeline() {
             </div>
 
             {/* Mobile Swipe Instruction */}
-            <div className="text-center mt-8 md:hidden">
-                <p className="text-sm text-gray-500">Swipe left or right to navigate</p>
+            <div className="text-center mt-8 sm:hidden">
+                <p className="text-sm text-black">Swipe left or right to navigate</p>
             </div>
         </div>
+
     )
 }

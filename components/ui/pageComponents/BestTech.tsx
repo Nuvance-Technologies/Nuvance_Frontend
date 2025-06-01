@@ -109,11 +109,6 @@ export default function BestTech() {
                             {/* Category Label */}
                             <div className="flex items-center gap-4 min-w-[250px]">
                                 <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                                    {/* <img
-                                        src={category.icon || "/placeholder.svg"}
-                                        alt={`${category.category} icon`}
-                                        className="w-10 h-10"
-                                    /> */}
                                     {category.icon}
                                 </div>
                                 <span className="text-gray-700 font-medium text-2xl">{category.category}</span>
@@ -122,13 +117,13 @@ export default function BestTech() {
                             {/* Technologies */}
                             <div className="flex items-center gap-10 flex-wrap">
                                 {category.technologies.map((tech, techIndex) => (
-                                    <div key={techIndex} className="flex items-center">
+                                    <div key={techIndex} className="flex items-center hover:scale-110 cursor-pointer transition-all duration-500">
                                         <Image
                                             src={tech.placeholder || "/placeholder.svg"}
                                             alt={tech.name}
-                                            className="w-20 h-20 object-contain"
-                                            width={100}
-                                            height={100}
+                                            className="w-32 h-32 object-contain"
+                                            width={140}
+                                            height={140}
                                         />
                                     </div>
                                 ))}
@@ -138,34 +133,43 @@ export default function BestTech() {
                 </div>
             </div>
 
-            {/* Mobile Layout - Simple Vertical Layout */}
+            {/* Mobile Layout with Horizontal Scrolling Sliders */}
             <div className="lg:hidden w-full p-6">
                 <div className="space-y-8">
                     {techData.map((category, index) => (
                         <div key={index} className="space-y-4">
                             {/* Category Header */}
                             <div className="text-center">
-                                <h3 className="text-gray-800 font-bold text-xl mb-4">{category.category}</h3>
+                                <h3 className="text-black font-bold text-xl mb-4">{category.category}</h3>
                             </div>
 
-                            {/* Technologies - Flex Wrap */}
-                            <div className="flex flex-wrap justify-center gap-4">
-                                {category.technologies.map((tech, techIndex) => (
-                                    <div key={techIndex} className="flex items-center justify-center">
-                                        <Image
-                                            src={tech.placeholder || "/placeholder.svg"}
-                                            alt={tech.name}
-                                            className="object-contain"
-                                            width={100}
-                                            height={100}
-                                        />
-                                    </div>
-                                ))}
+                            {/* Technologies - Horizontal Auto-Scrolling */}
+                            <div className="relative overflow-hidden">
+                                <div
+                                    className="flex gap-4 animate-slide"
+                                    style={{
+                                        animation: "slideLeft 20s linear infinite",
+                                        minWidth: "max-content"
+                                    }}
+                                >
+                                    {category.technologies.concat(category.technologies).map((tech, techIndex) => (
+                                        <div key={techIndex} className="flex items-center justify-center flex-shrink-0">
+                                            <Image
+                                                src={tech.placeholder || "/placeholder.svg"}
+                                                alt={tech.name}
+                                                className="object-contain"
+                                                width={140}
+                                                height={140}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
+
     )
 }

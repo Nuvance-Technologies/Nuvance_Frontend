@@ -205,6 +205,21 @@
   }
 }
 
+/* BestTech Component Styles */
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+}
+
 /* DiscoverHero Component Styles */
 
 /* Main section */
