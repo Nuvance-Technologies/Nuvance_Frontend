@@ -80,21 +80,21 @@ export default function AboutUs() {
 
                 {/* AboutHeroCard Carousel */}
                 <div className="mt-10 md:flex justify-center items-center flex-wrap space-x-30 hidden">
-                    <AboutHeroCard logo={<Compass className="size-12 text-black" />} title="Vision" description={[
+                    <AboutHeroCard logo={<Compass className="size-12" />} title="Vision" description={[
                         "Empowering businesses with innovative, user-centric solutions that fuel growth and enhance impact.",
                         "Delivering smart digital strategies that spark engagement and drive long-term success.",
                         "Transforming digital experiences through a blend of creativity, functionality, and measurable results.",
                         "Bridging technology and intuitive design to enable global business transformation.",
                     ]} />
 
-                    <AboutHeroCard logo={<ShieldCheck className="size-10 text-black" />} title="Mission" description={[
+                    <AboutHeroCard logo={<ShieldCheck className="size-10" />} title="Mission" description={[
                         "Transforming ideas into impactful digital experiences that connect, inspire, and engage.",
                         "Delivering tailored solutions that meet the unique needs of every client and industry.",
                         "Ensuring seamless integration of functionality, usability, and design across every project.",
                         "Staying ahead of the curve by adapting to evolving trends and technologies.",
                     ]} />
 
-                    <AboutHeroCard logo={<Handshake className="size-15 text-black" />} title="Commitment" description={[
+                    <AboutHeroCard logo={<Handshake className="size-15" />} title="Commitment" description={[
                         "Quality is prioritized in every project, with careful attention to detail at every step.",
                         "Honesty and transparency build strong, trustworthy relationships with clients.",
                         "Timely delivery and ongoing support ensure clients receive continuous value.",

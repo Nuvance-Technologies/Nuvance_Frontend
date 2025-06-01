@@ -94,6 +94,7 @@ const techData: TechCategory[] = [
             { name: "", placeholder: "/TechIcons/aws.png" },
             { name: "", placeholder: "/TechIcons/googlecloud.png" },
             { name: "", placeholder: "/TechIcons/azure.png" },
+            { name: "", placeholder: "/TechIcons/firebase.png" },
         ],
     },
 ]
