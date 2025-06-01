@@ -219,7 +219,7 @@ export default function AboutUs() {
                                 image: "/facesBehind/nihal.png"
                             },
                             {
-                                name: "Aditya Pratap Singh",
+                                name: "Aditya Pradeep Singh",
                                 about: "Project Manager",
                                 mailid: "adityapsingh565@gmail.com",
                                 instagram: "https://www.instagram.com/aelius.16",
