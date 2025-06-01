@@ -51,7 +51,6 @@ const techData: TechCategory[] = [
         icon: <FaLaptopCode size={24} />,
         technologies: [
             { name: "", placeholder: "/TechIcons/jira.png" },
-            { name: "", placeholder: "/TechIcons/confluence.png" },
             { name: "", placeholder: "/TechIcons/asana.png" },
             { name: "", placeholder: "/TechIcons/trello.png" },
         ],
@@ -60,7 +59,6 @@ const techData: TechCategory[] = [
         category: "Big Data",
         icon: <SiApachekafka size={24} />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/kafka.png" },
             { name: "", placeholder: "/TechIcons/amazon_elas.png" },
             { name: "", placeholder: "/TechIcons/mongo.png" },
             { name: "", placeholder: "/TechIcons/amazon_ddb.png" },
