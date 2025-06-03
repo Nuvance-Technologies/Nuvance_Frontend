@@ -85,7 +85,7 @@ export default function Portfolio() {
                 </div>
 
                 <div>
-                    <TextBox text='View More Work' />
+                    <TextBox text='View Case Study' />
                 </div>
                 {/* Loading State - Replace this with your Loader component */}
                 {loading && (
