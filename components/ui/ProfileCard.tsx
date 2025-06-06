@@ -27,6 +27,7 @@ const ProfileCard = ( {name, image , about, instagram, linkedin, github, mailid}
                     <div className="content">
                         <span className="name"> {name} </span>
                         <span className="about-me"> {about} </span>
+                        <span className="about-me" id='mailtext'> {mailid} </span>
                     </div>
                     <div className="bottom-bottom">
                         <div className="social-links-container cursor-pointer">
@@ -142,7 +143,12 @@ const StyledWrapper = styled.div`
     display: block;
     font-size: 0.9rem;
     color: white;
-    margin-top: 1rem;
+    // margin-top: 1rem;
+  }
+
+  #mailtext {
+    color: cyan;
+    cursor: pointer;
   }
 
   .card .bottom .bottom-bottom {

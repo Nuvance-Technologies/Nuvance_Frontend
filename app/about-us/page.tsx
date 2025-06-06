@@ -196,7 +196,7 @@ export default function AboutUs() {
                     <div className="hidden md:flex justify-center space-x-10 flex-wrap items-center">
                         <ProfileCard name="Nihal Yadav" mailid="yadavnihal544@gmail.com" github="https://github.com/nihal29055" instagram="https://www.instagram.com/nihaaalll_29" linkedin="https://www.linkedin.com/in/nihal-yadav2" about="Founder" image="/facesBehind/nihal.png" />
                         <ProfileCard name="Aditya Pradeep Singh" about="Project Manager" mailid="adityapsingh565@gmail.com" instagram="https://www.instagram.com/aelius.16" github="https://github.com/AdiSinghCodes" linkedin="https://www.linkedin.com/in/aditya-singh-2b319b299/" image="/facesBehind/aditya.png" />
-                        <ProfileCard name="Ayush Kushwaha" instagram="https://www.instagram.com/aayu_sh.7" linkedin="https://www.linkedin.com/in/ayush-kushwaha08" about="Graphic Designer" image="/facesBehind/aayush.png" />
+                        <ProfileCard name="Ayush Kushwaha" mailid="buildwithaayush@gmail.com" instagram="https://www.instagram.com/aayu_sh.7" linkedin="https://www.linkedin.com/in/ayush-kushwaha08" about="Graphic Designer" image="/facesBehind/aayush.png" />
                         <ProfileCard name="Akansha Sahoo" linkedin="https://www.linkedin.com/in/akansha-sahoo-3927372aa/" github="https://github.com/Akansha02code" mailid="akansha.sahoo02@gmail.com" about="Social Media Manager" image="/facesBehind/aakansha.png" />
                         <ProfileCard name="Shubhashish Chakraborty" mailid="shubhashish147@gmail.com" linkedin="https://www.linkedin.com/in/Shubhashish-Chakraborty" github="https://github.com/Shubhashish-Chakraborty" about="Full-Stack Web Developer" image="/facesBehind/shubh.png" />
                         <ProfileCard name="Sayman Lal" mailid="buisnesssayman@gmail.com" linkedin="https://www.linkedin.com/in/worksofsayman" github="https://github.com/worksofsayman" about="Full-Stack Web Developer" image="/facesBehind/sayman.png" />
@@ -232,7 +232,8 @@ export default function AboutUs() {
                                 instagram: "https://www.instagram.com/aayu_sh.7",
                                 linkedin: "https://www.linkedin.com/in/ayush-kushwaha08",
                                 about: "Graphic Designer",
-                                image: "/facesBehind/aayush.png"
+                                image: "/facesBehind/aayush.png",
+                                mailid: "buildwithaayush@gmail.com"
                             },
                             {
                                 name: "Akansha Sahoo",
