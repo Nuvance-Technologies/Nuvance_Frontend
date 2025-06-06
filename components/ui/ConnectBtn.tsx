@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 interface TextBoxProps {
   text: string;
+  onClick?: () => void;
 }
 
-const TextBox = ( {text}: TextBoxProps) => {
+const TextBox = ( {text , onClick}: TextBoxProps) => {
   return (
     <StyledWrapper>
       <div className="container">
-        <a className="button type--C">
+        <a onClick={onClick} className="button type--C">
           <div className="button__line" />
           <div className="button__line" />
           <span className="button__text"> {text} </span>

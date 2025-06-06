@@ -9,6 +9,7 @@ import Footer from '@/components/ui/Footer';
 import TextBox from '@/components/ui/ConnectBtn';
 import Button from '@/components/ui/ServiceButton';
 import GetInTouchModal from '@/components/modals/GetInTouch';
+import { useRouter } from 'next/navigation';
 
 interface Project {
     id: number;
@@ -25,6 +26,7 @@ export default function Portfolio() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -85,7 +87,9 @@ export default function Portfolio() {
                 </div>
 
                 <div>
-                    <TextBox text='View Case Study' />
+                    <TextBox onClick={() => {
+                        router.push('/case-study')
+                    }} text='View Case Study' />
                 </div>
                 {/* Loading State - Replace this with your Loader component */}
                 {loading && (
