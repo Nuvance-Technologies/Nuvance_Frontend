@@ -2,6 +2,7 @@ import Image from "next/image";
 import SocialFooter from "../cards/SocialFooter";
 import { useRouter } from "next/navigation";
 import { Whatsapp } from "@/icons/SocialIcons/Whatsapp";
+import Link from "next/link";
 
 export default function Footer() {
     const router = useRouter();
@@ -99,8 +100,13 @@ export default function Footer() {
                             © {new Date().getFullYear()} Nuvance Technologies Inc. All rights reserved.
                         </div>
                         <div className="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-8">
-                            <div className="hover:text-blue-400 transition-all duration-300">• Terms and conditions</div>
-                            <div className="hover:text-blue-400 transition-all duration-300">• Privacy Policy</div>
+                            <Link href="/terms-and-conditions">
+                                <div className="hover:text-blue-400 transition-all duration-300">• Terms and conditions</div>
+                            </Link>
+
+                            <Link href="/privacy-policy">
+                                <div className="hover:text-blue-400 transition-all duration-300">• Privacy Policy</div>
+                            </Link>
                         </div>
                     </div>
 
