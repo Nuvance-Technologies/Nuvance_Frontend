@@ -6,13 +6,48 @@ import Navbar from "@/components/ui/Navbar";
 import ServiceButton from "@/components/ui/ServiceButton";
 import ServiceHeroCard from "@/components/ui/ServiceCard";
 import TypingText from "@/components/ui/TypingText";
+import { Close } from "@/icons/others/Close";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+
+declare global {
+    interface Window {
+        Calendly?: {
+            initPopupWidget: (options: { url: string }) => void;
+            initInlineWidget: (options: { url: string; parentElement: HTMLElement }) => void;
+        };
+    }
+}
 
 export default function Services() {
     const router = useRouter();
+    const [showCalendlyModal, setShowCalendlyModal] = useState(false);
+    const calendlyWidgetRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (window.Calendly) return;
+
+        const script = document.createElement("script");
+        script.src = "https://assets.calendly.com/assets/external/widget.js";
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (showCalendlyModal && calendlyWidgetRef.current && window.Calendly) {
+            window.Calendly.initInlineWidget({
+                url: "https://calendly.com/nihal-nuvancetechnologies/30min?hide_event_type_details=1&hide_gdpr_banner=1",
+                parentElement: calendlyWidgetRef.current
+            });
+        }
+    }, [showCalendlyModal]);
 
     const serviceCards = [
         {
@@ -51,7 +86,7 @@ export default function Services() {
             titleMain: "Custom Software Development",
             iconImage: "/serviceIcons/customSoftware.png",
             title1: "Why it matters?",
-            desc1: "Off-the-shelf software doesn’t always fit. Custom solutions align perfectly with your workflows and needs.",
+            desc1: "Off-the-shelf software doesn't always fit. Custom solutions align perfectly with your workflows and needs.",
             title2: "What We Do:",
             desc2: "We design and build tailored software to solve your unique business challenges."
         },
@@ -94,7 +129,7 @@ export default function Services() {
 
                 <div className="flex justify-center mt-30">
                     <span className="bg-gradient-to-r text-2xl md:text-4xl text-center font-extrabold from-black via-purple-500 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
-                        <TypingText text="Unlock Our Expert Services to Propel Your Business Forward"/>
+                        <TypingText text="Unlock Our Expert Services to Propel Your Business Forward" />
                     </span>
                 </div>
 
@@ -158,9 +193,28 @@ export default function Services() {
 
                 {/* Schedule Call Button */}
                 <div className="flex justify-center mt-10">
-                    <ServiceButton label="Schedule a Free Call" />
+                    <ServiceButton label="Schedule a Free Call" onClick={() => setShowCalendlyModal(true)} />
                 </div>
             </div>
+
+            {/* Calendly Modal */}
+            {showCalendlyModal && (
+                <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/60 bg-opacity-50 backdrop-blur-sm">
+                    <div className="relative w-full max-w-4xl h-[80vh] bg-white rounded-lg shadow-xl overflow-hidden">
+                        <button
+                            className="absolute cursor-pointer top-4 right-4 z-10 text-gray-500 hover:text-gray-700"
+                            onClick={() => setShowCalendlyModal(false)}
+                        >
+                            <Close/>
+                        </button>
+                        <div
+                            ref={calendlyWidgetRef}
+                            className="calendly-inline-widget w-full h-full"
+                            style={{ minWidth: '320px', height: '100%' }}
+                        />
+                    </div>
+                </div>
+            )}
 
             <div className="mt-20">
                 <Footer />
