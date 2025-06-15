@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BookDemoCall = () => {
+const BookDemoCall = ( {onClick}: {
+  onClick?: () => void;
+} ) => {
   return (
     <StyledWrapper>
-      <button className="button">
+      <button onClick={onClick} className="button">
         <span className="text">Schedule a Call</span>
         <span className="svg">
           <svg xmlns="http://www.w3.org/2000/svg" width={50} height={20} viewBox="0 0 38 15" fill="none">

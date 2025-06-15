@@ -11,6 +11,7 @@ import Image from "next/image";
 import BookDemoCall from "@/components/ui/BookCall";
 import DiscoverNoFloating from "@/components/ui/pageComponents/DiscoverNoFloating";
 import BestTech from "@/components/ui/pageComponents/BestTech";
+import { Close } from "@/icons/others/Close";
 
 const industries = [
     "Media & Entertainment",
@@ -27,8 +28,19 @@ const industries = [
     "Government"
 ];
 
+declare global {
+    interface Window {
+        Calendly?: {
+            initPopupWidget: (options: { url: string }) => void;
+            initInlineWidget: (options: { url: string; parentElement: HTMLElement }) => void;
+        };
+    }
+}
+
 export default function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [showCalendlyModal, setShowCalendlyModal] = useState(false);
+    const calendlyWidgetRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
@@ -69,8 +81,53 @@ export default function Home() {
         return () => cancelAnimationFrame(animationFrameId);
     }, []);
 
+    useEffect(() => {
+        if (window.Calendly) return;
+
+        const script = document.createElement("script");
+        script.src = "https://assets.calendly.com/assets/external/widget.js";
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (showCalendlyModal && calendlyWidgetRef.current && window.Calendly) {
+            window.Calendly.initInlineWidget({
+                url: "https://calendly.com/nihal-nuvancetechnologies/30min?hide_event_type_details=1&hide_gdpr_banner=1",
+                parentElement: calendlyWidgetRef.current
+            });
+        }
+    }, [showCalendlyModal]);
+
+    const handleBookDemoClick = () => {
+        setShowCalendlyModal(true);
+    };
+
     return (
         <div className="min-h-screen bg-black">
+            {/* Calendly Modal */}
+            {showCalendlyModal && (
+                <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/60 bg-opacity-50 backdrop-blur-sm">
+                    <div className="relative w-full max-w-4xl h-[80vh] bg-white rounded-lg shadow-xl overflow-hidden">
+                        <button
+                            className="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700"
+                            onClick={() => setShowCalendlyModal(false)}
+                        >
+                            <Close />
+                        </button>
+                        <div
+                            ref={calendlyWidgetRef}
+                            className="calendly-inline-widget w-full h-full"
+                            style={{ minWidth: '320px', height: '100%' }}
+                        />
+                    </div>
+                </div>
+            )}
+
             <Navbar />
 
             {/* Hero Section */}
@@ -89,7 +146,6 @@ export default function Home() {
 
                 <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
                     <div className="relative z-10 px-4 text-center text-white max-w-4xl mx-auto animate-fade-in">
-
                         <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight tracking-tight drop-shadow-md transition-all duration-500">
                             Nuvance Technologies: <br className="hidden sm:block" /> Building Digital Dreams, One Click at a Time
                         </h1>
@@ -113,7 +169,6 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             {/* Services Section */}
@@ -125,7 +180,6 @@ export default function Home() {
                 <div>
                     <DiscoverNoFloating />
                 </div>
-
             </div>
 
             <div className="bg-mainBgColor">
@@ -166,7 +220,6 @@ export default function Home() {
             </div>
 
             {/* Ask experts Section */}
-
             <div className="flex flex-col md:flex-row bg-mainBgColor md:justify-around items-center">
                 <div className="relative overflow-hidden rounded-2xl py-16 md:py-24 w-full">
                     <div className="absolute inset-0 bg-gradient-to-br">
@@ -187,7 +240,7 @@ export default function Home() {
                                         Let&apos;s Start Your Journey Now!!
                                     </div>
                                     <div className="justify-center flex pt-4">
-                                        <BookDemoCall />
+                                        <BookDemoCall onClick={handleBookDemoClick} />
                                     </div>
                                 </div>
 
@@ -203,7 +256,6 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
