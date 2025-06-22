@@ -266,7 +266,7 @@ export default function ContactUs() {
 
                 <div className="flex justify-center flex-col md:flex-row items-center">
                     <Image src="/contactPageIcons/redHat.png" className="cursor-pointer hover:scale-105 transition-all duration-500" alt="Our Trusted Partners" width={500} height={500} />
-                    <Image src="/contactPageIcons/aws.png" className="cursor-pointer hover:scale-105 transition-all duration-500" alt="Our Trusted Partners" width={400} height={400} />
+                    <Image src="/contactPageIcons/aws.png" className="cursor-pointer hover:scale-105 transition-all duration-500" alt="Our Trusted Partners" width={320} height={320} />
                 </div>
 
                 <div className="w-full flex justify-center flex-col md:w-auto">
