@@ -117,8 +117,8 @@ export default function PrivacyPolicyPage() {
                             </ul>
                             <p className="mt-4 text-gray-700">
                                 To exercise any of these rights, contact us at{" "}
-                                <a href="mailto:contact@nuvancetechnologies.com" className="text-blue-600 hover:underline font-medium">
-                                    contact@nuvancetechnologies.com
+                                <a href="mailto:nuvancetechnologiess@gmail.com" className="text-blue-600 hover:underline font-medium">
+                                    nuvancetechnologiess@gmail.com
                                 </a>
                                 .
                             </p>
@@ -176,10 +176,10 @@ export default function PrivacyPolicyPage() {
                                 <p>
                                     <strong>Email:</strong>{" "}
                                     <a
-                                        href="mailto:contact@nuvancetechnologies.com"
+                                        href="mailto:nuvancetechnologiess@gmail.com"
                                         className="text-blue-600 hover:underline font-medium"
                                     >
-                                        contact@nuvancetechnologies.com
+                                        nuvancetechnologiess@gmail.com
                                     </a>
                                 </p>
                                 <p>

@@ -84,10 +84,10 @@ export default function Footer() {
                         <p className="text-xs sm:text-sm">✉️{" "}
                             <span> Mail us at: </span>
                             <span
-                                onClick={() => { window.location.href = "mailto:contact@nuvancetechnologies.com"; }}
+                                onClick={() => { window.location.href = "mailto:nuvancetechnologiess@gmail.com"; }}
                                 className="cursor-pointer hover:text-blue-300 text-blue-200 break-all"
                             >
-                                contact@nuvancetechnologies.com
+                                nuvancetechnologiess@gmail.com
                             </span>
                         </p>
                     </div>

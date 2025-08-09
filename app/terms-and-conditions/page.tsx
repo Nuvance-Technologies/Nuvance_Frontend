@@ -45,10 +45,10 @@ export default function TermsAndConditionsPage() {
                                 <p>
                                     <strong>Email:</strong>{" "}
                                     <a
-                                        href="mailto:contact@nuvancetechnologies.com"
+                                        href="mailto:nuvancetechnologiess@gmail.com"
                                         className="text-blue-600 hover:underline font-medium"
                                     >
-                                        contact@nuvancetechnologies.com
+                                        nuvancetechnologiess@gmail.com
                                     </a>
                                 </p>
                                 <p>
@@ -182,10 +182,10 @@ export default function TermsAndConditionsPage() {
                                 <p>
                                     <strong>Email:</strong>{" "}
                                     <a
-                                        href="mailto:contact@nuvancetechnologies.com"
+                                        href="mailto:nuvancetechnologiess@gmail.com"
                                         className="text-blue-600 hover:underline font-medium"
                                     >
-                                        contact@nuvancetechnologies.com
+                                        nuvancetechnologiess@gmail.com
                                     </a>
                                 </p>
                                 <p>
