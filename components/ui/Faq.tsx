@@ -1,116 +1,108 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const faqData = [
     {
-        question: "What services does Nuvance Technologies offer?",
+        question: "What core engineering services does Nuvance Technologies provide?",
         answer:
-            "We specialize in a wide range of digital solutions including web and mobile app development, UI/UX design, software engineering, AI/ML solutions, cloud integration, and IT consulting tailored to your business needs.",
+            "We provide end-to-end software development including custom web applications, native and cross-platform mobile apps, cloud infrastructure setup, API architecture, data integrations, and ongoing technical maintenance.",
     },
     {
-        question: "Who can benefit from your services?",
+        question: "What engagement models do you support for clients?",
         answer:
-            "Our services are ideal for startups, small to medium enterprises, and large corporations looking to digitize operations, improve user experiences, or integrate AI-driven solutions into their workflow.",
+            "We accommodate both fixed-scope Statements of Work (SOW) with defined milestone deliverables and dedicated engineering team augmentations working under an agile sprint structure.",
     },
     {
-        question: "Do you offer custom software development?",
+        question: "How do you approach software security and intellectual property protection?",
         answer:
-            "Yes, we provide fully customized software development services. Our team collaborates closely with clients to deliver solutions that align with their goals and operational needs.",
+            "Security is integrated at every phase of our software development lifecycle (SDLC). We execute mutual non-disclosure agreements (NDAs) prior to project discovery. All custom deliverables and source code transfer directly to client ownership upon milestone completion.",
     },
     {
-        question: "What industries do you serve?",
+        question: "What technology stacks does your team specialize in?",
         answer:
-            "We work across various industries including healthcare, education, e-commerce, finance, logistics, and more. Our adaptable team can craft solutions specific to your sector.",
+            "Our primary stack spans TypeScript, Next.js, React, Node.js, Python, Java, Go, PostgreSQL, MongoDB, Redis, Docker, and enterprise cloud providers including AWS, Google Cloud Platform, and Microsoft Azure.",
     },
     {
-        question: "Can you help with legacy system modernization?",
+        question: "Do you support enterprise legacy modernization and cloud migration?",
         answer:
-            "Absolutely. We help modernize outdated systems by migrating them to modern platforms with improved functionality, performance, and security.",
+            "Yes. We specialize in decoupling monolithic legacy architectures, refactoring obsolete codebases, migrating on-premise workloads to containerized cloud architectures, and optimizing system reliability.",
     },
     {
-        question: "What technologies do you use?",
+        question: "What SLA support and maintenance options are available post-deployment?",
         answer:
-            "We work with modern technologies including React, Angular, Node.js, Python, Java, .NET, Flutter, AI/ML frameworks (TensorFlow, PyTorch), cloud platforms (AWS, Azure, GCP), and more.",
+            "We provide structured post-launch service-level agreements (SLAs), including active uptime monitoring, automated error tracking, periodic dependency vulnerability patching, and scheduled functional updates.",
     },
     {
-        question: "How do you ensure the security of your solutions?",
+        question: "What is the typical timeline for an initial consultation and proposal?",
         answer:
-            "Security is a top priority at Nuvance. We implement industry best practices, encryption standards, secure coding protocols, and regular audits to ensure your data and systems remain safe.",
+            "Following an introductory technical discovery meeting, we deliver a comprehensive technical proposal including architecture blueprints, milestone estimates, and sprint schedules within 3 to 5 business days.",
     },
-    {
-        question: "Do you offer post-launch support and maintenance?",
-        answer:
-            "Yes. We offer reliable post-deployment support, updates, and maintenance services to keep your solution up-to-date and running smoothly.",
-    },
-    {
-        question: "What is your typical project timeline?",
-        answer:
-            "Project timelines vary depending on complexity and scope. After an initial consultation, we provide a detailed roadmap with clear milestones and deadlines.",
-    },
-    {
-        question: "How can I get started with Nuvance Technologies?",
-        answer:
-            "Simply contact us through our website's contact form, or email us directly. We'll set up a free consultation to understand your needs and recommend the best solutions.",
-    },
-]
+];
 
 export function FAQSection() {
-    const [openItems, setOpenItems] = useState<number[]>([])
+    const [openItems, setOpenItems] = useState<number[]>([0]);
 
     const toggleItem = (index: number) => {
-        setOpenItems((prev) => (prev.includes(index) ? prev.filter((item) => item !== index) : [...prev, index]))
-    }
+        setOpenItems((prev) =>
+            prev.includes(index) ? prev.filter((item) => item !== index) : [...prev, index]
+        );
+    };
 
     return (
-        <section className="w-full py-16 cursor-pointer bg-gradient-to-br">
-            <div className="container px-4 md:px-6 mx-auto max-w-4xl">
-                <div className="flex justify-center">
-                    <span className="bg-gradient-to-r text-2xl md:text-4xl text-center font-extrabold from-black via-pink-500 to-slate-800 bg-clip-text text-transparent decoration-cyan-800 cursor-pointer hover:underline">
-                        Frequently Asked Questions (FAQ)
-                    </span>
-                </div>
+        <section className="w-full py-16 bg-white border-t border-slate-200">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Find answers to common questions about our services and how we can help your business succeed.
+                <div className="text-center mb-10">
+                    <span className="text-xs uppercase font-bold tracking-widest text-blue-600 block mb-1">
+                        Frequently Asked Questions
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950">
+                        Technical Inquiries & Engagement FAQ
+                    </h2>
+                    <p className="text-sm text-slate-600 max-w-xl mx-auto mt-2">
+                        Common questions regarding our engineering methodologies, contract structures, and delivery guarantees.
                     </p>
                 </div>
 
-                {/* FAQ Items */}
-                <div className="space-y-4">
-                    {faqData.map((faq, index) => (
-                        <div
-                            key={index}
-                            className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200"
-                        >
-                            {/* Question */}
-                            <button
-                                onClick={() => toggleItem(index)}
-                                className="w-full px-6 py-5 cursor-pointer text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-inset"
-                            >
-                                <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
-                                <ChevronDown
-                                    className={`h-5 w-5 text-gray-500 transition-transform duration-200 flex-shrink-0 ${openItems.includes(index) ? "rotate-180" : ""
-                                        }`}
-                                />
-                            </button>
-
-                            {/* Answer */}
+                {/* FAQ Accordion Items */}
+                <div className="space-y-3">
+                    {faqData.map((faq, index) => {
+                        const isOpen = openItems.includes(index);
+                        return (
                             <div
-                                className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.includes(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                                    }`}
+                                key={index}
+                                className="bg-slate-50 border border-slate-200 rounded-md overflow-hidden transition-colors"
                             >
-                                <div className="px-6 pb-5 pt-2">
-                                    <div className="h-px bg-gray-200 mb-4"></div>
-                                    <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => toggleItem(index)}
+                                    className="w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-100/70 transition-colors focus:outline-none cursor-pointer"
+                                    aria-expanded={isOpen}
+                                >
+                                    <h3 className="text-sm sm:text-base font-semibold text-slate-900 pr-4">
+                                        {faq.question}
+                                    </h3>
+                                    <ChevronDown
+                                        className={`w-4 h-4 text-slate-500 transition-transform duration-200 flex-shrink-0 ${
+                                            isOpen ? "rotate-180" : ""
+                                        }`}
+                                    />
+                                </button>
+
+                                {isOpen && (
+                                    <div className="px-5 pb-4 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white">
+                                        {faq.answer}
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>
-    )
+    );
 }
+
+export default FAQSection;

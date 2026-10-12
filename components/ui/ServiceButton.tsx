@@ -1,21 +1,25 @@
 "use client";
 
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 interface ButtonProps {
-  label: string;
-  onClick?: () => void;
+    label: string;
+    onClick?: () => void;
+    className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
-  return (
-    <button
-      onClick={onClick}
-      className="relative cursor-pointer inline-block px-8 py-3 font-bold text-white bg-blue-400 border border-black rounded hover:bg-white hover:text-black transition-transform duration-200 ease-in-out active:translate-x-0 active:translate-y-0 active:shadow-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0_0_rgba(0,0,0,1)]"
-    >
-      {label}
-    </button>
-  );
+const ServiceButton: React.FC<ButtonProps> = ({ label, onClick, className = "" }) => {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 border border-blue-500 rounded-md shadow-sm transition-colors duration-150 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 ${className}`}
+        >
+            <span>{label}</span>
+            <ArrowRight className="w-4 h-4 text-blue-200" aria-hidden="true" />
+        </button>
+    );
 };
 
-export default Button;
+export default ServiceButton;

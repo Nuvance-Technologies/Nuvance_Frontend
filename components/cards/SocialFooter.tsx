@@ -1,106 +1,42 @@
-import { Instagram } from '@/icons/SocialIcons/Intagram';
-import { Linkedin } from '@/icons/SocialIcons/LinkedIn';
-import { Whatsapp } from '@/icons/SocialIcons/Whatsapp';
-import React from 'react';
-import styled from 'styled-components';
+"use client";
+
+import React from "react";
+import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 
 const SocialFooter = () => {
     return (
-        <StyledWrapper>
-            <div className="card">
-                
-                <a href="https://www.instagram.com/nuvance_tech/" target='_blank' className="socialContainer containerOne">
-                  <Instagram/>
-                </a>
+        <div className="flex items-center gap-2 mt-2">
+            <a
+                href="https://www.instagram.com/nuvance_tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nuvance on Instagram"
+                className="w-8 h-8 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 transition-colors duration-150"
+            >
+                <Instagram className="w-4 h-4" />
+            </a>
 
-                {/* <a href="" target='_blank' className="socialContainer containerTwo">
-                  <Github/>
-                </a> */}
+            <a
+                href="https://www.linkedin.com/company/nuvance-technologies/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nuvance on LinkedIn"
+                className="w-8 h-8 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 transition-colors duration-150"
+            >
+                <Linkedin className="w-4 h-4" />
+            </a>
 
-                <a href="https://www.linkedin.com/company/nuvance-technologies/" target='_blank' className="socialContainer containerThree">
-                  <Linkedin/>
-                </a>
-
-                <a href="https://wa.me/919109461901" rel="noopener noreferrer" target='_blank' className="socialContainer containerFour">
-                  <Whatsapp className='size-5'/>
-                </a>
-
-            </div>
-        </StyledWrapper>
+            <a
+                href="https://wa.me/919109461901"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nuvance on WhatsApp"
+                className="w-8 h-8 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 transition-colors duration-150"
+            >
+                <MessageCircle className="w-4 h-4" />
+            </a>
+        </div>
     );
-}
-
-const StyledWrapper = styled.div`
-  .card {
-    width: fit-content;
-    height: fit-content;
-    background-color: #1E2128FF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px 25px;
-    gap: 20px;
-  }
-
-  /* for all social containers*/
-  .socialContainer {
-    width: 52px;
-    height: 52px;
-    background-color: #1E2128FF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition-duration: .3s;
-  }
-  /* instagram*/
-  .containerOne:hover {
-    background-color: #d62976;
-    transition-duration: .3s;
-  }
-  /* Github */
-  .containerTwo:hover {
-    background-color: black;
-    transition-duration: .3s;
-  }
-  /* linkedin*/
-  .containerThree:hover {
-    background-color: #0072b1;
-    transition-duration: .3s;
-  }
-  /* Whatsapp*/
-  .containerFour:hover {
-    background-color: #128C7E;
-    transition-duration: .3s;
-  }
-
-  .socialContainer:active {
-    transform: scale(0.9);
-    transition-duration: .3s;
-  }
-
-  .socialSvg {
-    width: 17px;
-  }
-
-  .socialSvg path {
-    fill: rgb(255, 255, 255);
-  }
-
-  .socialContainer:hover .socialSvg {
-    animation: slide-in-top 0.3s both;
-  }
-
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }`;
+};
 
 export default SocialFooter;

@@ -1,212 +1,117 @@
 @import "tailwindcss";
 
 @theme {
-  --color-mainBgColor: #d8eaffff;
-  --color-footerBg: #1e2128ff;
+  --color-mainBgColor: #f8fafc;
+  --color-footerBg: #0f172a;
 }
 
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Professional subtle loader */
 .loader {
-  width: 36px;
-  height: 36px;
-  background: #353535;
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotationBack 1s ease-in-out infinite reverse;
-}
-
-.loader::before {
-  content: "";
-  box-sizing: border-box;
-  left: 0;
-  top: 0;
-  transform: rotate(45deg);
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  background: #2e2e2e;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-}
-
-.loader::after {
-  content: "";
-  box-sizing: border-box;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background: rgb(0, 0, 0);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border: 3px solid #e2e8f0;
+  border-top-color: #0f172a;
+  border-radius: 4px;
+  animation: spin 0.8s linear infinite;
 }
 
-@keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(-360deg);
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/*About us heading*/
-
-.box {
-  width: 220px;
-  height: auto;
-  float: left;
-  transition: 0.5s linear;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  padding: 15px;
-  text-align: center;
-  margin: -10px 50px 27px;
-  background: transparent;
-  text-transform: uppercase;
-  font-weight: 900;
-  border-radius: 5px;
+/* Subtle fade in utility */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.box:before {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0;
-  height: 4px;
-  width: 100%;
-  border-bottom: 4px solid transparent;
-  border-left: 4px solid transparent;
-  box-sizing: border-box;
-  transform: translateX(100%);
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-.box:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  border-top: 4px solid transparent;
-  border-right: 4px solid transparent;
-  box-sizing: border-box;
-  transform: translateX(-100%);
-}
-
-.box:hover {
-  box-shadow: 20px 20px 25px rgba(96, 156, 212, 0.5);
-}
-
-.box:hover:before {
-  border-image: linear-gradient(90deg, #1e3a8a, #3b82f6) 1;
-  height: 100%;
-  transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.3s;
-}
-
-.box:hover:after {
-  border-color: #262626;
-  height: 100%;
-  transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.5s;
-}
-
-.box {
-  text-decoration: none;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background: transparent;
-}
-
-/*glow text effect for about us page */
-
-.paragraph-glow {
-  cursor: default;
-}
-
-.word-glow {
-  transition: text-shadow 0.3s ease;
-  display: inline-block;
-  position: relative;
-}
-
-.word-glow:hover {
-  text-shadow: 0 0 6px rgba(59, 130, 246, 0.8);
-}
-
-.word-glow:hover + .word-glow,
-.word-glow:has(+ .word-glow:hover) {
-  text-shadow: 0 0 4px rgba(59, 130, 246, 0.4);
-}
-
-@keyframes fade-in-up {
-  0% {
+@keyframes fadeInUp {
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 1s ease-out forwards;
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.delay-150 {
-  animation-delay: 0.15s;
-}
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
 
-/* Custom Animations */
-
-@layer utilities {
-  /* Fade-in animation */
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+/* Continuous smooth infinite marquees */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
   }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Slide-down for mobile menu */
-  .animate-slide-down {
-    animation: slideDown 0.4s ease-out forwards;
-  }
-
-  @keyframes slideDown {
-    0% {
-      opacity: 0;
-      transform: translateY(-10%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Smooth opacity swap for icons */
-  .transition-fade {
-    transition: opacity 0.3s ease;
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-/* BestTech Component Styles */
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 38s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 38s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Slide Left animation for tech strip */
 @keyframes slideLeft {
   0% {
     transform: translateX(0%);
@@ -220,43 +125,27 @@
   display: flex;
 }
 
-/* DiscoverHero Component Styles */
-
-/* Main section */
-.discover-hero {
-  @apply py-16 md:py-20 lg:py-24;
-  background-color: #d8eaff;
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
 }
 
-.discover-hero-container {
-  @apply container mx-auto px-4;
+.animate-subtle-pulse {
+  animation: subtlePulse 3s ease-in-out infinite;
 }
 
-/* Desktop Layout */
-.desktop-layout {
-  @apply block;
-}
-
-.mobile-layout {
-  @apply hidden;
-}
-
-/* Services grid - static layout for desktop */
-.services-grid {
-  @apply space-y-8 md:space-y-12;
-}
-
-.services-row {
-  @apply flex flex-wrap justify-center gap-6 md:gap-8;
-}
-
-/* Service card styles - simple and clean */
+/* Service Card Styles */
 .service-card {
-  @apply flex flex-col items-center justify-center p-6 md:p-8 rounded-2xl cursor-pointer transition-all duration-300;
+  @apply flex flex-col items-center justify-center p-6 rounded-md bg-white border border-slate-200 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md hover:border-slate-300;
   min-width: 200px;
   max-width: 240px;
   flex: 1;
-  backdrop-filter: blur(10px);
 }
 
 .service-card:hover {
@@ -264,126 +153,100 @@
 }
 
 .service-icon-wrapper {
-  @apply mb-4 md:mb-6 p-3 md:p-4 bg-gradient-to-br rounded-2xl transition-all duration-300;
+  @apply mb-4 p-3 bg-slate-50 border border-slate-100 rounded-md transition-colors duration-200;
 }
 
 .service-card:hover .service-icon-wrapper {
-  @apply bg-gradient-to-br from-blue-100 to-indigo-200;
+  @apply bg-slate-100 border-slate-200;
 }
 
 .service-icon {
-  @apply w-12 h-12 md:w-16 md:h-16;
+  @apply w-12 h-12 object-contain;
 }
 
 .service-title {
-  @apply text-sm md:text-base font-semibold text-gray-800 text-center leading-tight;
+  @apply text-sm font-semibold text-slate-800 text-center leading-tight;
   max-width: 180px;
 }
 
-/* Mobile Carousel Styles */
-@media (max-width: 768px) {
-  .desktop-layout {
-    @apply hidden;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  .mobile-layout {
-    @apply block;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
 
-  .mobile-carousel-container {
-    @apply relative;
-  }
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
 
-  .mobile-carousel {
-    @apply overflow-hidden rounded-2xl;
-    touch-action: pan-y pinch-zoom;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
 
-  .carousel-track {
-    @apply flex transition-transform duration-300 ease-in-out;
-  }
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-  .carousel-slide {
-    @apply flex-shrink-0 w-full flex justify-center px-4;
-  }
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
 
-  .carousel-slide .service-card {
-    @apply w-full max-w-xs mx-auto;
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
-  /* Navigation Arrows */
-  .carousel-arrow {
-    @apply absolute top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-lg transition-all duration-200;
-  }
+/* 3D Flip Card Utilities */
+.flip-card-perspective {
+  perspective: 1200px;
+}
 
-  .carousel-arrow-left {
-    @apply left-2;
-  }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-  .carousel-arrow-right {
-    @apply right-2;
-  }
-
-  .carousel-arrow:hover {
-    @apply scale-110;
-  }
-
-  /* Dots Indicator */
-  .carousel-dots {
-    @apply flex justify-center space-x-2 mt-6;
-  }
-
-  .carousel-dot {
-    @apply w-2 h-2 rounded-full bg-gray-400 transition-all duration-200;
-  }
-
-  .carousel-dot.active {
-    @apply bg-blue-600 w-6;
-  }
-
-  .carousel-dot:hover {
-    @apply bg-blue-500;
+@media (hover: hover) and (pointer: fine) {
+  .flip-card-perspective:hover .flip-card-inner {
+    transform: rotateY(180deg);
   }
 }
 
-/* Responsive adjustments for larger mobile screens */
-@media (max-width: 480px) {
-  .service-card {
-    @apply p-5;
-    min-width: 160px;
-  }
-
-  .service-icon-wrapper {
-    @apply p-3 mb-4;
-  }
-
-  .service-icon {
-    @apply w-10 h-10;
-  }
-
-  .service-title {
-    @apply text-xs;
-  }
+.flip-card-perspective.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
 
-/* Ensure cards stay in place on larger screens */
-@media (min-width: 1200px) {
-  .services-row {
-    @apply justify-center;
-  }
-
-  .service-card {
-    @apply flex-none;
-    width: 220px;
-  }
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
 }
 
-/* Smooth scrolling for carousel */
-.carousel-track {
-  scroll-behavior: smooth;
+.flip-card-front {
+  transform: rotateY(0deg);
 }
 
-/* Pause auto-play on hover for mobile */
-.mobile-carousel:hover .carousel-track {
-  animation-play-state: paused;
+.flip-card-back {
+  transform: rotateY(180deg);
 }
+

@@ -1,211 +1,200 @@
 "use client";
-import Footer from "@/components/ui/Footer";
+
 import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
+import Link from "next/link";
+import { ShieldCheck, Mail, MapPin, Phone, ArrowLeft } from "lucide-react";
 
 export default function PrivacyPolicyPage() {
     return (
-        <div className="bg-mainBgColor px-4 py-8">
-            <Navbar/>
-            <div className="bg-white rounded-lg shadow-lg border mt-10 border-gray-200">
-                <div className="px-6 py-8 border-b border-gray-200">
-                    <h1 className="text-3xl font-bold text-center text-gray-900 mb-4">Privacy Policy</h1>
-                    <div className="text-center text-gray-600 space-y-1">
-                        <p>
-                            <strong>Effective Date:</strong> June 14, 2025
-                        </p>
-                        <p>
-                            <strong>Last Updated:</strong> June 14, 2025
-                        </p>
+        <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+            <Navbar />
+
+            <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-10 sm:pb-16">
+                {/* Breadcrumb / Back Navigation */}
+                <div className="mb-6">
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+                    >
+                        <ArrowLeft className="w-3.5 h-3.5" />
+                        <span>Back to Home</span>
+                    </Link>
+                </div>
+
+                {/* Document Header Card */}
+                <div className="bg-white border border-slate-200 rounded-md p-6 sm:p-10 mb-8 shadow-xs">
+                    <div className="flex items-center gap-3 mb-4 text-blue-600">
+                        <ShieldCheck className="w-6 h-6" />
+                        <span className="text-xs uppercase tracking-widest font-bold text-slate-500">
+                            Legal & Compliance
+                        </span>
+                    </div>
+
+                    <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 mb-3">
+                        Privacy Policy
+                    </h1>
+
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 border-t border-slate-100 pt-4">
+                        <span><strong>Effective Date:</strong> January 1, 2026</span>
+                        <span>•</span>
+                        <span><strong>Last Revised:</strong> October 2026</span>
+                        <span>•</span>
+                        <span><strong>Entity:</strong> Nuvance Technologies Inc.</span>
                     </div>
                 </div>
 
-                <div className="px-6 py-8 space-y-8">
-                    <div className="prose prose-gray max-w-none">
-                        <p className="text-lg leading-relaxed text-gray-700">
-                            At Nuvance Technologies, your privacy is a priority. This Privacy Policy outlines how we collect, use,
-                            disclose, and safeguard your information when you visit our website{" "}
-                            <a href="https://nuvancetechnologies.com" className="text-blue-600 hover:underline font-medium">
-                                https://nuvancetechnologies.com
-                            </a>{" "}
-                            or engage with our services.
+                {/* Content Document */}
+                <div className="bg-white border border-slate-200 rounded-md p-6 sm:p-12 shadow-xs space-y-10 text-slate-700 text-sm sm:text-base leading-relaxed">
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            1. Introduction & Overview
+                        </h2>
+                        <p className="mb-3">
+                            Nuvance Technologies (&quot;Nuvance&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy and ensuring the security of your personal data. This Privacy Policy describes how we collect, store, process, and protect your information when you visit our website at{" "}
+                            <span className="font-semibold text-slate-900">https://nuvancetechnologies.com</span>, engage our software engineering services, or communicate with our team.
                         </p>
-                        <p className="text-base leading-relaxed text-gray-700">
-                            By using our website or submitting your personal information, you consent to the practices described in
-                            this policy.
+                        <p>
+                            By utilizing our website or submitting your inquiries, you acknowledge the terms outlined herein. If you have questions regarding our data practices, contact us directly at{" "}
+                            <a href="mailto:nuvancetechnologiess@gmail.com" className="text-blue-600 hover:underline font-medium">
+                                nuvancetechnologiess@gmail.com
+                            </a>.
                         </p>
-                    </div>
+                    </section>
 
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">1. Information We Collect</h2>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            2. Information We Collect
+                        </h2>
+                        <p className="mb-4">
+                            We collect only the information necessary to provide software engineering services, communicate project specifications, and maintain platform security.
+                        </p>
 
-                            <div className="space-y-6">
-                                <div>
-                                    <h3 className="text-xl font-medium mb-3 text-gray-800">a) Personal Information</h3>
-                                    <p className="mb-3 text-gray-700">Provided voluntarily through contact forms or service inquiries:</p>
-                                    <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                                        <li>Name</li>
-                                        <li>Email address</li>
-                                        <li>Phone number</li>
-                                        <li>Company/Organization name</li>
-                                        <li>Project requirements</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h3 className="text-xl font-medium mb-3 text-gray-800">b) Technical Information</h3>
-                                    <p className="mb-3 text-gray-700">Automatically collected via cookies and analytics tools:</p>
-                                    <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                                        <li>IP address</li>
-                                        <li>Browser type</li>
-                                        <li>Device information</li>
-                                        <li>Pages visited</li>
-                                        <li>Time spent on site</li>
-                                    </ul>
-                                </div>
+                        <div className="space-y-4">
+                            <div className="p-4 bg-slate-50 border border-slate-100 rounded-md">
+                                <h3 className="font-bold text-slate-900 mb-1">A. Information Provided Voluntarily</h3>
+                                <p className="text-sm text-slate-600 mb-2">
+                                    When you submit consultation requests, contact forms, or enter service agreements:
+                                </p>
+                                <ul className="list-disc list-inside text-sm text-slate-600 space-y-1 ml-1">
+                                    <li>Full Name and Professional Title</li>
+                                    <li>Corporate Email Address and Direct Contact Phone Number</li>
+                                    <li>Company Name, Size, and Industry</li>
+                                    <li>Project Scope, Technical Architecture Requirements, and Budget Specifications</li>
+                                </ul>
                             </div>
-                        </section>
-                    </div>
 
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">2. How We Use Your Information</h2>
-                            <p className="mb-3 text-gray-700">We use your information to:</p>
-                            <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                                <li>Respond to your queries or project requests</li>
-                                <li>Provide, operate, and maintain our services</li>
-                                <li>Improve website performance and user experience</li>
-                                <li>Send service-related updates or promotional emails (you may opt-out at any time)</li>
-                                <li>Ensure data security and prevent fraud</li>
-                            </ul>
-                        </section>
-                    </div>
+                            <div className="p-4 bg-slate-50 border border-slate-100 rounded-md">
+                                <h3 className="font-bold text-slate-900 mb-1">B. System & Technical Data</h3>
+                                <p className="text-sm text-slate-600 mb-2">
+                                    Automatically collected via server logs and essential analytics to prevent abuse and ensure uptime:
+                                </p>
+                                <ul className="list-disc list-inside text-sm text-slate-600 space-y-1 ml-1">
+                                    <li>IP address and approximate geolocation</li>
+                                    <li>Browser type, engine version, and operating system</li>
+                                    <li>Timestamped access logs and referral URLs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
 
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">3. Sharing and Disclosure</h2>
-                            <p className="mb-3 text-gray-700">
-                                We do not sell or rent your personal data. Your information may be shared with:
-                            </p>
-                            <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                                <li>Our internal team for project purposes</li>
-                                <li>Third-party tools (e.g., CRM, analytics, or payment gateways) only where necessary</li>
-                                <li>Legal authorities if required by law or to enforce our terms</li>
-                            </ul>
-                        </section>
-                    </div>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            3. Cookies and Tracking Technologies
+                        </h2>
+                        <p className="mb-3">
+                            We employ standard, unobtrusive cookies to operate this site:
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 ml-1 text-slate-600">
+                            <li>
+                                <strong className="text-slate-900">Strictly Necessary Cookies:</strong> Essential for site routing, session maintenance, and security verification.
+                            </li>
+                            <li>
+                                <strong className="text-slate-900">Performance & Analytics Cookies:</strong> Used strictly to quantify aggregate traffic and optimize loading speeds.
+                            </li>
+                        </ul>
+                        <p className="mt-3">
+                            You may configure cookie preferences at any time through our bottom cookie banner or directly via your web browser settings.
+                        </p>
+                    </section>
 
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">4. Data Retention</h2>
-                            <p className="text-gray-700">
-                                We retain your personal data only as long as necessary to fulfill the purposes outlined in this policy
-                                or to comply with legal obligations.
-                            </p>
-                        </section>
-                    </div>
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            4. Purpose of Data Processing
+                        </h2>
+                        <p className="mb-2">We process your data strictly under valid lawful bases:</p>
+                        <ul className="list-disc list-inside space-y-1.5 ml-1 text-slate-600">
+                            <li>To fulfill service requests and deliver engineering proposals.</li>
+                            <li>To execute software development contracts and client deliverables.</li>
+                            <li>To maintain system integrity, detect malicious requests, and prevent denial-of-service.</li>
+                            <li>To comply with regulatory standards and financial recordkeeping requirements.</li>
+                        </ul>
+                    </section>
 
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">5. Your Rights</h2>
-                            <p className="mb-3 text-gray-700">Depending on your location, you may have rights to:</p>
-                            <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                                <li>Access or update your personal data</li>
-                                <li>Request deletion of your data</li>
-                                <li>Object to certain types of processing</li>
-                                <li>Withdraw consent at any time (where processing is based on consent)</li>
-                            </ul>
-                            <p className="mt-4 text-gray-700">
-                                To exercise any of these rights, contact us at{" "}
-                                <a href="mailto:nuvancetechnologiess@gmail.com" className="text-blue-600 hover:underline font-medium">
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            5. Zero Data Sale & Information Sharing
+                        </h2>
+                        <p className="mb-3">
+                            <strong>We never sell, rent, or monetize client or visitor data.</strong> Information is shared solely with vetted operational providers required to execute services:
+                        </p>
+                        <ul className="list-disc list-inside space-y-1.5 ml-1 text-slate-600">
+                            <li>Hosting and cloud infrastructure vendors (e.g., AWS, GCP) operating under strict data protection addendums.</li>
+                            <li>Direct calendar scheduling providers (e.g., Calendly) when you initiate an appointment.</li>
+                            <li>Competent public authorities only when compelled by valid legal processes.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            6. Data Security & Storage Controls
+                        </h2>
+                        <p>
+                            We enforce industry-standard security protocols, including TLS 1.3 encryption in transit, strict role-based access control (RBAC), and periodic dependency vulnerability reviews. Data is stored within secure enterprise data centers and retained only as long as necessary for active client engagements or legal compliance.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="text-xl font-bold text-slate-950 mb-3 border-b border-slate-100 pb-2">
+                            7. Your Legal Privacy Rights
+                        </h2>
+                        <p className="mb-2">
+                            Depending on your jurisdiction (such as GDPR, CCPA, or DPDP Act), you maintain specific statutory rights:
+                        </p>
+                        <ul className="list-disc list-inside space-y-1 ml-1 text-slate-600">
+                            <li>The right to access and obtain a portable copy of personal records.</li>
+                            <li>The right to demand correction of incomplete or outdated records.</li>
+                            <li>The right to request complete data erasure (&quot;Right to be Forgotten&quot;).</li>
+                            <li>The right to withdraw consent for non-essential communications at any time.</li>
+                        </ul>
+                    </section>
+
+                    <section className="bg-slate-50 border border-slate-200 rounded-md p-6">
+                        <h2 className="text-base font-bold text-slate-950 mb-3">
+                            8. Contact Our Data Compliance Team
+                        </h2>
+                        <div className="space-y-2 text-xs sm:text-sm text-slate-600">
+                            <p><strong>Nuvance Technologies Inc.</strong></p>
+                            <div className="flex items-center gap-2">
+                                <MapPin className="w-4 h-4 text-slate-500" />
+                                <span>Jabalpur, Madhya Pradesh, India</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Mail className="w-4 h-4 text-slate-500" />
+                                <a href="mailto:nuvancetechnologiess@gmail.com" className="text-blue-600 hover:underline">
                                     nuvancetechnologiess@gmail.com
                                 </a>
-                                .
-                            </p>
-                        </section>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">6. Cookies & Tracking Technologies</h2>
-                            <p className="text-gray-700">
-                                We use cookies to enhance your experience, monitor performance, and improve our services. You may choose
-                                to disable cookies via your browser settings.
-                            </p>
-                        </section>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">7. Data Security</h2>
-                            <p className="text-gray-700">
-                                We implement appropriate technical and organizational measures to protect your personal data from
-                                unauthorized access, alteration, or destruction. However, no method of transmission over the internet is
-                                100% secure.
-                            </p>
-                        </section>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">8. External Links</h2>
-                            <p className="text-gray-700">
-                                Our website may contain links to third-party websites. We are not responsible for the privacy practices
-                                of those sites.
-                            </p>
-                        </section>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-8">
-                        <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">9. Changes to This Privacy Policy</h2>
-                            <p className="text-gray-700">
-                                We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised
-                                effective date. Continued use of the website indicates acceptance of the updated policy.
-                            </p>
-                        </section>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-8">
-                        <section>
-                            <h2 className="text-2xl font-semibold mb-4 text-gray-900">10. Contact Us</h2>
-                            <p className="mb-4 text-gray-700">
-                                If you have any questions or concerns about this Privacy Policy, feel free to contact us:
-                            </p>
-                            <div className="space-y-2 text-gray-700">
-                                <p>
-                                    <strong>Email:</strong>{" "}
-                                    <a
-                                        href="mailto:nuvancetechnologiess@gmail.com"
-                                        className="text-blue-600 hover:underline font-medium"
-                                    >
-                                        nuvancetechnologiess@gmail.com
-                                    </a>
-                                </p>
-                                <p>
-                                    <strong>Phone:</strong>{" "}
-                                    <a href="tel:+917219638172" className="text-blue-600 hover:underline font-medium">
-                                        +91 7219638172
-                                    </a>
-                                    ,{" "}
-                                    <a href="tel:+919109461901" className="text-blue-600 hover:underline font-medium">
-                                        +91 9109461901
-                                    </a>
-                                </p>
-                                <p>
-                                    <strong>Website:</strong>{" "}
-                                    <a href="https://nuvancetechnologies.com" className="text-blue-600 hover:underline font-medium">
-                                        https://nuvancetechnologies.com
-                                    </a>
-                                </p>
                             </div>
-                        </section>
-                    </div>
+                            <div className="flex items-center gap-2">
+                                <Phone className="w-4 h-4 text-slate-500" />
+                                <span>+91 7219638172 / +91 9109461901</span>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </div>
-            <div>
-                <Footer/>
-            </div>
+            </main>
+
+            <Footer />
         </div>
-    )
+    );
 }

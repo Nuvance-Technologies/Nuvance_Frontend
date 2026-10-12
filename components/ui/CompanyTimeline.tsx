@@ -1,216 +1,355 @@
-"use client"
+"use client";
 
-import React from "react"
-import { useState, useEffect, useRef } from "react"
-import { Building2, Wrench, RotateCcw, Lightbulb, Globe, ChevronLeft, ChevronRight } from "lucide-react"
+import React, { useState, useEffect, useRef } from "react";
+import { 
+    ChevronLeft, 
+    ChevronRight, 
+    Sparkles, 
+    CheckCircle2, 
+    Award 
+} from "lucide-react";
 
-interface TimelineItem {
-    icon: React.ReactNode
-    date: string
-    title: string
-    description: string
-    color: string
+interface MilestoneStep {
+    id: number;
+    year: string;
+    dateBadge: string;
+    shortTitle: string;
+    title: string;
+    description: string;
+    tags: string[];
+    isAward?: boolean;
 }
 
-const timelineData: TimelineItem[] = [
+const milestoneSteps: MilestoneStep[] = [
     {
-        icon: <Building2 className="w-6 h-6" />,
-        date: "2024 – The Beginning",
-        title: "Founded as TechStudio",
+        id: 1,
+        year: "Early 2024",
+        dateBadge: "Early 2024 • Founding",
+        shortTitle: "Founding",
+        title: "Inception as TechStudio",
         description:
-            "A passionate development company focused on building user-friendly websites and applications. Delivered early success with small business and startup clients.",
-        color: "bg-blue-500",
+            "Founded as a dedicated engineering group focused on building custom web applications, business tooling, and high-conversion MVPs for early-stage clients.",
+        tags: ["React & Node.js", "Custom Software", "MVP Delivery"],
     },
     {
-        icon: <Wrench className="w-6 h-6" />,
-        date: "Mid-2024 – Growing Capabilities",
-        title: "Expanding Service Offerings",
+        id: 2,
+        year: "Mid 2024",
+        dateBadge: "Mid 2024 • Expansion",
+        shortTitle: "Capabilities Expansion",
+        title: "Full-Stack Capabilities Expansion",
         description:
-            "Expanded to include UI/UX design, mobile app development, and digital branding. Built a team of creative developers and designers, working on complex, multi-platform projects.",
-        color: "bg-green-500",
+            "Scaled engineering disciplines into cross-platform mobile apps (iOS & Android), AWS/GCP cloud migrations, and scalable multi-tenant API integrations.",
+        tags: ["Mobile Apps", "Cloud DevOps", "Scalable APIs"],
     },
     {
-        icon: <RotateCcw className="w-6 h-6" />,
-        date: "Late 2024 – Rebranding",
-        title: "Nuvance Technologies",
+        id: 3,
+        year: "Late 2024",
+        dateBadge: "Late 2024 • Strategic Pivot",
+        shortTitle: "Rebranding",
+        title: "Rebranding to Nuvance Technologies",
         description:
-            "Rebranded from TechStudio to Nuvance Technologies to reflect a broader vision. Shifted focus to end-to-end software solutions with AI-powered features and cloud-ready applications.",
-        color: "bg-purple-500",
+            "Consolidated corporate identity into Nuvance Technologies to support enterprise-grade systems, high-availability architecture, and data pipelines.",
+        tags: ["Nuvance Technologies", "Enterprise Architecture", "Consulting"],
     },
     {
-        icon: <Lightbulb className="w-6 h-6" />,
-        date: "2025 – Expanding Innovation",
-        title: "Full-Service Development",
+        id: 4,
+        year: "2025",
+        dateBadge: "2025 • Enterprise Deployments",
+        shortTitle: "Platform Scaling",
+        title: "Proprietary Platforms & High Availability",
         description:
-            "Established as a complete software development company. Launched key products including AI, automation, and healthcare-focused tech (e.g., MediLink). Collaborated with global clients.",
-        color: "bg-orange-500",
+            "Deployed proprietary software architectures and healthcare tech platforms (including MediLink) engineered with strict security and multi-region failover.",
+        tags: ["Healthcare Tech", "MediLink Platform", "High Availability"],
     },
     {
-        icon: <Globe className="w-6 h-6" />,
-        date: "Today – Your Trusted Digital Partner",
-        title: "Leading Digital Innovation",
+        id: 5,
+        year: "2026",
+        dateBadge: "2026 • Prestigious Honor",
+        shortTitle: "Leadership Award",
+        title: "Visionary Business Leader Award 2026",
         description:
-            "Delivering custom software, intelligent platforms, and scalable digital products. Serving businesses across industries with a user-first approach and commitment to excellence.",
-        color: "bg-red-500",
+            "Founder Nihal Yadav honored with the Visionary Business Leader Award at the World Leader Summit, New Delhi, recognizing pioneering software leadership and architectural execution.",
+        tags: ["World Leader Summit", "Visionary Leader Award", "New Delhi"],
+        isAward: true,
     },
-]
+    {
+        id: 6,
+        year: "Present",
+        dateBadge: "Present • Global Delivery",
+        shortTitle: "Global Partner",
+        title: "Full-Service Engineering & Global Scale",
+        description:
+            "Partnering with organizations globally to build, modernize, and maintain high-impact digital systems with dedicated SLA maintenance and clean codebases.",
+        tags: ["Global Clients", "Production Systems", "Long-term SLAs"],
+    },
+];
 
-export default function Timeline() {
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-    const touchStartX = useRef(0)
-    const touchEndX = useRef(0)
-    const carouselRef = useRef<HTMLDivElement>(null)
+export default function CompanyTimeline() {
+    const [currentStep, setCurrentStep] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isUserInteracting, setIsUserInteracting] = useState(false);
 
-    // Auto-slide functionality
     useEffect(() => {
-        if (!isAutoPlaying) return
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
 
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % timelineData.length)
-        }, 4000)
-
-        return () => clearInterval(interval)
-    }, [isAutoPlaying])
-
-    // Navigation functions
-    const goToPrevious = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + timelineData.length) % timelineData.length)
-    }
-
-    const goToNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % timelineData.length)
-    }
-
-    const goToSlide = (index: number) => {
-        setCurrentIndex(index)
-    }
-
-    // Touch handlers for mobile swipe
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.targetTouches[0].clientX
-    }
-
-    const handleTouchMove = (e: React.TouchEvent) => {
-        touchEndX.current = e.targetTouches[0].clientX
-    }
-
-    const handleTouchEnd = () => {
-        if (!touchStartX.current || !touchEndX.current) return
-
-        const distance = touchStartX.current - touchEndX.current
-        const isLeftSwipe = distance > 50
-        const isRightSwipe = distance < -50
-
-        if (isLeftSwipe) {
-            goToNext()
-        } else if (isRightSwipe) {
-            goToPrevious()
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
         }
-    }
 
-    // Pause auto-play on hover
-    const handleMouseEnter = () => setIsAutoPlaying(false)
-    const handleMouseLeave = () => setIsAutoPlaying(true)
+        return () => observer.disconnect();
+    }, []);
+
+    // Auto-advancing step progression
+    useEffect(() => {
+        if (isVisible && !isUserInteracting) {
+            const timer = setInterval(() => {
+                setCurrentStep((prev) => (prev + 1) % milestoneSteps.length);
+            }, 3500);
+
+            return () => clearInterval(timer);
+        }
+    }, [isVisible, isUserInteracting]);
+
+    const nextStep = () => {
+        setIsUserInteracting(true);
+        setCurrentStep((prev) => (prev + 1) % milestoneSteps.length);
+    };
+
+    const prevStep = () => {
+        setIsUserInteracting(true);
+        setCurrentStep((prev) => (prev - 1 + milestoneSteps.length) % milestoneSteps.length);
+    };
+
+    const goToStep = (index: number) => {
+        setIsUserInteracting(true);
+        setCurrentStep(index);
+    };
+
+    const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchStartX(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX === null) return;
+        const diffX = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diffX) > 40) {
+            if (diffX > 0) {
+                prevStep();
+            } else {
+                nextStep();
+            }
+        }
+        setTouchStartX(null);
+    };
+
+    const activeItem = milestoneSteps[currentStep];
 
     return (
-        <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
-            <div className="text-center mb-12">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Journey</h1>
-                <p className="text-lg sm:text-xl text-black font-bold max-w-2xl mx-auto">
-                    From TechStudio to Nuvance Technologies - A story of growth, innovation, and digital excellence
-                </p>
-            </div>
+        <section
+            ref={containerRef}
+            className="w-full py-8"
+            onMouseEnter={() => setIsUserInteracting(true)}
+            onMouseLeave={() => setIsUserInteracting(false)}
+        >
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                {/* Header */}
+                <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 border border-blue-200 rounded-md text-xs font-semibold uppercase tracking-wider text-blue-700 mb-3">
+                        <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Corporate Evolution</span>
+                    </div>
+                    <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+                        Company Journey & Technical Milestones
+                    </h2>
+                    <p className="text-sm sm:text-base text-slate-600 mt-2">
+                        A chronological progression of technical rigor, milestone executions, and industry recognition.
+                    </p>
+                </div>
 
-            {/* Horizontal Timeline Carousel */}
-            <div
-                className="relative"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-            >
-                {/* Navigation Arrows */}
-                <button
-                    onClick={goToPrevious}
-                    className="hidden sm:flex absolute cursor-pointer left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
-                    aria-label="Previous slide"
-                >
-                    <ChevronLeft className="w-6 h-6 text-gray-600" />
-                </button>
+                {/* Desktop Horizontal Stepper Track */}
+                <div className="hidden md:block relative mb-10">
+                    <div className="flex items-center justify-between relative px-6">
+                        {/* Continuous Horizontal Progress Line */}
+                        <div className="absolute top-[64%] left-10 right-10 h-1.5 bg-slate-200 -translate-y-1/2 z-0 rounded-full overflow-hidden">
+                            <div
+                                className="h-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-400 transition-all duration-700 ease-out rounded-full"
+                                style={{
+                                    width: `${((currentStep + 1) / milestoneSteps.length) * 100}%`,
+                                }}
+                            />
+                        </div>
 
-                <button
-                    onClick={goToNext}
-                    className="hidden sm:flex absolute right-0 top-1/2 cursor-pointer transform -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:bg-gray-50"
-                    aria-label="Next slide"
-                >
-                    <ChevronRight className="w-6 h-6 text-gray-600" />
-                </button>
+                        {milestoneSteps.map((step, index) => {
+                            const isReached = index <= currentStep;
+                            const isCurrent = index === currentStep;
 
-                {/* Carousel Container */}
-                <div className="overflow-hidden mx-2 sm:mx-12">
-                    <div
-                        ref={carouselRef}
-                        className="flex transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                        {timelineData.map((item, index) => (
-                            <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
-                                <div className="relative">
-                                    {/* Horizontal Line */}
-                                    <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500"></div>
-
-                                    {/* Icon Circle */}
-                                    <div
-                                        className={`relative mx-auto w-14 h-14 sm:w-16 sm:h-16 ${item.color} rounded-full flex items-center justify-center text-white shadow-lg z-10 mb-6`}
-                                    >
-                                        {React.cloneElement(item.icon as React.ReactElement)}
+                            return (
+                                <div
+                                    key={step.id}
+                                    className="flex flex-col items-center relative z-10 cursor-pointer group"
+                                    onClick={() => goToStep(index)}
+                                >
+                                    {/* Step Year / Badge (Above circle) */}
+                                    <div className="text-center mb-4 h-12 flex flex-col justify-end">
+                                        <span
+                                            className={`text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-all duration-300 border ${
+                                                isCurrent
+                                                    ? step.isAward
+                                                        ? "bg-blue-100 text-blue-900 border-blue-300 shadow-xs"
+                                                        : "bg-blue-50 text-blue-700 border-blue-200 shadow-xs"
+                                                    : isReached
+                                                    ? "bg-slate-100 text-slate-700 border-slate-200"
+                                                    : "bg-transparent text-slate-400 border-transparent"
+                                            }`}
+                                        >
+                                            {step.year}
+                                        </span>
                                     </div>
 
-                                    {/* Content Card */}
-                                    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 w-full max-w-sm sm:max-w-md mx-auto">
-                                        <div className="flex justify-center mb-3">
-                                            <span className="text-xs sm:text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                                                {item.date}
-                                            </span>
-                                        </div>
-                                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">{item.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed text-sm sm:text-base text-center">{item.description}</p>
+                                    {/* Step Number Circle (Resting on progress track) */}
+                                    <div
+                                        className={`
+                                            w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-500 transform border-2 text-sm sm:text-base font-bold
+                                            ${
+                                                isCurrent
+                                                    ? "bg-blue-600 text-white scale-110 shadow-lg border-blue-400 ring-4 ring-blue-100"
+                                                    : isReached
+                                                    ? "bg-slate-900 text-white border-slate-700 hover:scale-105"
+                                                    : "bg-white text-slate-500 border-slate-300 group-hover:scale-105"
+                                            }
+                                        `}
+                                    >
+                                        {String(step.id).padStart(2, "0")}
+                                    </div>
+
+                                    {/* Step Label (Below circle) */}
+                                    <div className="mt-4 text-center max-w-28">
+                                        <span
+                                            className={`text-xs font-bold tracking-tight transition-colors duration-300 block leading-tight ${
+                                                isCurrent
+                                                    ? "text-blue-600"
+                                                    : isReached
+                                                    ? "text-slate-900"
+                                                    : "text-slate-400"
+                                            }`}
+                                        >
+                                            {step.shortTitle}
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {/* Featured Active Milestone Showcase Card */}
+                <div
+                    className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 md:p-10 shadow-xs transition-all duration-300 mb-8 select-none"
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    {/* Top Meta Row */}
+                    <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <span
+                                className={`px-3 py-1 rounded-full text-xs font-semibold border ${
+                                    activeItem.isAward
+                                        ? "bg-blue-50 text-blue-900 border-blue-200"
+                                        : "bg-blue-50 text-blue-700 border-blue-200"
+                                }`}
+                            >
+                                {activeItem.dateBadge}
+                            </span>
+
+                            {activeItem.isAward && (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold bg-blue-600 text-white uppercase tracking-wider shadow-2xs">
+                                    <Award className="w-3.5 h-3.5" />
+                                    <span>Visionary Business Leader 2026</span>
+                                </span>
+                            )}
+                        </div>
+
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-full">
+                            Milestone {String(activeItem.id).padStart(2, "0")} / 06
+                        </span>
+                    </div>
+
+                    {/* Milestone Title */}
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-950 tracking-tight mb-3">
+                        {activeItem.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-4xl">
+                        {activeItem.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex items-center gap-2 flex-wrap pt-5 border-t border-slate-100">
+                        {activeItem.tags.map((tag, idx) => (
+                            <span
+                                key={idx}
+                                className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-xs font-medium text-slate-700"
+                            >
+                                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                                <span>{tag}</span>
+                            </span>
                         ))}
                     </div>
                 </div>
 
-                {/* Dots Indicator */}
-                <div className="flex justify-center mt-8 space-x-2">
-                    {timelineData.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-blue-500 scale-125" : "bg-gray-300 hover:bg-gray-400"
+                {/* Navigation Controls (Previous, Step Counter, Next) */}
+                <div className="flex items-center justify-between gap-2">
+                    <button
+                        type="button"
+                        onClick={prevStep}
+                        className="inline-flex items-center gap-1 px-3.5 sm:px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 font-medium text-xs sm:text-sm shadow-2xs hover:shadow-xs hover:border-slate-300 transition-all cursor-pointer active:scale-95"
+                        aria-label="Previous milestone"
+                    >
+                        <ChevronLeft className="w-4 h-4" />
+                        <span className="hidden sm:inline">Previous Milestone</span>
+                        <span className="sm:hidden">Prev</span>
+                    </button>
+
+                    {/* Step Indicators / Dots */}
+                    <div className="flex items-center gap-1 sm:gap-2">
+                        {milestoneSteps.map((step, idx) => (
+                            <button
+                                key={step.id}
+                                type="button"
+                                onClick={() => goToStep(idx)}
+                                aria-label={`Jump to milestone ${step.year}`}
+                                className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
+                                    idx === currentStep
+                                        ? "w-6 sm:w-8 bg-blue-600"
+                                        : "w-2 bg-slate-300 hover:bg-slate-400"
                                 }`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
+                            />
+                        ))}
+                    </div>
 
-                {/* Progress Bar */}
-                <div className="mt-6 bg-gray-200 rounded-full h-1 max-w-sm sm:max-w-md mx-auto">
-                    <div
-                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-1 rounded-full transition-all duration-300"
-                        style={{ width: `${((currentIndex + 1) / timelineData.length) * 100}%` }}
-                    />
+                    <button
+                        type="button"
+                        onClick={nextStep}
+                        className="inline-flex items-center gap-1 px-3.5 sm:px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 font-medium text-xs sm:text-sm shadow-2xs hover:shadow-xs hover:border-slate-300 transition-all cursor-pointer active:scale-95"
+                        aria-label="Next milestone"
+                    >
+                        <span className="hidden sm:inline">Next Milestone</span>
+                        <span className="sm:hidden">Next</span>
+                        <ChevronRight className="w-4 h-4" />
+                    </button>
                 </div>
             </div>
-
-            {/* Mobile Swipe Instruction */}
-            <div className="text-center mt-8 sm:hidden">
-                <p className="text-sm text-black">Swipe left or right to navigate</p>
-            </div>
-        </div>
-
-    )
+        </section>
+    );
 }

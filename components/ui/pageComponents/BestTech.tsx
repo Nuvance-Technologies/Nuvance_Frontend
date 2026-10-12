@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 import { ReactNode } from "react";
 import {
     FaReact,
@@ -11,164 +11,147 @@ import {
     FaServer,
 } from "react-icons/fa";
 import { SiApachekafka } from "react-icons/si";
+
 interface TechItem {
-    name: string
-    placeholder: string
+    name: string;
+    placeholder: string;
 }
 
 interface TechCategory {
-    category: string
-    icon: ReactNode
-    technologies: TechItem[]
+    category: string;
+    icon: ReactNode;
+    technologies: TechItem[];
 }
 
 const techData: TechCategory[] = [
     {
         category: "Front-end",
-        icon: <FaReact size={24} />,
+        icon: <FaReact className="w-6 h-6 text-blue-500" />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/angular.png" },
-            { name: "", placeholder: "/TechIcons/javascript.png" },
-            { name: "", placeholder: "/TechIcons/react.png" },
-            { name: "", placeholder: "/TechIcons/bootstrap.png" },
-            { name: "", placeholder: "/TechIcons/vue.png" },
+            { name: "React", placeholder: "/TechIcons/react.png" },
+            { name: "JavaScript", placeholder: "/TechIcons/javascript.png" },
+            { name: "Angular", placeholder: "/TechIcons/angular.png" },
+            { name: "Vue", placeholder: "/TechIcons/vue.png" },
+            { name: "Bootstrap", placeholder: "/TechIcons/bootstrap.png" },
         ],
     },
     {
         category: "Back-end",
-        icon: <FaNodeJs size={24} />,
+        icon: <FaNodeJs className="w-6 h-6 text-emerald-600" />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/nodejs.png" },
-            { name: "", placeholder: "/TechIcons/python.png" },
-            { name: "", placeholder: "/TechIcons/express.png" },
-            { name: "", placeholder: "/TechIcons/java.png" },
-            { name: "", placeholder: "/TechIcons/spring.png" },
-            { name: "", placeholder: "/TechIcons/go.png" },
-        ],
-    },
-    {
-        category: "Project Management",
-        icon: <FaLaptopCode size={24} />,
-        technologies: [
-            { name: "", placeholder: "/TechIcons/jira.png" },
-            { name: "", placeholder: "/TechIcons/asana.png" },
-            { name: "", placeholder: "/TechIcons/trello.png" },
-        ],
-    },
-    {
-        category: "Big Data",
-        icon: <SiApachekafka size={24} />,
-        technologies: [
-            { name: "", placeholder: "/TechIcons/amazon_elas.png" },
-            { name: "", placeholder: "/TechIcons/mongo.png" },
-            { name: "", placeholder: "/TechIcons/amazon_ddb.png" },
-            { name: "", placeholder: "/TechIcons/dynamo.png" },
+            { name: "Node.js", placeholder: "/TechIcons/nodejs.png" },
+            { name: "Python", placeholder: "/TechIcons/python.png" },
+            { name: "Express", placeholder: "/TechIcons/express.png" },
+            { name: "Java", placeholder: "/TechIcons/java.png" },
+            { name: "Spring", placeholder: "/TechIcons/spring.png" },
+            { name: "Go", placeholder: "/TechIcons/go.png" },
         ],
     },
     {
         category: "Mobile App Development",
-        icon: <FaAndroid size={24} />,
+        icon: <FaAndroid className="w-6 h-6 text-green-600" />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/swift.png" },
-            { name: "", placeholder: "/TechIcons/ionic.png" },
-            { name: "", placeholder: "/TechIcons/kotlin.png" },
-            { name: "", placeholder: "/TechIcons/flutter.png" },
-            { name: "", placeholder: "/TechIcons/xcode.png" },
+            { name: "Flutter", placeholder: "/TechIcons/flutter.png" },
+            { name: "Swift", placeholder: "/TechIcons/swift.png" },
+            { name: "Kotlin", placeholder: "/TechIcons/kotlin.png" },
+            { name: "Ionic", placeholder: "/TechIcons/ionic.png" },
+            { name: "Xcode", placeholder: "/TechIcons/xcode.png" },
         ],
     },
     {
         category: "Database",
-        icon: <FaDatabase size={24} />,
+        icon: <FaDatabase className="w-6 h-6 text-indigo-600" />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/mysql.png" },
-            { name: "", placeholder: "/TechIcons/oracle.png" },
-            { name: "", placeholder: "/TechIcons/mongo.png" },
+            { name: "MySQL", placeholder: "/TechIcons/mysql.png" },
+            { name: "Oracle", placeholder: "/TechIcons/oracle.png" },
+            { name: "MongoDB", placeholder: "/TechIcons/mongo.png" },
+            { name: "DynamoDB", placeholder: "/TechIcons/dynamo.png" },
         ],
     },
     {
-        category: "Servers",
-        icon: <FaServer size={24} />,
+        category: "Servers & Cloud",
+        icon: <FaServer className="w-6 h-6 text-sky-600" />,
         technologies: [
-            { name: "", placeholder: "/TechIcons/aws.png" },
-            { name: "", placeholder: "/TechIcons/googlecloud.png" },
-            { name: "", placeholder: "/TechIcons/azure.png" },
-            { name: "", placeholder: "/TechIcons/firebase.png" },
+            { name: "AWS", placeholder: "/TechIcons/aws.png" },
+            { name: "Google Cloud", placeholder: "/TechIcons/googlecloud.png" },
+            { name: "Azure", placeholder: "/TechIcons/azure.png" },
+            { name: "Firebase", placeholder: "/TechIcons/firebase.png" },
         ],
     },
-]
+    {
+        category: "Big Data & Streaming",
+        icon: <SiApachekafka className="w-6 h-6 text-red-600" />,
+        technologies: [
+            { name: "Kafka", placeholder: "/TechIcons/kafka.png" },
+            { name: "Elasticsearch", placeholder: "/TechIcons/amazon_elas.png" },
+            { name: "MongoDB", placeholder: "/TechIcons/mongo.png" },
+            { name: "DynamoDB", placeholder: "/TechIcons/amazon_ddb.png" },
+        ],
+    },
+    {
+        category: "Project Management",
+        icon: <FaLaptopCode className="w-6 h-6 text-blue-600" />,
+        technologies: [
+            { name: "Jira", placeholder: "/TechIcons/jira.png" },
+            { name: "Confluence", placeholder: "/TechIcons/confluence.png" },
+            { name: "Asana", placeholder: "/TechIcons/asana.png" },
+            { name: "Trello", placeholder: "/TechIcons/trello.png" },
+        ],
+    },
+];
 
 export default function BestTech() {
     return (
-        <div className="w-full bg-mainBgColor flex justify-center">
-            {/* Desktop Layout */}
-            <div className="hidden lg:block p-8">
-                <div className="max-w-7xl mx-auto space-y-10">
-                    {techData.map((category, index) => (
-                        <div key={index} className="flex items-center gap-12">
-                            {/* Category Label */}
-                            <div className="flex items-center gap-4 min-w-[250px]">
-                                <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                                    {category.icon}
-                                </div>
-                                <span className="text-gray-700 font-medium text-2xl">{category.category}</span>
+        <div className="w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                {techData.map((category, index) => (
+                    <div
+                        key={index}
+                        className="bg-white border border-slate-200 rounded-md p-5 sm:p-6 lg:p-7 shadow-2xs hover:border-slate-300 transition-all flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-10"
+                    >
+                        {/* Category Label */}
+                        <div className="flex items-center gap-4 lg:w-[260px] flex-shrink-0">
+                            <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center flex-shrink-0 shadow-2xs">
+                                {category.icon}
                             </div>
+                            <div>
+                                <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                                    {category.category}
+                                </h3>
+                                <span className="text-xs text-slate-500 font-medium">
+                                    {category.technologies.length} Frameworks & Tools
+                                </span>
+                            </div>
+                        </div>
 
-                            {/* Technologies */}
-                            <div className="flex items-center gap-10 flex-wrap">
-                                {category.technologies.map((tech, techIndex) => (
-                                    <div key={techIndex} className="flex items-center hover:scale-110 cursor-pointer transition-all duration-500">
+                        {/* Subtle Vertical Divider on Desktop */}
+                        <div className="hidden lg:block w-px h-16 bg-slate-200 flex-shrink-0" />
+
+                        {/* Technology Logos with Labels */}
+                        <div className="w-full grid grid-cols-3 xs:grid-cols-4 sm:flex sm:flex-wrap sm:items-center gap-3.5 sm:gap-6 lg:gap-8 justify-items-center sm:justify-start">
+                            {category.technologies.map((tech, techIndex) => (
+                                <div
+                                    key={techIndex}
+                                    className="group flex flex-col items-center cursor-pointer transition-transform duration-300 hover:scale-105"
+                                >
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center p-2 rounded-xl bg-slate-50/80 group-hover:bg-blue-50/50 border border-slate-100 group-hover:border-blue-100 transition-colors shadow-2xs">
                                         <Image
                                             src={tech.placeholder || "/placeholder.svg"}
                                             alt={tech.name}
-                                            className="w-32 h-32 object-contain"
-                                            width={140}
-                                            height={140}
+                                            className="max-h-11 max-w-11 sm:max-h-14 sm:max-w-14 object-contain transition-transform duration-300 group-hover:scale-105"
+                                            width={80}
+                                            height={80}
                                         />
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Mobile Layout with Horizontal Scrolling Sliders */}
-            <div className="lg:hidden w-full p-6">
-                <div className="space-y-8">
-                    {techData.map((category, index) => (
-                        <div key={index} className="space-y-4">
-                            {/* Category Header */}
-                            <div className="text-center">
-                                <h3 className="text-black font-bold text-xl mb-4">{category.category}</h3>
-                            </div>
-
-                            {/* Technologies - Horizontal Auto-Scrolling */}
-                            <div className="relative overflow-hidden">
-                                <div
-                                    className="flex gap-4 animate-slide"
-                                    style={{
-                                        animation: "slideLeft 20s linear infinite",
-                                        minWidth: "max-content"
-                                    }}
-                                >
-                                    {category.technologies.concat(category.technologies).map((tech, techIndex) => (
-                                        <div key={techIndex} className="flex items-center justify-center flex-shrink-0">
-                                            <Image
-                                                src={tech.placeholder || "/placeholder.svg"}
-                                                alt={tech.name}
-                                                className="object-contain"
-                                                width={140}
-                                                height={140}
-                                            />
-                                        </div>
-                                    ))}
+                                    <span className="text-[11px] sm:text-xs font-semibold text-slate-600 group-hover:text-blue-600 transition-colors text-center mt-1.5 leading-tight px-1">
+                                        {tech.name}
+                                    </span>
                                 </div>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
-
-    )
+    );
 }

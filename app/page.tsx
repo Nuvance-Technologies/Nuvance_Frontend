@@ -1,65 +1,58 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import PointCard from "@/components/cards/PointCard";
 import { Button } from "@/components/ui/Button";
-import { Globe } from "lucide-react";
+import { ArrowRight, Calendar, ShieldCheck, CheckCircle2 } from "lucide-react";
 import ExecutionProcess from "@/components/ui/pageComponents/ExecutionProcess";
-import Image from "next/image";
 import BookDemoCall from "@/components/ui/BookCall";
 import DiscoverNoFloating from "@/components/ui/pageComponents/DiscoverNoFloating";
 import BestTech from "@/components/ui/pageComponents/BestTech";
-import { Close } from "@/icons/others/Close";
+import Image from "next/image";
+import CalendlyModal from "@/components/ui/CalendlyModal";
 
 const industries = [
     "Media & Entertainment",
-    "Travel & Tourism",
-    "Elearning & Education",
-    "Healthcare Solutions",
-    "Banking & Finance",
-    "Hotel & Restaurants",
-    "Retail & E-commerce",
-    "Logistics & Supply",
-    "Real Estate",
-    "Automotive",
-    "Agriculture",
-    "Government"
+    "Travel & Hospitality",
+    "Education & E-Learning",
+    "Healthcare & Life Sciences",
+    "Banking & Financial Services",
+    "Retail & E-Commerce",
+    "Logistics & Supply Chain",
+    "Real Estate & Property Tech",
+    "Automotive & Fleet Management",
+    "Agriculture & AgTech",
+    "Government & Public Sector",
+    "Energy & Utilities"
 ];
 
-declare global {
-    interface Window {
-        Calendly?: {
-            initPopupWidget: (options: { url: string }) => void;
-            initInlineWidget: (options: { url: string; parentElement: HTMLElement }) => void;
-        };
-    }
-}
+const backgroundImages = [
+    "/bgimg-1.jpg",
+    "/bgimg-2.jpg",
+    "/bgimg-3.jpg",
+    "/bgimg-4.jpg",
+];
 
 export default function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showCalendlyModal, setShowCalendlyModal] = useState(false);
-    const calendlyWidgetRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
-    const backgroundImages = [
-        '/bgimg-1.jpg',
-        '/bgimg-2.jpg',
-        '/bgimg-3.jpg',
-        '/bgimg-4.jpg',
-    ];
-
+    // Background images slideshow interval
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) =>
                 prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
             );
-        }, 3000);
+        }, 4000);
         return () => clearInterval(interval);
-    }, [backgroundImages.length]);
+    }, []);
 
+    // Industries marquee animation
     useEffect(() => {
         const slider = sliderRef.current;
         if (!slider) return;
@@ -81,184 +74,226 @@ export default function Home() {
         return () => cancelAnimationFrame(animationFrameId);
     }, []);
 
-    useEffect(() => {
-        if (window.Calendly) return;
-
-        const script = document.createElement("script");
-        script.src = "https://assets.calendly.com/assets/external/widget.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (showCalendlyModal && calendlyWidgetRef.current && window.Calendly) {
-            window.Calendly.initInlineWidget({
-                url: "https://calendly.com/nihal-nuvancetechnologies/30min?hide_event_type_details=1&hide_gdpr_banner=1",
-                parentElement: calendlyWidgetRef.current
-            });
-        }
-    }, [showCalendlyModal]);
-
     const handleBookDemoClick = () => {
         setShowCalendlyModal(true);
     };
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-slate-950 text-slate-900 flex flex-col">
             {/* Calendly Modal */}
-            {showCalendlyModal && (
-                <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/60 bg-opacity-50 backdrop-blur-sm">
-                    <div className="relative w-full max-w-4xl h-[80vh] bg-white rounded-lg shadow-xl overflow-hidden">
-                        <button
-                            className="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700"
-                            onClick={() => setShowCalendlyModal(false)}
-                        >
-                            <Close />
-                        </button>
-                        <div
-                            ref={calendlyWidgetRef}
-                            className="calendly-inline-widget w-full h-full"
-                            style={{ minWidth: '320px', height: '100%' }}
-                        />
-                    </div>
-                </div>
-            )}
+            <CalendlyModal
+                isOpen={showCalendlyModal}
+                onClose={() => setShowCalendlyModal(false)}
+            />
 
             <Navbar />
 
-            {/* Hero Section */}
-            <div className="relative w-full h-[calc(100vh-80px)]">
+            {/* Hero Section with Cycling Background Images & Professional Overlay */}
+            <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 pt-24 sm:pt-28">
+                {/* Background Images Cross-Fade */}
                 {backgroundImages.map((image, index) => (
                     <div
                         key={index}
-                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                            index === currentImageIndex ? "opacity-100" : "opacity-0"
+                        }`}
                         style={{
                             backgroundImage: `url(${image})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
                         }}
+                        aria-hidden="true"
                     />
                 ))}
 
-                <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-                    <div className="relative z-10 px-4 text-center text-white max-w-4xl mx-auto animate-fade-in">
-                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight tracking-tight drop-shadow-md transition-all duration-500">
-                            Nuvance Technologies: <br className="hidden sm:block" /> Building Digital Dreams, One Click at a Time
-                        </h1>
+                {/* Grounded Dark Gradient & Noise Overlay */}
+                <div className="absolute inset-0 bg-slate-950/80 backdrop-brightness-75" />
 
-                        <p className="text-base sm:text-lg md:text-xl mb-4 leading-relaxed text-gray-200 animate-fade-in delay-200 transition-opacity duration-500">
-                            Welcome to Nuvance Technologies, where digital innovation meets purpose.
-                        </p>
+                {/* Hero Foreground Content */}
+                <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-24 sm:pt-32 text-center text-white">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 bg-white/10 border border-white/20 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-200 mb-5 sm:mb-6 backdrop-blur-xs shadow-sm animate-fade-in-up">
+                        <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" />
+                        <span>Your success, our software.</span>
+                    </div>
 
-                        <p className="text-lg md:text-2xl font-semibold mb-8 text-blue-100 animate-fade-in delay-400 transition-opacity duration-500">
-                            Unlock your business&apos;s potential with Nuvance Technologies.
-                        </p>
+                    <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.15] mb-5 sm:mb-6 drop-shadow-sm animate-fade-in-up delay-150">
+                        Nuvance Technologies: Building Enterprise Systems, <br className="hidden sm:inline" />
+                        <span className="text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text">
+                            Your Strategic Tech Partner
+                        </span>
+                    </h1>
 
-                        <div className="flex justify-center animate-fade-in delay-700">
-                            <Button
-                                variant="green_variant"
-                                text="Explore Our Services"
-                                startIcon={<Globe className="size-6" />}
-                                onClick={() => router.push("/services")}
-                                className="shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+                    <p className="text-sm sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto mb-7 sm:mb-8 animate-fade-in-up delay-300">
+                        We architect, develop, and scale mission-critical web applications, mobile platforms, and high-availability cloud infrastructure for organizations worldwide.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 mb-10 sm:mb-12 animate-fade-in-up delay-450">
+                        <button
+                            type="button"
+                            onClick={() => router.push("/services")}
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-sm font-semibold rounded-md border border-blue-500 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                        >
+                            <span>Explore Our Services</span>
+                            <ArrowRight className="w-4 h-4" />
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={handleBookDemoClick}
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 text-white text-sm font-semibold rounded-md border border-white/30 backdrop-blur-xs shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+                        >
+                            <Calendar className="w-4 h-4 text-slate-200" />
+                            <span>Schedule Consultation</span>
+                        </button>
+                    </div>
+
+                    {/* Image Slide Indicators */}
+                    <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
+                        {backgroundImages.map((_, index) => (
+                            <button
+                                key={index}
+                                type="button"
+                                onClick={() => setCurrentImageIndex(index)}
+                                aria-label={`View slide ${index + 1}`}
+                                className={`h-1.5 transition-all duration-300 rounded-xs cursor-pointer ${
+                                    index === currentImageIndex ? "w-8 bg-blue-500" : "w-3 bg-white/40 hover:bg-white/70"
+                                }`}
                             />
+                        ))}
+                    </div>
+
+                    {/* Engineering Commitments */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-5 sm:pt-6 border-t border-white/15 max-w-2xl mx-auto text-[11px] sm:text-xs font-medium text-slate-300">
+                        <div className="flex items-center justify-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
+                            <span>100% IP & Source Ownership</span>
+                        </div>
+                        <div className="flex items-center justify-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
+                            <span>Agile Sprint Delivery</span>
+                        </div>
+                        <div className="flex items-center justify-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
+                            <span>Production QA & Security</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Services Section */}
-            <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                <div className="cursor-pointer text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
-                    Discover How We <span className="text-blue-600">Elevate</span> Your Brand
+            {/* Core Capabilities Section */}
+            <section className="py-14 sm:py-20 bg-slate-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+                    <span className="text-xs uppercase font-bold tracking-widest text-blue-600 block mb-1">
+                        Technical Capabilities
+                    </span>
+                    <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+                        Core Engineering Services
+                    </h2>
+                    <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mt-2">
+                        Tailored technical disciplines designed to meet strict performance, security, and scalability metrics.
+                    </p>
                 </div>
 
-                <div>
-                    <DiscoverNoFloating />
-                </div>
-            </div>
+                <DiscoverNoFloating onServiceClick={() => router.push("/services")} />
+            </section>
 
-            <div className="bg-mainBgColor">
-                <div className="cursor-pointer text-center hover:-translate-y-1 transition-all duration-500 font-extrabold text-gray-800 text-2xl md:text-4xl lg:text-5xl tracking-tight leading-snug animate-fade-in-up">
-                    Best <span className="text-blue-600">Technology</span> for your Project
+            {/* Production Technologies & Tooling */}
+            <section className="py-14 sm:py-20 bg-white border-t border-slate-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
+                    <span className="text-xs uppercase font-bold tracking-widest text-blue-600 block mb-1">
+                        Technology Stack
+                    </span>
+                    <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+                        Production-Grade Technologies & Frameworks
+                    </h2>
+                    <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mt-2">
+                        We leverage battle-tested stacks suited to complex multi-tier platforms and cloud infrastructure.
+                    </p>
                 </div>
+
                 <BestTech />
-            </div>
+            </section>
 
-            <div>
-                <div className="text-2xl text-center cursor-pointer bg-mainBgColor md:text-5xl font-extrabold leading-tight tracking-tight transition-all duration-500">
-                    Our Execution Process
+            {/* Execution Process */}
+            <section className="py-14 sm:py-20 bg-slate-50 border-t border-slate-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+                        Our Execution Process
+                    </h2>
                 </div>
+
                 <ExecutionProcess />
-            </div>
+            </section>
 
             {/* Industries Section */}
-            <div className="bg-mainBgColor py-10 px-4 sm:px-6">
-                <div className="text-center text-3xl sm:text-4xl font-bold mb-10">
-                    OUR EXPERTISE COVERS EVERY INDUSTRY
+            <section className="bg-white py-14 sm:py-20 border-t border-slate-200">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
+                    <span className="text-xs uppercase font-bold tracking-widest text-blue-600 block mb-1">
+                        Domain Experience
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+                        Cross-Industry Technical Expertise
+                    </h2>
+                    <p className="text-sm text-slate-600 max-w-xl mx-auto mt-2">
+                        Architecting tailored digital systems across high-compliance and data-intensive industries.
+                    </p>
                 </div>
-                <div className="relative h-20 overflow-hidden mb-8">
-                    <div ref={sliderRef} className="absolute whitespace-nowrap flex">
+
+                <div className="relative h-16 overflow-hidden mb-8 max-w-6xl mx-auto">
+                    {/* Gradient Fade Masks */}
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
+
+                    <div ref={sliderRef} className="absolute whitespace-nowrap flex items-center">
                         {[...industries, ...industries].map((industry, index) => (
-                            <div key={index} className="inline-block mx-4">
+                            <div key={index} className="inline-block mx-2.5">
                                 <PointCard text={industry} />
                             </div>
                         ))}
                     </div>
                 </div>
+
                 <div className="flex justify-center">
                     <Button
-                        text="Explore Our Projects"
-                        variant="blue_variant"
-                        onClick={() => { router.push("/portfolio") }}
+                        text="Review Case Studies & Deliveries"
+                        variant="general_1"
+                        onClick={() => router.push("/case-study")}
+                        endIcon={<ArrowRight className="w-4 h-4" />}
                     />
                 </div>
-            </div>
+            </section>
 
-            {/* Ask experts Section */}
-            <div className="flex flex-col md:flex-row bg-mainBgColor md:justify-around items-center">
-                <div className="relative overflow-hidden rounded-2xl py-16 md:py-24 w-full">
-                    <div className="absolute inset-0 bg-gradient-to-br">
-                        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] opacity-5"></div>
-                        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
-                        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30"></div>
-                    </div>
-
-                    <div className="relative flex flex-row md:justify-around items-center max-w-7xl cursor-pointer mx-auto px-6 gap-10 md:gap-4">
-                        <div className="cursor-pointer backdrop-blur-sm bg-white/30 dark:bg-black/20 p-8 rounded-2xl shadow-xl border border-white/40 dark:border-white/5 transform hover:translate-y-[-5px] transition-all duration-300">
-                            <div className="flex flex-col md:flex-row items-center md:items-start justify-between space-y-6 md:space-y-0 md:space-x-6">
-                                {/* Left Text Section */}
-                                <div className="text-left space-y-6 w-full md:w-2/3">
-                                    <div className="text-xl text-center md:text-2xl font-extrabold bg-clip-text bg-gradient-to-r text-black">
-                                        TAKE A CALL WITH OUR EXPERTS
-                                    </div>
-                                    <div className="text-3xl text-center font-bold text-gray-800 dark:text-white">
-                                        Let&apos;s Start Your Journey Now!!
-                                    </div>
-                                    <div className="justify-center flex pt-4">
-                                        <BookDemoCall onClick={handleBookDemoClick} />
-                                    </div>
-                                </div>
-
-                                {/* Right Image Section */}
-                                <div className="w-full md:w-1/3 flex justify-center md:justify-end">
-                                    <Image
-                                        src="/contactPageIcons/askOurExperts.png"
-                                        className="hover:scale-105 transition-all duration-300 drop-shadow-2xl"
-                                        alt="Ask Our Experts"
-                                        width={200}
-                                        height={200}
-                                    />
-                                </div>
+            {/* Technical Consultation CTA Section */}
+            <section className="bg-slate-50 py-16 sm:py-20 border-t border-slate-200">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="bg-white border border-slate-200 rounded-md p-8 sm:p-12 shadow-xs flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="max-w-xl text-center md:text-left">
+                            <span className="text-xs uppercase font-bold tracking-widest text-blue-600 block mb-2">
+                                Direct Engineering Consultation
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 mb-3 tracking-tight">
+                                Plan Your Technical Roadmap With Our Leads
+                            </h2>
+                            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                                Discuss system requirements, technical trade-offs, timelines, and budget estimates directly with our senior engineering team.
+                            </p>
+                            <div>
+                                <BookDemoCall onClick={handleBookDemoClick} text="Book a 30-Minute Consultation" />
                             </div>
+                        </div>
+
+                        <div className="flex-shrink-0 flex items-center justify-center p-6 bg-slate-50 border border-slate-100 rounded-md">
+                            <Image
+                                src="/contactPageIcons/askOurExperts.png"
+                                alt="Consult Our Engineers"
+                                width={180}
+                                height={180}
+                                className="object-contain"
+                            />
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <Footer />
         </div>
